@@ -1,14 +1,14 @@
 <template>
-  <NotAccesedLayout>
+  <not-accesed-layout>
     <div class="relative">
       <img
         class="absolute bottom-0 left-2 z-10"
-        src="@/assets/forbidden-gandolf.png"
+        src="@/assets/images/forbidden-gandolf.png"
         alt="gandolf"
       />
       <img
         class="relative bottom-2 left-0"
-        src="@/assets/forbidden-union.png"
+        src="@/assets/images/forbidden-union.png"
         alt="union"
       />
     </div>
@@ -16,7 +16,7 @@
     <template v-slot:minor-text
       >Sorry, but you don’t have permission to access this page
     </template>
-  </NotAccesedLayout>
+  </not-accesed-layout>
 </template>
 
 <script>
