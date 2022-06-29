@@ -1,13 +1,13 @@
 <template>
   <div class="relative opacity-0.5">
     <div
-      class="flex items-center md:bg-[#222030] md:max-w-2xl md:rounded-xl md:h-1/2 md:mt-36 md:m-auto justify-center min-h-full p-4 text-center"
+      class="flex items-center md:bg-[#222030] md:max-w-2xl md:rounded-xl md:h-1/8 md:mt-36 md:m-auto justify-center min-h-full p-4 text-center"
     >
       <div
         class="relative rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden sm:my-8 sm:max-w-sm sm:w-full sm:p-6"
       >
         <div
-          class="mx-auto flex items-center justify-center h-12 w-12 mt-12 md:mt-0 whitespace-nowrap"
+          class="mx-auto flex items-center justify-center h-12 md:h-4 w-12 mt-12 md:mt-0 whitespace-nowrap"
         >
           <h1 class="font-medium text-white text-2xl leading-[120%]">
             Create an account
@@ -18,7 +18,7 @@
             Start your journey!
           </h3>
         </div>
-        <Form class="space-y-4">
+        <Form class="space-y-3">
           <base-input
             label="Name"
             name="name"
