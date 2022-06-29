@@ -1,0 +1,28 @@
+<template>
+  <label class="text-md flex font-bold text-white whitespace-normal"
+    >{{ label }}
+    <p class="text-red-500 ml-1">*</p></label
+  >
+  <div class="mt-2">
+    <Field
+      v-bind="$attrs"
+      :name="errorName"
+      class="inline-block w-full placeholder-[#626262] py-2 px-4 rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
+      :placeholder="placeholder"
+      :value="value"
+      @input="input"
+    />
+  </div>
+  <p class="mt-2 text-sm text-red-500">
+    <ErrorMessage :name="errorName" />
+  </p>
+</template>
+
+<script>
+import { Field, ErrorMessage } from "vee-validate";
+
+export default {
+  components: { Field, ErrorMessage },
+  props: ["label", "modelValue", "placeholder", "errorName", "value", "input"],
+};
+</script>
