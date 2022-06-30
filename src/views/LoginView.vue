@@ -10,6 +10,7 @@
         name="email"
         type="email"
         placeholder="Enter your email"
+        rules="required|min:3"
         :value="name"
         @input="onInput"
       />
@@ -17,6 +18,7 @@
         label="Password"
         name="password"
         type="password"
+        rules="required|min:8"
         placeholder="Password"
         :value="name"
         @input="onInput"
