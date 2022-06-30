@@ -21,14 +21,21 @@
         :value="name"
         @input="onInput"
       />
-      <BaseCheckbox label="Remember me" />
+      <div class="flex items-center justify-between">
+        <BaseCheckbox label="Remember me" />
+        <router-link class="text-[#0D6EFD] underline" to="/forgot-password"
+          >Forgot password</router-link
+        >
+      </div>
+
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Sign in</form-submit-button>
         <google-button>Sign in with Google</google-button>
       </div>
     </Form>
     <template v-slot:have-account>
-      <router-link class="text-[#0D6EFD] underline" to="/login"
+      Don't have an account?
+      <router-link class="text-[#0D6EFD] underline" to="/register"
         >Sign up</router-link
       >
     </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-100 overflow-hidden -mt-[800px] backdrop-blur-sm">
+  <div class="relative h-100 overflow-hidden md:-mt-[80vh] -mt-[70vh]">
     <div
       class="flex items-center md:bg-[#222030] md:max-w-2xl md:rounded-xl md:h-1/8 md:mt-36 md:m-auto justify-center min-h-full p-4 text-center"
     >
@@ -9,7 +9,7 @@
         <div
           class="mx-auto flex items-center justify-center h-12 md:h-4 w-12 mt-12 md:mt-0 whitespace-nowrap"
         >
-          <h1 class="font-medium text-white text-2xl leading-[120%]">
+          <h1 class="font-medium text-white text-2xl leading-[120%] mb-8">
             <slot name="major-text"></slot>
           </h1>
         </div>
@@ -19,8 +19,7 @@
           </h3>
         </div>
         <slot></slot>
-        <p class="text-center text-[#6C757D] font-medium mt-2">
-          Already have an account?
+        <p class="text-center mt-6 text-[#6C757D] font-medium">
           <slot name="have-account"></slot>
         </p>
       </div>

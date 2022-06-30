@@ -1,5 +1,5 @@
 <template>
-  <div class="invisible md:visible">
+  <div class="invisible md:visible blur-sm">
     <router-view name="HomeView"></router-view>
   </div>
   <router-view></router-view>

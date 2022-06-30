@@ -41,6 +41,7 @@
       </div>
     </Form>
     <template v-slot:have-account>
+      Already have an account?
       <router-link class="text-[#0D6EFD] underline" to="/login"
         >Log in</router-link
       >
