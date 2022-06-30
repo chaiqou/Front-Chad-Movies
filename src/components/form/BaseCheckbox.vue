@@ -4,6 +4,7 @@
       <input
         name="remember"
         type="checkbox"
+        v-bind="$attrs"
         :checked="modelValue"
         @change="$emit('update:modelValue', $event.target.checked)"
         class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"

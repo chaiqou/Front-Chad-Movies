@@ -4,5 +4,6 @@ export const useLoginStore = defineStore("useLoginStore", {
   state: () => ({
     email: "",
     password: "",
+    remember: false,
   }),
 });

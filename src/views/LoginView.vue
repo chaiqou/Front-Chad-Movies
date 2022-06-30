@@ -22,7 +22,7 @@
         v-model="password"
       />
       <div class="flex items-center justify-between">
-        <BaseCheckbox label="Remember me" />
+        <base-checkbox label="Remember me" v-model="remember" />
         <router-link class="text-[#0D6EFD] underline" to="/forgot-password"
           >Forgot password</router-link
         >
@@ -63,7 +63,7 @@ export default {
     FormVee,
   },
   computed: {
-    ...mapWritableState(useLoginStore, ["email", "password"]),
+    ...mapWritableState(useLoginStore, ["email", "password", "remember"]),
   },
   methods: {
     onSubmit() {
