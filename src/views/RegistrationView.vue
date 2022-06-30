@@ -2,10 +2,11 @@
   <form-modal>
     <template v-slot:major-text>Create an account</template>
     <template v-slot:minor-text>Start your journey!</template>
-    <FormVee class="space-y-3">
+    <FormVee class="space-y-3" @submit="onSubmit">
       <base-input
         label="Name"
         errorName="name"
+        rules="required|min:3|max:15|lower-case"
         type="text"
         placeholder="Enter your name"
         v-model="name"
@@ -13,6 +14,7 @@
       <base-input
         label="Email"
         errorName="email"
+        rules="required|email"
         type="email"
         placeholder="Enter your email"
         v-model="email"
@@ -20,6 +22,8 @@
       <base-input
         label="Password"
         errorName="password"
+        name="password"
+        rules="required|min:8|max:15|lower-case"
         type="password"
         placeholder="Password"
         v-model="password"
@@ -27,6 +31,7 @@
       <base-input
         label="Confirm Password"
         errorName="confirm"
+        rules="required|confirmed:@password"
         type="password"
         placeholder="Password"
         v-model="password_confirmation"
@@ -70,6 +75,11 @@ export default {
       "password",
       "password_confirmation",
     ]),
+  },
+  methods: {
+    onSubmit() {
+      console.log("test");
+    },
   },
 };
 </script>
