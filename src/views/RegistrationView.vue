@@ -55,6 +55,11 @@ import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
 
 export default {
-  components: { BaseInput, FormModal, FormSubmitButton, GoogleButton },
+  components: {
+    BaseInput,
+    FormModal,
+    FormSubmitButton,
+    GoogleButton,
+  },
 };
 </script>

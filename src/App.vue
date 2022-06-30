@@ -1,9 +1,13 @@
 <template>
-  <RouterView />
+  <div class="invisible md:visible">
+    <router-view name="HomeView"></router-view>
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 import { RouterView } from "vue-router";
+
 export default {
   components: {
     RouterView,

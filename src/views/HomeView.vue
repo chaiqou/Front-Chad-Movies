@@ -36,16 +36,14 @@
       >Get Started</router-link
     >
   </div>
-  <RegistrationView />
 </template>
 
 <script>
 import { RouterLink } from "vue-router";
-import RegistrationView from "./RegistrationView.vue";
+
 export default {
   components: {
     RouterLink,
-    RegistrationView,
   },
 };
 </script>
