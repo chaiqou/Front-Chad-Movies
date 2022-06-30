@@ -5,25 +5,33 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "HomeView",
+      name: "home-page",
       component: () => import("@/views/HomeView.vue"),
     },
     {
       path: "/register",
-      name: "RegistrationView",
+      name: "registration-page",
       components: {
         default: () => import("@/views/RegistrationView.vue"),
         HomeView: () => import("@/views/HomeView.vue"),
       },
     },
     {
+      path: "/login",
+      name: "login-page",
+      components: {
+        default: () => import("@/views/LoginView.vue"),
+        HomeView: () => import("@/views/HomeView.vue"),
+      },
+    },
+    {
       path: "/test",
-      name: "ForbiddenView",
+      name: "forbidden-page",
       component: () => import("@/views/ForbiddenView.vue"),
     },
     {
       path: "/:catchAll(.*)",
-      name: "NotFoundView",
+      name: "not-found-page",
       component: () => import("@/views/NotFoundView.vue"),
     },
   ],

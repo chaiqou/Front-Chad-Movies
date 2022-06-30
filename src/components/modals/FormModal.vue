@@ -10,7 +10,7 @@
           class="mx-auto flex items-center justify-center h-12 md:h-4 w-12 mt-12 md:mt-0 whitespace-nowrap"
         >
           <h1 class="font-medium text-white text-2xl leading-[120%]">
-            <slot name="main-text"></slot>
+            <slot name="major-text"></slot>
           </h1>
         </div>
         <div class="text-center">
