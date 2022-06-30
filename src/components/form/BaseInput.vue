@@ -9,8 +9,6 @@
       :name="errorName"
       class="inline-block w-full placeholder-[#626262] py-2 px-4 rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
       :placeholder="placeholder"
-      :value="value"
-      @input="input"
     />
   </div>
   <p class="mt-2 text-sm text-red-500">
@@ -23,6 +21,6 @@ import { Field, ErrorMessage } from "vee-validate";
 
 export default {
   components: { Field, ErrorMessage },
-  props: ["label", "modelValue", "placeholder", "errorName", "value", "input"],
+  props: ["label", "placeholder", "errorName"],
 };
 </script>

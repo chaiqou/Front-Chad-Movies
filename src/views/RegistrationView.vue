@@ -2,44 +2,40 @@
   <form-modal>
     <template v-slot:major-text>Create an account</template>
     <template v-slot:minor-text>Start your journey!</template>
-    <Form class="space-y-3">
+    <FormVee class="space-y-3">
       <base-input
         label="Name"
-        name="name"
+        errorName="name"
         type="text"
         placeholder="Enter your name"
-        :value="name"
-        @input="onInput"
+        v-model="name"
       />
       <base-input
         label="Email"
-        name="email"
+        errorName="email"
         type="email"
         placeholder="Enter your email"
-        :value="name"
-        @input="onInput"
+        v-model="email"
       />
       <base-input
         label="Password"
-        name="password"
+        errorName="password"
         type="password"
         placeholder="Password"
-        :value="name"
-        @input="onInput"
+        v-model="password"
       />
       <base-input
         label="Confirm Password"
-        name="confirm"
+        errorName="confirm"
         type="password"
         placeholder="Password"
-        :value="name"
-        @input="onInput"
+        v-model="password_confirmation"
       />
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Get started</form-submit-button>
         <google-button>Sign in with Google</google-button>
       </div>
-    </Form>
+    </FormVee>
     <template v-slot:have-account>
       Already have an account?
       <router-link class="text-[#0D6EFD] underline" to="/login"
@@ -55,12 +51,25 @@ import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
 
+import { Form as FormVee } from "vee-validate";
+import { useRegisterStore } from "@/stores/useRegister";
+import { mapWritableState } from "pinia";
+
 export default {
   components: {
+    FormVee,
     BaseInput,
     FormModal,
     FormSubmitButton,
     GoogleButton,
+  },
+  computed: {
+    ...mapWritableState(useRegisterStore, [
+      "name",
+      "email",
+      "password",
+      "password_confirmation",
+    ]),
   },
 };
 </script>
