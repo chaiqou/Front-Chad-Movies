@@ -21,6 +21,7 @@
         :value="name"
         @input="onInput"
       />
+      <BaseCheckbox label="Remember me" />
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Sign in</form-submit-button>
         <google-button>Sign in with Google</google-button>
@@ -36,6 +37,7 @@
 
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
+import BaseCheckbox from "@/components/form/BaseCheckbox.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
@@ -43,6 +45,7 @@ import GoogleButton from "@/components/buttons/GoogleButton.vue";
 export default {
   components: {
     BaseInput,
+    BaseCheckbox,
     FormModal,
     FormSubmitButton,
     GoogleButton,
