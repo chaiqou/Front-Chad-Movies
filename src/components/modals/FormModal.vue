@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-100 overflow-hidden md:-mt-[80vh] -mt-[70vh]">
+  <div class="relative h-100 overflow-hidden md:-mt-[100vh] -mt-[90vh]">
     <div
       class="flex items-center md:bg-[#222030] md:max-w-2xl md:rounded-xl md:h-1/8 md:mt-36 md:m-auto justify-center min-h-full p-4 text-center"
     >
