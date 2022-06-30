@@ -4,24 +4,22 @@
     <template v-slot:minor-text
       >Welcome back! Please enter your details.</template
     >
-    <Form class="space-y-3">
+    <FormVee @submit="onSubmit" class="space-y-3">
       <base-input
         label="Email"
-        name="email"
-        type="email"
+        errorName="email"
+        type="text"
         placeholder="Enter your email"
         rules="required|min:3"
-        :value="name"
-        @input="onInput"
+        v-model="email"
       />
       <base-input
         label="Password"
-        name="password"
+        errorName="password"
         type="password"
         rules="required|min:8"
         placeholder="Password"
-        :value="name"
-        @input="onInput"
+        v-model="password"
       />
       <div class="flex items-center justify-between">
         <BaseCheckbox label="Remember me" />
@@ -34,7 +32,7 @@
         <form-submit-button>Sign in</form-submit-button>
         <google-button>Sign in with Google</google-button>
       </div>
-    </Form>
+    </FormVee>
     <template v-slot:have-account>
       Don't have an account?
       <router-link class="text-[#0D6EFD] underline" to="/register"
@@ -50,6 +48,10 @@ import BaseCheckbox from "@/components/form/BaseCheckbox.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
+import { useLoginStore } from "@/stores/useLogin";
+
+import { Form as FormVee } from "vee-validate";
+import { mapWritableState } from "pinia";
 
 export default {
   components: {
@@ -58,6 +60,15 @@ export default {
     FormModal,
     FormSubmitButton,
     GoogleButton,
+    FormVee,
+  },
+  computed: {
+    ...mapWritableState(useLoginStore, ["email", "password"]),
+  },
+  methods: {
+    onSubmit() {
+      console.log("test");
+    },
   },
 };
 </script>

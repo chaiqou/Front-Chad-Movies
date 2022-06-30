@@ -55,9 +55,9 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
+import { useRegisterStore } from "@/stores/useRegister";
 
 import { Form as FormVee } from "vee-validate";
-import { useRegisterStore } from "@/stores/useRegister";
 import { mapWritableState } from "pinia";
 
 export default {
