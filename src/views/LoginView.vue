@@ -1,28 +1,28 @@
 <template>
   <form-modal>
-    <template v-slot:major-text>Log in to your account</template>
-    <template v-slot:minor-text
+    <template #major-text>Log in to your account</template>
+    <template #minor-text
       >Welcome back! Please enter your details.</template
     >
-    <FormVee @submit="onSubmit" class="space-y-3">
+    <FormVee class="space-y-3" @submit="onSubmit">
       <base-input
+        v-model="email"
         label="Email"
-        errorName="email"
+        error-name="email"
         type="text"
         placeholder="Enter your email"
         rules="required|min:3"
-        v-model="email"
       />
       <base-input
+        v-model="password"
         label="Password"
-        errorName="password"
+        error-name="password"
         type="password"
         rules="required|min:8"
         placeholder="Password"
-        v-model="password"
       />
       <div class="flex items-center justify-between">
-        <base-checkbox label="Remember me" v-model="remember" />
+        <base-checkbox v-model="remember" label="Remember me" />
         <router-link class="text-[#0D6EFD] underline" to="/forgot-password"
           >Forgot password</router-link
         >
@@ -33,7 +33,7 @@
         <google-button>Sign in with Google</google-button>
       </div>
     </FormVee>
-    <template v-slot:have-account>
+    <template #have-account>
       Don't have an account?
       <router-link class="text-[#0D6EFD] underline" to="/register"
         >Sign up</router-link

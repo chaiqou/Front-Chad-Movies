@@ -12,8 +12,8 @@
         alt="union"
       />
     </div>
-    <template v-slot:major-text>You shall not pass!</template>
-    <template v-slot:minor-text
+    <template #major-text>You shall not pass!</template>
+    <template #minor-text
       >Sorry, but you don’t have permission to access this page
     </template>
   </not-accesed-layout>

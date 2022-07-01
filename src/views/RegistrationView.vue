@@ -1,47 +1,47 @@
 <template>
   <form-modal>
-    <template v-slot:major-text>Create an account</template>
-    <template v-slot:minor-text>Start your journey!</template>
+    <template #major-text>Create an account</template>
+    <template #minor-text>Start your journey!</template>
     <FormVee class="space-y-3" @submit="onSubmit">
       <base-input
+        v-model="name"
         label="Name"
-        errorName="name"
+        error-name="name"
         rules="required|min:3|max:15|lower-case"
         type="text"
         placeholder="Enter your name"
-        v-model="name"
       />
       <base-input
+        v-model="email"
         label="Email"
-        errorName="email"
+        error-name="email"
         rules="required|email"
         type="email"
         placeholder="Enter your email"
-        v-model="email"
       />
       <base-input
+        v-model="password"
         label="Password"
-        errorName="password"
+        error-name="password"
         name="password"
         rules="required|min:8|max:15|lower-case"
         type="password"
         placeholder="Password"
-        v-model="password"
       />
       <base-input
+        v-model="password_confirmation"
         label="Confirm Password"
-        errorName="confirm"
+        error-name="confirm"
         rules="required|confirmed:@password"
         type="password"
         placeholder="Password"
-        v-model="password_confirmation"
       />
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Get started</form-submit-button>
         <google-button>Sign in with Google</google-button>
       </div>
     </FormVee>
-    <template v-slot:have-account>
+    <template #have-account>
       Already have an account?
       <router-link class="text-[#0D6EFD] underline" to="/login"
         >Log in</router-link
