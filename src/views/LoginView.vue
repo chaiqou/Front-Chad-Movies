@@ -1,9 +1,7 @@
 <template>
   <form-modal>
     <template #major-text>Log in to your account</template>
-    <template #minor-text
-      >Welcome back! Please enter your details.</template
-    >
+    <template #minor-text>Welcome back! Please enter your details.</template>
     <FormVee class="space-y-3" @submit="onSubmit">
       <base-input
         v-model="email"
@@ -52,6 +50,7 @@ import { useLoginStore } from "@/stores/useLogin";
 
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState } from "pinia";
+import axios from "@/config/axios/index.js";
 
 export default {
   components: {
@@ -67,7 +66,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("test");
+      axios
+        .post("login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error));
     },
   },
 };
