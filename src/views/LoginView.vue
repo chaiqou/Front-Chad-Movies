@@ -65,9 +65,23 @@ export default {
   },
   computed: {
     ...mapWritableState(useLoginStore, ["email", "password", "remember"]),
+    ...mapWritableState(useAuthToken, ["token"]),
+  },
+  mounted() {
+    if (this.token !== "") {
+      axios
+        .post("http://localhost:8000/api/checkToken", {
+          token: this.token,
+        })
+        .then((response) => {
+          if (response) {
+            this.$router.push("/");
+          }
+        });
+    }
   },
   methods: {
-    ...mapActions(useAuthToken, ["setToken"]),
+    ...mapActions(useAuthToken, ["setToken", "clearToken"]),
     onSubmitLogin() {
       axios
         .post("http://localhost:8000/api/login", {
