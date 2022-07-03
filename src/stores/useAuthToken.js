@@ -6,7 +6,6 @@ export const useAuthToken = defineStore("useAuthToken", {
   }),
   actions: {
     async setToken(ctx) {
-      console.log(ctx);
       localStorage.setItem("auth", ctx);
       this.token = ctx;
     },

@@ -75,7 +75,7 @@ export default {
         })
         .then((response) => {
           if (response) {
-            this.$router.push("/");
+            this.$router.push({ name: "home-page" });
           }
         });
     }
@@ -89,10 +89,10 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          console.log(response.data.access_token);
           this.setToken(response.data.access_token);
+          this.$router.push({ name: "dashboard-page" });
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error.response.data));
     },
   },
 };
