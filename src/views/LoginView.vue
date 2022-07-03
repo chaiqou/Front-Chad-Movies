@@ -2,7 +2,7 @@
   <form-modal>
     <template #major-text>Log in to your account</template>
     <template #minor-text>Welcome back! Please enter your details.</template>
-    <FormVee class="space-y-3" @submit="onSubmit">
+    <FormVee class="space-y-3" @submit="onSubmitLogin">
       <base-input
         v-model="email"
         label="Email"
@@ -46,11 +46,13 @@ import BaseCheckbox from "@/components/form/BaseCheckbox.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
+
 import { useLoginStore } from "@/stores/useLogin";
+import { useAuthToken } from "@/stores/useAuthToken";
 
 import { Form as FormVee } from "vee-validate";
-import { mapWritableState } from "pinia";
-import axios from "@/config/axios/index.js";
+import { mapWritableState, mapActions } from "pinia";
+import axios from "axios";
 
 export default {
   components: {
@@ -65,14 +67,16 @@ export default {
     ...mapWritableState(useLoginStore, ["email", "password", "remember"]),
   },
   methods: {
-    onSubmit() {
+    ...mapActions(useAuthToken, ["setToken"]),
+    onSubmitLogin() {
       axios
-        .post("login", {
+        .post("http://localhost:8000/api/login", {
           email: this.email,
           password: this.password,
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data.access_token);
+          this.setToken(response.data.access_token);
         })
         .catch((error) => console.log(error));
     },
