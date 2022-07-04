@@ -61,7 +61,7 @@ import { useAuthToken } from "@/stores/useAuthToken";
 
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState } from "pinia";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 
 export default {
   components: {
@@ -85,7 +85,7 @@ export default {
   mounted() {
     if (localStorage.getItem("auth") !== null) {
       axios
-        .post("http://localhost:8000/api/checkToken", {
+        .post("checkToken", {
           token: this.token,
         })
         .then((response) => {
@@ -98,14 +98,14 @@ export default {
   methods: {
     onSubmit() {
       axios
-        .post("http://localhost:8000/api/register", {
+        .post("register", {
           name: this.name,
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation,
         })
         .then(() => {
-          this.$router.push("/thanks");
+          this.$router.push({ name: "registration-thanks-page" });
         })
         .catch((error) => {
           alert(error.response.data.message);

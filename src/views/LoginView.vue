@@ -52,7 +52,7 @@ import { useAuthToken } from "@/stores/useAuthToken";
 
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
-import axios from "axios";
+import axios from "@/config/axios/index.js";
 
 export default {
   components: {
@@ -68,10 +68,9 @@ export default {
     ...mapWritableState(useAuthToken, ["token"]),
   },
   mounted() {
-    console.log(localStorage.getItem("auth"));
     if (localStorage.getItem("auth") !== null) {
       axios
-        .post("http://localhost:8000/api/checkToken", {
+        .post("checkToken", {
           token: this.token,
         })
         .then((response) => {
@@ -86,7 +85,7 @@ export default {
     ...mapActions(useAuthToken, ["setToken", "clearToken"]),
     onSubmitLogin() {
       axios
-        .post("http://localhost:8000/api/login", {
+        .post("login", {
           email: this.email,
           password: this.password,
         })
