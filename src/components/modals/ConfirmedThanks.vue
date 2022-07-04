@@ -14,10 +14,18 @@
 
 <script>
 import ThanksModal from "./ThanksModal.vue";
+import { mapActions } from "pinia";
+import { useUserVerify } from "@/stores/useUserVerify";
 
 export default {
   components: {
     ThanksModal,
+  },
+  created() {
+    this.verifyEmail(this.$route.query);
+  },
+  methods: {
+    ...mapActions(useUserVerify, ["verifyEmail"]),
   },
 };
 </script>
