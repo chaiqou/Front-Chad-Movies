@@ -55,11 +55,13 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
+
 import { useRegisterStore } from "@/stores/useRegister";
-import axios from "@/config/axios/index.js";
+import { useAuthToken } from "@/stores/useAuthToken";
 
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState } from "pinia";
+import axios from "axios";
 
 export default {
   components: {
@@ -69,6 +71,7 @@ export default {
     FormSubmitButton,
     GoogleButton,
   },
+
   computed: {
     ...mapWritableState(useRegisterStore, [
       "name",
@@ -76,6 +79,20 @@ export default {
       "password",
       "password_confirmation",
     ]),
+    ...mapWritableState(useAuthToken, ["token"]),
+  },
+  mounted() {
+    if (localStorage.getItem("auth") !== null) {
+      axios
+        .post("http://localhost:8000/api/checkToken", {
+          token: this.token,
+        })
+        .then((response) => {
+          if (response) {
+            this.$router.push({ name: "dashboard-page" });
+          }
+        });
+    }
   },
   methods: {
     onSubmit() {

@@ -68,7 +68,8 @@ export default {
     ...mapWritableState(useAuthToken, ["token"]),
   },
   mounted() {
-    if (this.token !== "") {
+    console.log(localStorage.getItem("auth"));
+    if (localStorage.getItem("auth") !== null) {
       axios
         .post("http://localhost:8000/api/checkToken", {
           token: this.token,
