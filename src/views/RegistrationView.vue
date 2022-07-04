@@ -2,7 +2,7 @@
   <form-modal>
     <template #major-text>Create an account</template>
     <template #minor-text>Start your journey!</template>
-    <FormVee class="space-y-3" @submit="onSubmit">
+    <FormVee class="space-y-2" @submit="onSubmit">
       <base-input
         v-model="name"
         label="Name"

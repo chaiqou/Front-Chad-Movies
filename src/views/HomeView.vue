@@ -1,6 +1,6 @@
 <template>
-  <div class="snap-y snap-proximity h-[100vh] overflow-y-scroll">
-    <div class="h-[100vh]">
+  <div class="snap-y snap-proximity h-screen overflow-y-scroll">
+    <div class="">
       <landing-nav-bar />
       <landing-center />
     </div>

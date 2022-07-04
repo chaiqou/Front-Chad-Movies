@@ -2,7 +2,7 @@
   <form-modal>
     <template #major-text>Log in to your account</template>
     <template #minor-text>Welcome back! Please enter your details.</template>
-    <FormVee class="space-y-3" @submit="onSubmitLogin">
+    <FormVee class="space-y-2" @submit="onSubmitLogin">
       <base-input
         v-model="email"
         label="Email"
