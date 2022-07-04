@@ -30,9 +30,9 @@ const router = createRouter({
       component: () => import("@/views/DashboardView.vue"),
     },
     {
-      path: "/test",
-      name: "forbidden-page",
-      component: () => import("@/views/ForbiddenView.vue"),
+      path: "/unauthorized",
+      name: "unauthorized-page",
+      component: () => import("@/views/UnauthorizedView.vue"),
     },
     {
       path: "/:catchAll(.*)",
@@ -40,6 +40,18 @@ const router = createRouter({
       component: () => import("@/views/NotFoundView.vue"),
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const protectedRoutes = ["/dashboard"];
+  if (
+    localStorage.getItem("auth") === null &&
+    protectedRoutes.includes(to.path)
+  ) {
+    return next("/unauthorized");
+  } else {
+    return next();
+  }
 });
 
 export default router;

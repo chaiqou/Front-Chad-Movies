@@ -75,11 +75,12 @@ export default {
         })
         .then((response) => {
           if (response) {
-            this.$router.push({ name: "home-page" });
+            this.$router.push({ name: "dashboard-page" });
           }
         });
     }
   },
+
   methods: {
     ...mapActions(useAuthToken, ["setToken", "clearToken"]),
     onSubmitLogin() {
