@@ -81,6 +81,7 @@ export default {
     ]),
     ...mapWritableState(useAuthToken, ["token"]),
   },
+  // aq unda sheqmna reusable logika romelsac iyeneb login viewshic
   mounted() {
     if (localStorage.getItem("auth") !== null) {
       axios
@@ -97,15 +98,14 @@ export default {
   methods: {
     onSubmit() {
       axios
-        .post("register", {
+        .post("http://localhost:8000/api/register", {
           name: this.name,
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation,
         })
-        .then((response) => {
-          alert("Registration Successful!");
-          console.log(response.data.message);
+        .then(() => {
+          this.$router.push("/thanks");
         })
         .catch((error) => {
           alert(error.response.data.message);

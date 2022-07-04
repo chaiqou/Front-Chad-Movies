@@ -25,6 +25,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/thanks",
+      name: "thanks-page",
+      components: {
+        default: () => import("@/components/modals/ThanksModal.vue"),
+        HomeView: () => import("@/views/HomeView.vue"),
+      },
+    },
+    {
       path: "/dashboard",
       name: "dashboard-page",
       component: () => import("@/views/DashboardView.vue"),
