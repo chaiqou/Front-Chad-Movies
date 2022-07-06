@@ -108,7 +108,7 @@ export default {
           this.$router.push({ name: "registration-thanks-page" });
         })
         .catch((error) => {
-          alert(error.response.data.message);
+          alert(error.response.data);
         });
     },
   },

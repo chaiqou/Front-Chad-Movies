@@ -25,18 +25,18 @@ const router = createRouter({
       },
     },
     {
-      path: "/registration-thanks",
-      name: "registration-thanks-page",
+      path: "/user-registered",
+      name: "user-registered-page",
       components: {
-        default: () => import("@/components/modals/RegistrationThanks.vue"),
+        default: () => import("@/views/RegisteredView.vue"),
         HomeView: () => import("@/views/HomeView.vue"),
       },
     },
     {
-      path: "/email-confirmed-thanks",
-      name: "email-confirmed-thanks-page",
+      path: "/user-confirmed",
+      name: "user-confirmed-thanks-page",
       components: {
-        default: () => import("@/components/modals/ConfirmedThanks.vue"),
+        default: () => import("@/views/ConfirmedView.vue"),
         HomeView: () => import("@/views/HomeView.vue"),
       },
     },

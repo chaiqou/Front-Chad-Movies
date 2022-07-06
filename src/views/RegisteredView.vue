@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ThanksModal from "./ThanksModal.vue";
+import ThanksModal from "@/components/modals/ThanksModal.vue";
 
 export default {
   components: {

@@ -7,13 +7,12 @@ export const useUserVerify = defineStore("useUserVerify", {
   }),
   actions: {
     verifyEmail(ctx) {
-      console.log(ctx);
       return new Promise((resolve, reject) => {
         axios
           .get("email-verification", { params: ctx })
           .then((res) => {
             resolve(res);
-            this.verify = ctx.hash;
+            this.verify = res;
           })
           .catch((err) => {
             reject(err);
