@@ -7,6 +7,7 @@ export const useLoginStore = defineStore("useLoginStore", {
     password: "",
     remember: false,
   }),
+
   actions: {
     loginGoogleAction() {
       return new Promise((resolve, reject) => {
@@ -25,6 +26,7 @@ export const useLoginStore = defineStore("useLoginStore", {
         axios
           .get("authorize/google/callback", { params: ctx })
           .then((response) => {
+            localStorage.setItem("auth", response.data.access_token);
             resolve(response);
           })
           .catch((error) => {

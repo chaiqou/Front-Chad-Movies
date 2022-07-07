@@ -16,7 +16,11 @@ export default {
       this.loginGoogleCallbackAction({
         code: this.$route.query.code,
       }).then((response) => {
-        console.log(response);
+        if (response.data.access_token) {
+          this.$router.push({ name: "dashboard-page" });
+        } else {
+          this.$router.push({ name: "login-page" });
+        }
       });
     },
   },
