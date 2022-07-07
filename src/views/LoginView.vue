@@ -28,7 +28,7 @@
 
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Sign in</form-submit-button>
-        <google-button :login-google="onSubmitloginGoogle"
+        <google-button :login-google="onSubmitLoginGoogle"
           >Sign in with Google</google-button
         >
       </div>
@@ -98,7 +98,7 @@ export default {
         })
         .catch((error) => console.log(error.response.data));
     },
-    onSubmitloginGoogle() {
+    onSubmitLoginGoogle() {
       this.loginGoogleAction().then((response) => {
         if (response.data.url) {
           window.location.href = response.data.url;

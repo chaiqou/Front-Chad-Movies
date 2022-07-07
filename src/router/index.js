@@ -25,6 +25,11 @@ const router = createRouter({
       },
     },
     {
+      path: "/authorize/google/callback",
+      name: "authorize-google-page",
+      component: () => import("@/views/LoginGoogle.vue"),
+    },
+    {
       path: "/user-registered",
       name: "user-registered-page",
       components: {

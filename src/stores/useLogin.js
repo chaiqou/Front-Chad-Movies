@@ -20,5 +20,17 @@ export const useLoginStore = defineStore("useLoginStore", {
           });
       });
     },
+    loginGoogleCallbackAction(ctx) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get("authorize/google/callback", { params: ctx })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
   },
 });
