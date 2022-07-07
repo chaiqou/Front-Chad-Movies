@@ -28,7 +28,9 @@
 
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Sign in</form-submit-button>
-        <google-button>Sign in with Google</google-button>
+        <google-button :login-google="signUpGoogle"
+          >Sign in with Google</google-button
+        >
       </div>
     </FormVee>
     <template #have-account>
@@ -83,6 +85,7 @@ export default {
 
   methods: {
     ...mapActions(useAuthToken, ["setToken", "clearToken"]),
+    ...mapActions(useLoginStore, ["loginWithGoogle"]),
     onSubmitLogin() {
       axios
         .post("login", {
@@ -94,6 +97,13 @@ export default {
           this.$router.push({ name: "dashboard-page" });
         })
         .catch((error) => console.log(error.response.data));
+    },
+    signUpGoogle() {
+      this.loginWithGoogle().then((resp) => {
+        if (resp.data.url) {
+          window.location.href = resp.data.url;
+        }
+      });
     },
   },
 };
