@@ -15,7 +15,7 @@ export default {
   props: {
     loginGoogle: {
       type: Function,
-      required: true,
+      default: null,
     },
   },
 };

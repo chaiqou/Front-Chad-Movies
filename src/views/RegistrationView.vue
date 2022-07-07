@@ -2,7 +2,7 @@
   <form-modal>
     <template #major-text>Create an account</template>
     <template #minor-text>Start your journey!</template>
-    <FormVee class="space-y-2" @submit="onSubmit">
+    <FormVee class="space-y-2" @submit="onSubmitRegister">
       <base-input
         v-model="name"
         label="Name"
@@ -38,7 +38,9 @@
       />
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Get started</form-submit-button>
-        <google-button>Sign in with Google</google-button>
+        <google-button :login-google="onSubmitRegisterGoogle"
+          >Sign in with Google</google-button
+        >
       </div>
     </FormVee>
     <template #have-account>
@@ -58,9 +60,10 @@ import GoogleButton from "@/components/buttons/GoogleButton.vue";
 
 import { useRegisterStore } from "@/stores/useRegister";
 import { useAuthToken } from "@/stores/useAuthToken";
+import { useLoginStore } from "@/stores/useLogin";
 
 import { Form as FormVee } from "vee-validate";
-import { mapWritableState } from "pinia";
+import { mapWritableState, mapActions } from "pinia";
 import axios from "@/config/axios/index.js";
 
 export default {
@@ -96,7 +99,8 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
+    ...mapActions(useLoginStore, ["loginGoogleAction"]),
+    onSubmitRegister() {
       axios
         .post("register", {
           name: this.name,
@@ -110,6 +114,13 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    onSubmitRegisterGoogle() {
+      this.loginGoogleAction().then((response) => {
+        if (response.data.url) {
+          window.location.href = response.data.url;
+        }
+      });
     },
   },
 };

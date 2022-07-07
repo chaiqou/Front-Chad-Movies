@@ -21,6 +21,19 @@ import { Field, ErrorMessage } from "vee-validate";
 
 export default {
   components: { Field, ErrorMessage },
-  props: ["label", "placeholder", "errorName"],
+  props: {
+    label: {
+      type: String,
+      default: "",
+    },
+    errorName: {
+      type: String,
+      default: "",
+    },
+    placeholder: {
+      type: String,
+      default: "",
+    },
+  },
 };
 </script>

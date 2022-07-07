@@ -23,6 +23,7 @@ export const useLoginStore = defineStore("useLoginStore", {
     },
     loginGoogleCallbackAction(ctx) {
       return new Promise((resolve, reject) => {
+        console.log(ctx);
         axios
           .get("authorize/google/callback", { params: ctx })
           .then((response) => {
@@ -30,6 +31,7 @@ export const useLoginStore = defineStore("useLoginStore", {
             resolve(response);
           })
           .catch((error) => {
+            console.log(error);
             reject(error);
           });
       });
