@@ -10,12 +10,12 @@ export const useUserVerify = defineStore("useUserVerify", {
       return new Promise((resolve, reject) => {
         axios
           .get("email-verification", { params: ctx })
-          .then((res) => {
-            resolve(res);
-            this.verify = res;
+          .then((response) => {
+            resolve(response);
+            this.verify = response;
           })
-          .catch((err) => {
-            reject(err);
+          .catch((error) => {
+            reject(error);
           });
       });
     },

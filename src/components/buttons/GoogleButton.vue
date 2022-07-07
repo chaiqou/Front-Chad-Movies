@@ -12,6 +12,11 @@
 
 <script>
 export default {
-  props: ["loginGoogle"],
+  props: {
+    loginGoogle: {
+      type: Function,
+      required: true,
+    },
+  },
 };
 </script>

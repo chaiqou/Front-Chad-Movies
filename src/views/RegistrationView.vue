@@ -105,10 +105,10 @@ export default {
           password_confirmation: this.password_confirmation,
         })
         .then(() => {
-          this.$router.push({ name: "registration-thanks-page" });
+          this.$router.push({ name: "user-registered-page" });
         })
         .catch((error) => {
-          alert(error.response.data);
+          console.log(error);
         });
     },
   },

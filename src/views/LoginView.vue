@@ -28,7 +28,7 @@
 
       <div class="mt-5 sm:mt-6 items-center text-center">
         <form-submit-button>Sign in</form-submit-button>
-        <google-button :login-google="signUpGoogle"
+        <google-button :login-google="onSubmitloginGoogle"
           >Sign in with Google</google-button
         >
       </div>
@@ -85,7 +85,7 @@ export default {
 
   methods: {
     ...mapActions(useAuthToken, ["setToken", "clearToken"]),
-    ...mapActions(useLoginStore, ["loginWithGoogle"]),
+    ...mapActions(useLoginStore, ["loginGoogleAction"]),
     onSubmitLogin() {
       axios
         .post("login", {
@@ -98,10 +98,10 @@ export default {
         })
         .catch((error) => console.log(error.response.data));
     },
-    signUpGoogle() {
-      this.loginWithGoogle().then((resp) => {
-        if (resp.data.url) {
-          window.location.href = resp.data.url;
+    onSubmitloginGoogle() {
+      this.loginGoogleAction().then((response) => {
+        if (response.data.url) {
+          window.location.href = response.data.url;
         }
       });
     },
