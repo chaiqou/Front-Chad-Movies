@@ -3,16 +3,18 @@
 </template>
 
 <script>
-import { useAuthToken } from "@/stores/useAuthToken.js";
-import { useLoginStore } from "@/stores/useLogin";
+import { useAuthTokenStore } from "@/stores/useAuthTokenStore.js";
+import { useLoginStore } from "@/stores/useLoginStore";
 import { mapActions } from "pinia";
+import axios from "@/config/axios/index";
 export default {
   created() {
     this.login();
   },
+
   methods: {
     ...mapActions(useLoginStore, ["loginGoogleCallbackAction"]),
-    ...mapActions(useAuthToken, ["setToken", "clearToken"]),
+    ...mapActions(useAuthTokenStore, ["setToken", "clearToken"]),
 
     login() {
       this.loginGoogleCallbackAction({
@@ -20,6 +22,9 @@ export default {
       }).then((response) => {
         if (response.data.access_token) {
           this.setToken(response.data.access_token);
+          axios.defaults.headers[
+            "Authorization"
+          ] = `Bearer ${response.data.access_token}`;
           this.$router.push({ name: "dashboard-page" });
         } else {
           this.clearToken();

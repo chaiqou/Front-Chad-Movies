@@ -12,10 +12,9 @@
 import LandingScrollableImages from "@/components/landing/LandingScrollableImages.vue";
 import LandingNavBar from "@/components/landing/LandingNavBar.vue";
 import LandingCenter from "@/components/landing/LandingCenter.vue";
+import axios from "@/config/axios/index";
 
-import { useAuthToken } from "@/stores/useAuthToken";
-
-import axios from "axios";
+import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { mapWritableState } from "pinia";
 
 export default {
@@ -26,13 +25,13 @@ export default {
   },
 
   computed: {
-    ...mapWritableState(useAuthToken, ["token"]),
+    ...mapWritableState(useAuthTokenStore, ["token"]),
   },
 
   mounted() {
     if (localStorage.getItem("auth") !== null) {
       axios
-        .post("http://localhost:8000/api/checkToken", {
+        .post("checkToken", {
           token: this.token,
         })
         .then((response) => {

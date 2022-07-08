@@ -14,8 +14,9 @@
 
 <script>
 import ThanksModal from "@/components/modals/ThanksModal.vue";
+
+import { useUserVerifyEmailStore } from "@/stores/useUserVerifyEmailStore";
 import { mapActions } from "pinia";
-import { useUserVerify } from "@/stores/useUserVerify";
 
 export default {
   components: {
@@ -25,7 +26,7 @@ export default {
     this.verifyEmail(this.$route.query);
   },
   methods: {
-    ...mapActions(useUserVerify, ["verifyEmail"]),
+    ...mapActions(useUserVerifyEmailStore, ["verifyEmail"]),
   },
 };
 </script>

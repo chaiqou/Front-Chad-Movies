@@ -8,14 +8,14 @@
 <script>
 import axios from "@/config/axios/index";
 import { mapActions, mapWritableState } from "pinia";
-import { useAuthToken } from "@/stores/useAuthToken";
+import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 export default {
   computed: {
-    ...mapWritableState(useAuthToken, ["token"]),
+    ...mapWritableState(useAuthTokenStore, ["token"]),
   },
 
   methods: {
-    ...mapActions(useAuthToken, ["setToken", "clearToken"]),
+    ...mapActions(useAuthTokenStore, ["setToken", "clearToken"]),
     logout() {
       axios
         .post("logout", {

@@ -48,13 +48,12 @@ import BaseCheckbox from "@/components/form/BaseCheckbox.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
+import axios from "@/config/axios/index.js";
 
-import { useLoginStore } from "@/stores/useLogin";
-import { useAuthToken } from "@/stores/useAuthToken";
-
+import { useLoginStore } from "@/stores/useLoginStore";
+import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
-import axios from "@/config/axios/index.js";
 
 export default {
   components: {
@@ -67,8 +66,9 @@ export default {
   },
   computed: {
     ...mapWritableState(useLoginStore, ["email", "password", "remember"]),
-    ...mapWritableState(useAuthToken, ["token"]),
+    ...mapWritableState(useAuthTokenStore, ["token"]),
   },
+  // aqac shemidzlia mixinis gaketeba
   mounted() {
     if (localStorage.getItem("auth") !== null) {
       axios
@@ -84,17 +84,18 @@ export default {
   },
 
   methods: {
-    ...mapActions(useAuthToken, ["setToken", "clearToken"]),
+    ...mapActions(useAuthTokenStore, ["setToken", "clearToken"]),
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
+
     onSubmitLogin() {
       axios
         .post("login", {
           email: this.email,
           password: this.password,
+          remember_token: this.remember,
         })
         .then((response) => {
           this.setToken(response.data.access_token);
-          console.log(response.data.access_token);
           axios.defaults.headers[
             "Authorization"
           ] = `Bearer ${response.data.access_token}`;
@@ -102,6 +103,7 @@ export default {
         })
         .catch((error) => console.log(error.response.data));
     },
+
     onSubmitLoginGoogle() {
       this.loginGoogleAction().then((response) => {
         if (response.data.url) {

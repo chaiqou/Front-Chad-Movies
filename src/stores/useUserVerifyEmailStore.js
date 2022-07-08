@@ -1,10 +1,11 @@
 import { defineStore } from "pinia";
 import axios from "@/config/axios/index.js";
 
-export const useUserVerify = defineStore("useUserVerify", {
+export const useUserVerifyEmailStore = defineStore("useUserVerifyEmailStore", {
   state: () => ({
     verify: "",
   }),
+
   actions: {
     verifyEmail(ctx) {
       return new Promise((resolve, reject) => {

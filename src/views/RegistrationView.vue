@@ -57,14 +57,13 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
+import axios from "@/config/axios/index.js";
 
-import { useRegisterStore } from "@/stores/useRegister";
-import { useAuthToken } from "@/stores/useAuthToken";
-import { useLoginStore } from "@/stores/useLogin";
-
+import { useRegisterStore } from "@/stores/useRegisterStore";
+import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
+import { useLoginStore } from "@/stores/useLoginStore";
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
-import axios from "@/config/axios/index.js";
 
 export default {
   components: {
@@ -82,7 +81,7 @@ export default {
       "password",
       "password_confirmation",
     ]),
-    ...mapWritableState(useAuthToken, ["token"]),
+    ...mapWritableState(useAuthTokenStore, ["token"]),
   },
   // aq unda sheqmna reusable logika romelsac iyeneb login viewshic
   mounted() {
