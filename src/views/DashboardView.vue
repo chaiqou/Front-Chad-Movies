@@ -13,6 +13,15 @@ export default {
   computed: {
     ...mapWritableState(useAuthToken, ["token"]),
   },
+  mounted() {
+    if (localStorage.getItem("reloaded")) {
+      localStorage.removeItem("reloaded");
+    } else {
+      localStorage.setItem("reloaded", "reload_page");
+      location.reload();
+    }
+  },
+
   methods: {
     ...mapActions(useAuthToken, ["setToken", "clearToken"]),
     logout() {
