@@ -94,6 +94,10 @@ export default {
         })
         .then((response) => {
           this.setToken(response.data.access_token);
+          console.log(response.data.access_token);
+          axios.defaults.headers[
+            "Authorization"
+          ] = `Bearer ${response.data.access_token}`;
           this.$router.push({ name: "dashboard-page" });
         })
         .catch((error) => console.log(error.response.data));
