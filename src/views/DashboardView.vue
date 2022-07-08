@@ -5,5 +5,12 @@
 </template>
 
 <script>
-export default {};
+import axios from "@/config/axios/index";
+export default {
+  methods: {
+    logout() {
+      axios.post("api/logout");
+    },
+  },
+};
 </script>
