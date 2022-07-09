@@ -11,6 +11,7 @@
         placeholder="Enter your email"
         rules="required|min:3"
       />
+
       <base-input
         v-model="password"
         label="Password"
