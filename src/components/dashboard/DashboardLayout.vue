@@ -13,16 +13,14 @@
     </div>
     <div class="md:pl-64 flex flex-col">
       <DashboardNav />
-      <DashboardTimeline />
     </div>
   </div>
 </template>
 
 <script>
 import DashboardNav from "./DashboardNav.vue";
-import DashboardTimeline from "./DashboardTimeline.vue";
 import DashboardSidebar from "./DashboardSidebar.vue";
 export default {
-  components: { DashboardNav, DashboardTimeline, DashboardSidebar },
+  components: { DashboardNav, DashboardSidebar },
 };
 </script>

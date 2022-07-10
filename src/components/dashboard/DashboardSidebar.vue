@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 ml-8 flex flex-col overflow-y-auto">
+  <div class="flex-1 ml-8 flex flex-col overflow-y-hidden">
     <nav class="flex-1 px-2 py-4 space-y-1">
       <li class="text-white space-y-8 list-none">
         <ul>
