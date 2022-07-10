@@ -25,16 +25,17 @@
                 class="border border-b-0 opacity-25 text-[#EFEFEF] mt-4"
               ></div>
               <div class="md:text-left text-white mt-8">Nikoloz Lomtadze</div>
-              <div class="mt-16 min-w-screen space-y-8">
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-                <input class="bg-[#11101A] w-full" type="text" />
-              </div>
+              <FormVee class="mt-10 min-w-screen space-y-8">
+                <MovieInput name="name" placeholder="Movie name" />
+                <MovieInput name="სახელი" placeholder="ფილმის სახელი" />
+                <MovieInput name="director" placeholder="Director" />
+                <MovieInput name="რეჟისორი" placeholder="რეჟისორი" />
+                <MovieInput
+                  name="description"
+                  placeholder="Movie Description"
+                />
+                <MovieInput name="აღწერა" placeholder="ფილმის აღწერა" />
+              </FormVee>
             </div>
           </div>
           <button
@@ -51,7 +52,14 @@
 <script>
 import { mapWritableState } from "pinia";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
+import { Form as FormVee } from "vee-validate";
+import MovieInput from "../form/MovieInput.vue";
+
 export default {
+  components: {
+    FormVee,
+    MovieInput,
+  },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),
   },
