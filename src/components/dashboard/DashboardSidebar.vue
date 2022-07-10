@@ -1,29 +1,27 @@
 <template>
-  <div>
-    <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-      <div class="flex-1 flex flex-col min-h-0">
-        <div class="flex items-center h-16 flex-shrink-0 px-4 bg-[#222030]">
-          <span
-            class="text-[#DDCCAA] invisible md:visible font-medium text-base leading-[150%]"
-            >MOVIE QUOTES</span
-          >
-        </div>
-        <div class="flex-1 flex flex-col overflow-y-auto">
-          <nav class="flex-1 px-2 py-4 space-y-1">gg desktop</nav>
-        </div>
-      </div>
-    </div>
-    <div class="md:pl-64 flex flex-col">
-      <DashboardNav />
-      <DashboardTimeline />
-    </div>
+  <div class="flex-1 ml-8 flex flex-col overflow-y-auto">
+    <nav class="flex-1 px-2 py-4 space-y-1">
+      <li class="text-white space-y-4 list-none">
+        <ul>
+          AVATAR
+        </ul>
+        <ul class="flex items-center">
+          <img class="mr-4" src="@/assets/svgs/home.svg" alt="homepage" />
+          News feed
+        </ul>
+        <ul class="flex items-center">
+          <img
+            class="mr-4"
+            src="@/assets/svgs/movie-page.svg"
+            alt="moviespage"
+          />
+          List of movies
+        </ul>
+      </li>
+    </nav>
   </div>
 </template>
 
 <script>
-import DashboardNav from "./DashboardNav.vue";
-import DashboardTimeline from "./DashboardTimeline.vue";
-export default {
-  components: { DashboardNav, DashboardTimeline },
-};
+export default {};
 </script>

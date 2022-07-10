@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-col h-screen overflow-y-hidden">
-    <DashboardSidebar />
+    <DashboardLayout />
   </div>
 </template>
 
 <script>
-import DashboardSidebar from "@/components/dashboard/DashboardSidebar.vue";
+import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 
 export default {
-  components: { DashboardSidebar },
+  components: { DashboardLayout },
 };
 </script>
