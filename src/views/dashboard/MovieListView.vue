@@ -14,7 +14,7 @@
           </p>
           <button
             class="items-center invisible md:visible inline-flex justify-center mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
-            @click="movieAddButtonToggl"
+            @click="movieAddButtonToggle"
           >
             <img
               class="mr-2"
@@ -27,13 +27,9 @@
       </div>
       <div
         v-if="toggle"
-        class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center"
+        class="overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center"
       >
-        <div class="relative mx-auto w-auto max-w-2xl">
-          <div>
-            <AddMovieModal />
-          </div>
-        </div>
+        <AddMovieModal />
       </div>
     </template>
   </DashboardTimeline>
@@ -44,19 +40,20 @@ import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import AddMovieModal from "@/components/modals/AddMovieModal.vue";
 
+import { mapWritableState } from "pinia";
+import { useAddMovieStore } from "@/stores/useAddMovieStore";
+
 export default {
   components: {
     DashboardLayout,
     DashboardTimeline,
     AddMovieModal,
   },
-  data() {
-    return {
-      toggle: false,
-    };
+  computed: {
+    ...mapWritableState(useAddMovieStore, ["toggle"]),
   },
   methods: {
-    movieAddButtonToggl() {
+    movieAddButtonToggle() {
       this.toggle = !this.toggle;
     },
   },
