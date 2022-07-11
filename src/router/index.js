@@ -69,7 +69,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const protectedRoutes = ["/dashboard"];
+  const protectedRoutes = ["/dashboard", "/movies"];
   if (
     localStorage.getItem("auth") === null &&
     protectedRoutes.includes(to.path)

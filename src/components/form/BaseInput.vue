@@ -12,7 +12,7 @@
     />
   </div>
   <p class="mt-2 text-sm text-red-500">
-    <ErrorMessage :name="errorName" />
+    <ErrorMessage :name="name" />
   </p>
 </template>
 

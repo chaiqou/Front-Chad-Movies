@@ -8,6 +8,7 @@
     }"
     :placeholder="placeholder"
     :value="modelValue"
+    :name="errorName"
     class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
     as="select"
   >

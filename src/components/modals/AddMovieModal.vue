@@ -28,11 +28,6 @@
               <MovieForm />
             </div>
           </div>
-          <button
-            class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
-          >
-            Add movie
-          </button>
         </div>
       </div>
     </div>
