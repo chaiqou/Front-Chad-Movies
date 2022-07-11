@@ -25,7 +25,7 @@
                 class="border border-b-0 opacity-25 text-[#EFEFEF] mt-4"
               ></div>
               <div class="md:text-left text-white mt-8">Nikoloz Lomtadze</div>
-              <AddMovieForm />
+              <MovieForm />
             </div>
           </div>
           <button
@@ -42,10 +42,10 @@
 <script>
 import { mapWritableState } from "pinia";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
-import AddMovieForm from "@/components/form/AddMovieForm.vue";
+import MovieForm from "@/components/form/MovieForm.vue";
 
 export default {
-  components: { AddMovieForm },
+  components: { MovieForm },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),
   },
