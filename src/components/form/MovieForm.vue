@@ -4,18 +4,18 @@
     enctype="multipart/form-data"
     @submit="onSubmitForm"
   >
-    <MovieInput v-model="title.en" name="name" placeholder="Movie name" />
-    <MovieInput v-model="title.ka" name="სახელი" placeholder="ფილმის სახელი" />
+    <MovieInput v-model="title_en" name="name" placeholder="Movie name" />
+    <MovieInput v-model="title_ka" name="სახელი" placeholder="ფილმის სახელი" />
     <BaseSelect v-model="genre" name="genres" :options="genresOption" />
-    <MovieInput v-model="director.en" name="director" placeholder="Director" />
-    <MovieInput v-model="director.ka" name="რეჟისორი" placeholder="რეჟისორი" />
+    <MovieInput v-model="director_en" name="director" placeholder="Director" />
+    <MovieInput v-model="director_ka" name="რეჟისორი" placeholder="რეჟისორი" />
     <MovieInput
-      v-model="description.en"
-      name="description"
+      v-model="description_en"
+      name="description_en"
       placeholder="Movie Description"
     />
     <MovieInput
-      v-model="description.ka"
+      v-model="description_ka"
       name="აღწერა"
       placeholder="ფილმის აღწერა"
     />
@@ -27,11 +27,13 @@
       class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
       @change="selectFile"
     />
+
+    <p class="text-white">{{ getMovieData }}</p>
     <button
       :disabled="form_submmiting"
       class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
     >
-      {{ form_submitting ? "Please wait..." : "Add movie" }}
+      Add Movie
     </button>
   </FormVee>
 </template>
@@ -56,10 +58,13 @@ export default {
       "selectedGenre",
       "genresOption",
       "budget",
-      "description",
-      "director",
+      "description_en",
+      "description_ka",
+      "director_en",
+      "director_ka",
+      "title_en",
+      "title_ka",
       "genre",
-      "title",
       "toggle",
       "year",
       "thumbnail",
@@ -89,9 +94,8 @@ export default {
 
       axios
         .post("movies", fields)
-        .then((response) => {
+        .then(() => {
           this.form_submmiting = false;
-          console.log(response);
         })
         .catch(() => {
           this.form_submmiting = false;
