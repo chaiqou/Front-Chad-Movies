@@ -31,7 +31,7 @@
       :disabled="form_submmiting"
       class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
     >
-      Add movie
+      {{ form_submitting ? "Please wait..." : "Add movie" }}
     </button>
   </FormVee>
 </template>
@@ -82,8 +82,13 @@ export default {
     onSubmitForm() {
       this.form_submmiting = true;
 
+      let fields = new FormData();
+      for (let key in this.getMovieData) {
+        fields.append(key, this.getMovieData[key]);
+      }
+
       axios
-        .post("movies", this.getMovieData)
+        .post("movies", fields)
         .then((response) => {
           this.form_submmiting = false;
           console.log(response);
