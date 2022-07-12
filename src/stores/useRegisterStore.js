@@ -8,4 +8,15 @@ export const useRegisterStore = defineStore("useRegisterStore", {
     password: "",
     password_confirmation: "",
   }),
+
+  getters: {
+    getRegistrationData(state) {
+      return {
+        name: state.name,
+        email: state.email,
+        password: state.password,
+        password_confirmation: state.password_confirmation,
+      };
+    },
+  },
 });

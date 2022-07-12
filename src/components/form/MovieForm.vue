@@ -22,10 +22,10 @@
     <MovieInput v-model="budget" name="budget" placeholder="Movie budget" />
     <MovieInput v-model="year" name="year" placeholder="Movie year" />
     <Field
-      v-model="photo"
       type="file"
-      name="photo"
+      name="thumbnail"
       class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
+      @change="selectFile"
     />
     <button
       :disabled="form_submmiting"
@@ -62,8 +62,9 @@ export default {
       "title",
       "toggle",
       "year",
-      "photo",
+      "thumbnail",
       "form_submmiting",
+      "getMovieData",
     ]),
   },
 
@@ -74,18 +75,15 @@ export default {
   },
 
   methods: {
+    selectFile(event) {
+      this.thumbnail = event.target.files[0];
+    },
+
     onSubmitForm() {
       this.form_submmiting = true;
+
       axios
-        .post("movies", {
-          budget: this.budget,
-          description: this.description,
-          director: this.director,
-          genre: this.genre,
-          title: this.title,
-          year: this.year,
-          user_id: 1,
-        })
+        .post("movies", this.getMovieData)
         .then((response) => {
           this.form_submmiting = false;
           console.log(response);

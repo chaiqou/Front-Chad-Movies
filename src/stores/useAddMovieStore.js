@@ -11,6 +11,20 @@ export const useAddMovieStore = defineStore("useAddMovieStore", {
     description: { en: "", ka: "" },
     budget: null,
     year: null,
-    photo: null,
+    thumbnail: null,
   }),
+
+  getters: {
+    getMovieData(state) {
+      return {
+        title: state.title,
+        director: state.director,
+        description: state.description,
+        budget: state.budget,
+        year: state.year,
+        thumbnail: state.thumbnail,
+        genre: state.genre,
+      };
+    },
+  },
 });

@@ -84,6 +84,7 @@ export default {
       "password",
       "password_confirmation",
       "form_submmiting",
+      "getRegistrationData",
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
@@ -106,12 +107,7 @@ export default {
     onSubmitRegister() {
       this.form_submmiting = true;
       axios
-        .post("register", {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password_confirmation,
-        })
+        .post("register", this.getRegistrationData)
         .then(() => {
           this.form_submmiting = false;
           this.$router.push({ name: "user-registered-page" });

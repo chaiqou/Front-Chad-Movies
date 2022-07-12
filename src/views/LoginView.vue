@@ -74,6 +74,7 @@ export default {
       "password",
       "remember",
       "form_submmiting",
+      "getUserData",
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
@@ -99,11 +100,7 @@ export default {
     onSubmitLogin() {
       this.form_submmiting = true;
       axios
-        .post("login", {
-          email: this.email,
-          password: this.password,
-          remember_token: this.remember,
-        })
+        .post("login", this.getUserData)
         .then((response) => {
           this.form_submmiting = false;
           this.setToken(response.data.access_token);

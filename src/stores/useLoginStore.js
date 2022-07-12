@@ -36,5 +36,14 @@ export const useLoginStore = defineStore("useLoginStore", {
           });
       });
     },
+    getters: {
+      getUserData(state) {
+        return {
+          email: state.email,
+          password: state.password,
+          remember_token: state.remember,
+        };
+      },
+    },
   },
 });
