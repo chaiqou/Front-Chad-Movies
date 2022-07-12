@@ -28,7 +28,12 @@
       </div>
 
       <div class="mt-5 sm:mt-6 items-center text-center">
-        <form-submit-button>Sign in</form-submit-button>
+        <button
+          :disabled="form_submmiting"
+          class="inline-flex justify-center w-full mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
+        >
+          {{ form_submmiting ? "Please wait..." : "Sign in" }}
+        </button>
         <google-button :login-google="onSubmitLoginGoogle"
           >Sign in with Google</google-button
         >
@@ -47,7 +52,6 @@
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseCheckbox from "@/components/form/BaseCheckbox.vue";
 import FormModal from "@/components/modals/FormModal.vue";
-import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
 import axios from "@/config/axios/index.js";
 
@@ -61,12 +65,16 @@ export default {
     BaseInput,
     BaseCheckbox,
     FormModal,
-    FormSubmitButton,
     GoogleButton,
     FormVee,
   },
   computed: {
-    ...mapWritableState(useLoginStore, ["email", "password", "remember"]),
+    ...mapWritableState(useLoginStore, [
+      "email",
+      "password",
+      "remember",
+      "form_submmiting",
+    ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
   // aqac shemidzlia mixinis gaketeba
@@ -89,6 +97,7 @@ export default {
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
 
     onSubmitLogin() {
+      this.form_submmiting = true;
       axios
         .post("login", {
           email: this.email,
@@ -96,13 +105,16 @@ export default {
           remember_token: this.remember,
         })
         .then((response) => {
+          this.form_submmiting = false;
           this.setToken(response.data.access_token);
           axios.defaults.headers[
             "Authorization"
           ] = `Bearer ${response.data.access_token}`;
           this.$router.push({ name: "dashboard-page" });
         })
-        .catch((error) => console.log(error.response.data));
+        .catch(() => {
+          this.form_submmiting = false;
+        });
     },
 
     onSubmitLoginGoogle() {

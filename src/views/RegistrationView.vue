@@ -37,7 +37,12 @@
         placeholder="Password"
       />
       <div class="mt-5 sm:mt-6 items-center text-center">
-        <form-submit-button>Get started</form-submit-button>
+        <button
+          :disabled="form_submmiting"
+          class="inline-flex justify-center w-full mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
+        >
+          {{ form_submmiting ? "Please wait..." : "Get started" }}
+        </button>
         <google-button :login-google="onSubmitRegisterGoogle"
           >Sign in with Google</google-button
         >
@@ -55,7 +60,6 @@
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
 import FormModal from "@/components/modals/FormModal.vue";
-import FormSubmitButton from "@/components/buttons/FormSubmitButton.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
 import axios from "@/config/axios/index.js";
 
@@ -70,7 +74,6 @@ export default {
     FormVee,
     BaseInput,
     FormModal,
-    FormSubmitButton,
     GoogleButton,
   },
 
@@ -80,6 +83,7 @@ export default {
       "email",
       "password",
       "password_confirmation",
+      "form_submmiting",
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
@@ -100,6 +104,7 @@ export default {
   methods: {
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
     onSubmitRegister() {
+      this.form_submmiting = true;
       axios
         .post("register", {
           name: this.name,
@@ -108,9 +113,11 @@ export default {
           password_confirmation: this.password_confirmation,
         })
         .then(() => {
+          this.form_submmiting = false;
           this.$router.push({ name: "user-registered-page" });
         })
         .catch((error) => {
+          this.form_submmiting = false;
           console.log(error);
         });
     },

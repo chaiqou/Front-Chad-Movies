@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useAddMovieStore = defineStore("useAddMovieStore", {
   state: () => ({
     toggle: false,
+    form_submmiting: false,
     genresOption: [],
     genre: "",
     title: { en: "", ka: "" },

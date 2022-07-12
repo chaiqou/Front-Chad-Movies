@@ -6,6 +6,7 @@ export const useLoginStore = defineStore("useLoginStore", {
     email: "",
     password: "",
     remember: false,
+    form_submmiting: false,
   }),
 
   actions: {

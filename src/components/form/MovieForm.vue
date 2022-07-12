@@ -28,6 +28,7 @@
       class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
     />
     <button
+      :disabled="form_submmiting"
       class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
     >
       Add movie
@@ -62,6 +63,7 @@ export default {
       "toggle",
       "year",
       "photo",
+      "form_submmiting",
     ]),
   },
 
@@ -73,6 +75,7 @@ export default {
 
   methods: {
     onSubmitForm() {
+      this.form_submmiting = true;
       axios
         .post("movies", {
           budget: this.budget,
@@ -84,7 +87,11 @@ export default {
           user_id: 1,
         })
         .then((response) => {
+          this.form_submmiting = false;
           console.log(response);
+        })
+        .catch(() => {
+          this.form_submmiting = false;
         });
     },
   },
