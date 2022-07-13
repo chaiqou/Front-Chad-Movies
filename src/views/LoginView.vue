@@ -100,7 +100,12 @@ export default {
     onSubmitLogin() {
       this.form_submmiting = true;
       axios
-        .post("login", this.getUserData)
+        .post("login", {
+          email: this.email,
+          password: this.password,
+          remember: this.remember,
+        })
+
         .then((response) => {
           this.form_submmiting = false;
           this.setToken(response.data.access_token);
