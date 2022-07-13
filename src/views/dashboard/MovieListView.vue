@@ -5,7 +5,7 @@
     <template #header>
       <div class="flex justify-between items-center">
         <span class="text-white font-medium mt-4 text-24 ml-8 md:ml-0"
-          >My list of movies (Total 24)</span
+          >My list of movies (Total {{ movies.length }})</span
         >
         <div class="flex justify-end items-center">
           <p class="flex mr-8 mt-4 items-end invisible md:visible space-x-2">
@@ -68,8 +68,8 @@ export default {
     allMovies() {
       axios
         .get("movies")
-        .then(({ response }) => {
-          this.movies = response;
+        .then((response) => {
+          this.movies = response.data.data;
         })
         .catch((error) => console.log(error));
     },
