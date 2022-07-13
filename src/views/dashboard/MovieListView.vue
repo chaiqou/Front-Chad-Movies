@@ -33,7 +33,7 @@
       </div>
     </template>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20">
-      <MovieCard />
+      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
   </DashboardTimeline>
 </template>

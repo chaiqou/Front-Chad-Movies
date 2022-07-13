@@ -1,5 +1,5 @@
 <template>
-  <div v-for="movie in movies" :key="movie.id">
+  <div>
     <router-link to="/dashboard">
       <img
         :src="backurl + movie.thumbnail"
@@ -27,23 +27,16 @@
 <script>
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
-import axios from "@/config/axios/index";
+
 export default {
-  computed: {
-    ...mapWritableState(useMovieListStore, ["movies", "backurl"]),
-  },
-  created() {
-    this.allMovies();
-  },
-  methods: {
-    allMovies() {
-      axios
-        .get("movies")
-        .then((response) => {
-          this.movies = response.data.data;
-        })
-        .catch((error) => console.log(error));
+  props: {
+    movie: {
+      type: Object,
+      required: true,
     },
+  },
+  computed: {
+    ...mapWritableState(useMovieListStore, ["backurl"]),
   },
 };
 </script>
