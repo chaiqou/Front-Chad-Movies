@@ -5,7 +5,7 @@
     <template #header>
       <div class="flex justify-between items-center">
         <span class="text-white font-medium mt-4 text-24 ml-8 md:ml-0"
-          >My list of movies (Total 25)</span
+          >My list of movies (Total 24)</span
         >
         <div class="flex justify-end items-center">
           <p class="flex mr-8 mt-4 items-end invisible md:visible space-x-2">
@@ -34,9 +34,6 @@
     </template>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20">
       <MovieCard />
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
     </div>
   </DashboardTimeline>
 </template>
@@ -48,7 +45,9 @@ import AddMovieModal from "@/components/modals/AddMovieModal.vue";
 
 import { mapWritableState } from "pinia";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
+import { useMovieListStore } from "@/stores/useMovieListStore";
 import MovieCard from "@/components/movies/MovieCard.vue";
+import axios from "@/config/axios/index";
 
 export default {
   components: {
@@ -59,8 +58,21 @@ export default {
   },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),
+    ...mapWritableState(useMovieListStore, ["movies"]),
   },
+  created() {
+    this.allMovies();
+  },
+
   methods: {
+    allMovies() {
+      axios
+        .get("movies")
+        .then(({ response }) => {
+          this.movies = response;
+        })
+        .catch((error) => console.log(error));
+    },
     movieAddButtonToggle() {
       this.toggle = !this.toggle;
     },
