@@ -56,6 +56,11 @@ const router = createRouter({
       component: () => import("@/views/dashboard/MovieListView.vue"),
     },
     {
+      path: "/movie/:id",
+      name: "single-movie-page",
+      component: () => import("@/views/dashboard/MovieView.vue"),
+    },
+    {
       path: "/unauthorized",
       name: "unauthorized-page",
       component: () => import("@/views/UnauthorizedView.vue"),

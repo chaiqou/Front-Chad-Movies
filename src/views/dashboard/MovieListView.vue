@@ -32,6 +32,12 @@
         <AddMovieModal />
       </div>
     </template>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20">
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+    </div>
   </DashboardTimeline>
 </template>
 
@@ -42,12 +48,14 @@ import AddMovieModal from "@/components/modals/AddMovieModal.vue";
 
 import { mapWritableState } from "pinia";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
+import MovieCard from "@/components/movies/MovieCard.vue";
 
 export default {
   components: {
     DashboardLayout,
     DashboardTimeline,
     AddMovieModal,
+    MovieCard,
   },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),
