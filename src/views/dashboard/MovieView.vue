@@ -1,6 +1,7 @@
 <template>
   <DashboardLayout />
-  <DashboardTimeline>
+  <div v-if="loading">Loading..</div>
+  <DashboardTimeline v-else>
     <div class="md:flex container mx-auto">
       <img
         class="md:w-1/2 md:h-72"
@@ -10,7 +11,7 @@
       <div class="ml-2 md:ml-12">
         <div class="md:flex md:items-center md:justify-between">
           <h1 class="text-[#DDCCAA] font-medium text-2xl mt-4">
-            {{ currentMovie.title }} ({{ currentMovie.year }})
+            {{ currentMovie.title["en"] }} ({{ currentMovie.year }})
           </h1>
           <div
             class="items-center flex space-x-4 bg-[#24222F] p-4 rounded-lg invisible md:visible"
@@ -29,7 +30,7 @@
         <p class="text-[#CED4DA] mt-4 font-bold">
           Director:
           <span class="text-white font-medium ml-2">{{
-            currentMovie.director
+            currentMovie.director["en"]
           }}</span>
         </p>
         <p class="text-[#CED4DA] mt-4 font-bold">
@@ -39,7 +40,7 @@
           }}</span>
         </p>
         <p class="text-white font-normal mt-4">
-          {{ currentMovie.description }}
+          {{ currentMovie.description["en"] }}
         </p>
       </div>
     </div>
@@ -59,7 +60,11 @@ export default {
   },
 
   computed: {
-    ...mapWritableState(useMovieListStore, ["currentMovie", "backurl"]),
+    ...mapWritableState(useMovieListStore, [
+      "currentMovie",
+      "backurl",
+      "loading",
+    ]),
   },
 
   created() {
@@ -72,9 +77,12 @@ export default {
         .get(`movie-slug/${this.$route.params.slug}`)
         .then((response) => {
           this.currentMovie = response.data.data;
-          return response.data.data;
+          this.loading = false;
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error);
+          this.loading = false;
+        });
     },
   },
 };

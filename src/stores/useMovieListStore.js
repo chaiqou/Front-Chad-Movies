@@ -6,5 +6,6 @@ export const useMovieListStore = defineStore("useMovieListStore", {
     movies: [],
     currentMovie: {},
     backurl: import.meta.env.VITE_BACKEND_BASE_URL,
+    loading: true,
   }),
 });
