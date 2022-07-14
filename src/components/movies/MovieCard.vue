@@ -1,12 +1,12 @@
 <template>
   <div>
-    <router-link to="/dashboard">
+    <a :href="`movie/${movie.slug}`">
       <img
         :src="backurl + movie.thumbnail"
         alt="movieimage"
         class="hover:opacity-50 transition ease-in-out duration-500 rounded-lg h-full w-full"
       />
-    </router-link>
+    </a>
     <div class="mt-4 text-24 ml-8 md:ml-0">
       <h3 class="text-white md:mb-2 md:mt-2">
         {{ movie.title.en }} ({{ movie.year }})
@@ -36,7 +36,7 @@ export default {
     },
   },
   computed: {
-    ...mapWritableState(useMovieListStore, ["backurl"]),
+    ...mapWritableState(useMovieListStore, ["backurl", "currentMovie"]),
   },
 };
 </script>

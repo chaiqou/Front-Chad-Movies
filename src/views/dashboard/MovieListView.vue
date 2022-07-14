@@ -71,7 +71,9 @@ export default {
         .then((response) => {
           this.movies = response.data.data;
         })
-        .catch((error) => console.log(error));
+        .catch(() => {
+          this.movies = "Movies doesn't exist";
+        });
     },
     movieAddButtonToggle() {
       this.toggle = !this.toggle;

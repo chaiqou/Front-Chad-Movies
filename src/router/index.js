@@ -56,7 +56,7 @@ const router = createRouter({
       component: () => import("@/views/dashboard/MovieListView.vue"),
     },
     {
-      path: "/movie/:id",
+      path: "/movie/:slug",
       name: "single-movie-page",
       component: () => import("@/views/dashboard/MovieView.vue"),
     },
