@@ -7,16 +7,18 @@
         </ul>
 
         <router-link class="flex items-center" to="/dashboard">
-          <img class="mr-4" src="@/assets/svgs/home.svg" alt="homepage" />
-          News feed
+          <IconHome
+            class="mr-4"
+            :fill="$route.path === '/dashboard' ? 'red' : 'white'"
+          ></IconHome>
+          News Feed
         </router-link>
 
         <router-link to="/movies" class="flex items-center">
-          <img
+          <IconMovie
             class="mr-4"
-            src="@/assets/svgs/movie-page.svg"
-            alt="moviespage"
-          />
+            :fill="$route.path === '/movies' ? 'red' : 'white'"
+          ></IconMovie>
           List of movies
         </router-link>
       </li>
@@ -25,5 +27,9 @@
 </template>
 
 <script>
-export default {};
+import IconMovie from "../icons/IconMovie.vue";
+import IconHome from "../icons/IconHome.vue";
+export default {
+  components: { IconMovie, IconHome },
+};
 </script>
