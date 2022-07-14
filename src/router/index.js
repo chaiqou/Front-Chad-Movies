@@ -58,7 +58,7 @@ const router = createRouter({
     {
       path: "/movie/:slug",
       name: "single-movie-page",
-      component: () => import("@/views/dashboard/MovieView.vue"),
+      component: () => import("@/components/movies/MovieIndividual.vue"),
     },
     {
       path: "/unauthorized",
