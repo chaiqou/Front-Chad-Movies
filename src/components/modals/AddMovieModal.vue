@@ -13,7 +13,7 @@
               class="bg-[#11101A] rounded-md text-gray-400 hover:text-gray-500"
               @click="onCloseModal"
             >
-              <img src="@/assets/svgs/exit.svg" alt="exit" />
+              <IconExit />
             </button>
           </div>
           <div class="sm:flex sm:items-start">
@@ -38,9 +38,10 @@
 import { mapWritableState } from "pinia";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import MovieForm from "@/components/form/MovieForm.vue";
+import IconExit from "../icons/IconExit.vue";
 
 export default {
-  components: { MovieForm },
+  components: { MovieForm, IconExit },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),
   },

@@ -13,12 +13,7 @@
       </h3>
       <div class="flex items-center">
         <span class="text-white mr-2">10</span>
-        <img
-          src="@/assets/svgs/comment.svg"
-          alt="comment"
-          height="20"
-          width="20"
-        />
+        <IconComment />
       </div>
     </div>
   </div>
@@ -27,8 +22,10 @@
 <script>
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
+import IconComment from "../icons/IconComment.vue";
 
 export default {
+  components: { IconComment },
   props: {
     movie: {
       type: Object,

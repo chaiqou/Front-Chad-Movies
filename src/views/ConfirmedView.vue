@@ -1,6 +1,6 @@
 <template>
   <thanks-modal main-text="Your account has been activated.">
-    <img src="@/assets/svgs/email-verified.svg" alt="activated" />
+    <IconEmailVerified />
     <template #modal-button>
       <router-link
         to="/login"
@@ -17,10 +17,12 @@ import ThanksModal from "@/components/modals/ThanksModal.vue";
 
 import { useUserVerifyEmailStore } from "@/stores/useUserVerifyEmailStore";
 import { mapActions } from "pinia";
+import IconEmailVerified from "@/components/icons/IconEmailVerified.vue";
 
 export default {
   components: {
     ThanksModal,
+    IconEmailVerified,
   },
   created() {
     this.verifyEmail(this.$route.query);

@@ -5,30 +5,18 @@
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
           <span class="text-3xl cursor-pointer md:hidden block mx-2">
-            <img
-              src="@/assets/svgs/nav-burger.svg"
-              alt="burger"
-              @click="toggleModal"
-            />
+            <IconResponsiveNav @click="toggleModal" />
           </span>
         </div>
         <div
           class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <div class="ml-3 relative flex items-center space-x-4">
-            <img
-              class="md:hidden"
-              src="@/assets/svgs/search.svg"
-              alt="search"
-            />
-            <img src="@/assets/svgs/bell.svg" alt="bell px-5 py-2.5 mr-2" />
+            <IconSearch class="md:hidden" />
+            <IconBell />
             <span class="text-white hidden md:flex">
               ENG
-              <img
-                class="ml-2"
-                src="@/assets/svgs/arrow-down.svg"
-                alt="arrowdown"
-              />
+              <IconArrowDown class="ml-2" />
             </span>
             <button
               class="text-white border border-gray-300 font-medium rounded-md text-sm px-4 py-2 hidden md:flex"
@@ -65,7 +53,12 @@ import axios from "@/config/axios/index";
 
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { mapActions, mapWritableState } from "pinia";
+import IconResponsiveNav from "../icons/IconResponsiveNav.vue";
+import IconBell from "../icons/IconBell.vue";
+import IconSearch from "../icons/IconSearch.vue";
+import IconArrowDown from "../icons/IconArrowDown.vue";
 export default {
+  components: { IconResponsiveNav, IconBell, IconSearch, IconArrowDown },
   data() {
     return {
       isOpen: false,

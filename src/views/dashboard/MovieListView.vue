@@ -9,18 +9,14 @@
         >
         <div class="flex justify-end items-center">
           <p class="flex mr-8 mt-4 items-end invisible md:visible space-x-2">
-            <img src="@/assets/svgs/search.svg" alt="search" />
+            <IconSearch />
             <span class="text-white">search</span>
           </p>
           <button
             class="items-center invisible md:visible inline-flex justify-center mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
             @click="movieAddButtonToggle"
           >
-            <img
-              class="mr-2"
-              src="@/assets/svgs/add-button.svg"
-              alt="addmovie"
-            />
+            <IconAddButton class="mr-2" />
             Add movie
           </button>
         </div>
@@ -48,6 +44,8 @@ import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import MovieCard from "@/components/movies/MovieCard.vue";
 import axios from "@/config/axios/index";
+import IconSearch from "@/components/icons/IconSearch.vue";
+import IconAddButton from "../../components/icons/IconAddButton.vue";
 
 export default {
   components: {
@@ -55,6 +53,8 @@ export default {
     DashboardTimeline,
     AddMovieModal,
     MovieCard,
+    IconSearch,
+    IconAddButton,
   },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),

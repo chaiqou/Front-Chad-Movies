@@ -2,7 +2,7 @@
   <thanks-modal
     main-text="Please check your email and follow the instructions to activate your account."
   >
-    <img src="@/assets/svgs/send.svg" alt="send" />
+    <IconSendEmail />
     <template #modal-button>
       <router-link
         to="/"
@@ -16,10 +16,12 @@
 
 <script>
 import ThanksModal from "@/components/modals/ThanksModal.vue";
+import IconSendEmail from "@/components/icons/IconSendEmail.vue";
 
 export default {
   components: {
     ThanksModal,
+    IconSendEmail,
   },
 };
 </script>

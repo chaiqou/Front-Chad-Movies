@@ -3,11 +3,7 @@
     class="h-[100vh] text-white bg-interstellar-movie bg-no-repeat bg-cover bg-center snap-start"
   >
     <div class="flex items-center justify-left h-screen ml-6 md:ml-12">
-      <img
-        class="md:mb-28 w-1/12 md:w-12 mr-4 mb-24"
-        src="@/assets/svgs/line.svg"
-        alt="line"
-      />
+      <IconLine class="md:mb-28 w-1/12 md:w-12 mr-4 mb-24" />
       <h1 class="font-bold md:text-5xl text-2xl md:w-1/2 w-2/3">
         “You have to leave somethig behind to go forward”
         <br />
@@ -21,11 +17,7 @@
     class="h-[100vh] text-white bg-the-royal-tenenbaums bg-no-repeat bg-cover bg-center snap-start"
   >
     <div class="flex items-center justify-left h-screen ml-6 md:ml-12">
-      <img
-        class="md:mb-30 w-1/12 md:w-12 mr-4 mb-40"
-        src="@/assets/svgs/line.svg"
-        alt="line"
-      />
+      <IconLine class="md:mb-30 w-1/12 md:w-12 mr-4 mb-40" />
       <h1 class="font-bold md:text-5xl text-2xl md:w-1/2 w-2/3">
         I think we’re just gonna have to be secretly in love with earch other
         and leave it that
@@ -40,11 +32,7 @@
     class="h-[99vh] text-white bg-shutter-island bg-no-repeat bg-cover bg-center snap-start"
   >
     <div class="flex items-center justify-left h-screen ml-6 md:ml-12">
-      <img
-        class="md:mb-30 w-1/12 md:w-12 mr-4 mb-40"
-        src="@/assets/svgs/line.svg"
-        alt="line"
-      />
+      <IconLine class="md:mb-30 w-1/12 md:w-12 mr-4 mb-40" />
       <h1 class="font-bold md:text-5xl text-2xl md:w-1/2 w-2/3">
         I think we’re just gonna have to be secretly in love with earch other
         and leave it that
@@ -59,3 +47,8 @@
     </p>
   </section>
 </template>
+
+<script>
+import IconLine from "../icons/IconLine.vue";
+export default { components: { IconLine } };
+</script>
