@@ -8,10 +8,25 @@
           >My list of movies (Total {{ movies.length }})</span
         >
         <div class="flex justify-end items-center">
-          <p class="flex mr-8 mt-4 items-end invisible md:visible space-x-2">
-            <IconSearch />
-            <span class="text-white">search</span>
-          </p>
+          <!-- aqedan buttonamde !-->
+          <div>
+            <div class="mt-4 mr-4 relative rounded-md">
+              <input
+                type="text"
+                class="block w-full pr-10 text-white border-none bg-inherit p-3 rounded-md"
+              />
+              <div
+                class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
+              >
+                <p
+                  class="flex items-center invisible md:visible space-x-2 z-10"
+                >
+                  <IconSearch />
+                  <span class="text-white">search</span>
+                </p>
+              </div>
+            </div>
+          </div>
           <button
             class="items-center invisible md:visible inline-flex justify-center mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
             @click="movieAddButtonToggle"
