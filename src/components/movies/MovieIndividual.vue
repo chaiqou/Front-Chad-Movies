@@ -14,11 +14,13 @@
             {{ currentMovie.title["en"] }} ({{ currentMovie.year }})
           </h1>
           <div
-            class="items-center flex space-x-4 bg-[#24222F] p-4 rounded-lg invisible md:visible"
+            class="items-center ml-16 flex space-x-3 bg-[#24222F] p-4 rounded-lg invisible md:visible"
           >
-            <img src="@/assets/svgs/trash.svg" alt="trash" />
+            <button @click="delete_movie(currentMovie.id)">
+              <IconDelete />
+            </button>
             <div class="border-r-2">|</div>
-            <img src="@/assets/svgs/edit.svg" alt="edit" />
+            <IconEdit />
           </div>
         </div>
 
@@ -53,10 +55,14 @@ import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
 import axios from "@/config/axios/index";
+import IconDelete from "../icons/IconDelete.vue";
+import IconEdit from "../icons/IconEdit.vue";
 export default {
   components: {
     DashboardLayout,
     DashboardTimeline,
+    IconDelete,
+    IconEdit,
   },
 
   computed: {
@@ -83,6 +89,11 @@ export default {
           console.log(error);
           this.loading = false;
         });
+    },
+    delete_movie(currentMovie_id) {
+      axios.delete(`movies/` + currentMovie_id).then(() => {
+        this.$router.push("/movies");
+      });
     },
   },
 };
