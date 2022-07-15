@@ -22,7 +22,6 @@
             <IconEdit />
           </div>
         </div>
-
         <p
           class="text-white bg-gray-500 inline-block p-1 rounded-lg font-bold mt-4"
         >
@@ -48,16 +47,14 @@
     <div class="mt-6 flex items-center space-x-2">
       <p class="text-white mr-2">Quotes (Total 7)</p>
       <span class="text-gray-500">|</span>
-      <button
+      <router-link
         type="button"
         class="items-center invisible md:visible inline-flex justify-center rounded-md px-2 py-2 bg-[#E31221] text-base font-medium text-white"
-        @click="quoteAddButtonToggle"
+        to="/movie/add-quote"
       >
         <IconAddButton />
         Add Quote
-      </button>
-      <p class="text-white">{{ toggle }}</p>
-      <div v-if="toggle"><CrudModal /></div>
+      </router-link>
     </div>
   </DashboardTimeline>
 </template>
@@ -71,8 +68,6 @@ import axios from "@/config/axios/index";
 import IconDelete from "@/components/icons/IconDelete.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
-import { useAddMovieStore } from "@/stores/useAddMovieStore.js";
-import CrudModal from "../modals/CrudModal.vue";
 
 export default {
   components: {
@@ -81,7 +76,6 @@ export default {
     IconDelete,
     IconEdit,
     IconAddButton,
-    CrudModal,
   },
 
   computed: {
@@ -90,8 +84,6 @@ export default {
       "backurl",
       "loading",
     ]),
-
-    ...mapWritableState(useAddMovieStore, ["toggle"]),
   },
 
   created() {
@@ -109,9 +101,6 @@ export default {
         .catch(() => {
           this.loading = false;
         });
-    },
-    quoteAddButtonToggle() {
-      this.toggle = !this.toggle;
     },
     delete_movie(currentMovie_id) {
       axios.delete(`movies/` + currentMovie_id).then(() => {

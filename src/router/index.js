@@ -51,6 +51,11 @@ const router = createRouter({
       component: () => import("@/views/dashboard/DashboardView.vue"),
     },
     {
+      path: "/movie/add-quote",
+      name: "add-quote-page",
+      component: () => import("@/views/AddQuote.vue"),
+    },
+    {
       path: "/movies",
       name: "movies-page",
       component: () => import("@/views/dashboard/MovieListView.vue"),
