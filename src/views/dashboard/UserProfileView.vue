@@ -11,7 +11,7 @@ export default {
   computed: {
     ...mapWritableState(useUserProfileStore, ["user", "loading"]),
   },
-  async getUser() {
+  async fetchAuthenticatedUser() {
     await axios
       .get("users/", {
         params: {
@@ -19,12 +19,10 @@ export default {
         },
       })
       .then((response) => {
-        console.log(response.data);
         this.user = response.data.data;
         this.loading = false;
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         this.loading = false;
       });
   },

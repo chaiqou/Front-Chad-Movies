@@ -26,7 +26,7 @@
         </div>
         <button
           class="items-center invisible md:visible inline-flex justify-center mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
-          @click="movieAddButtonToggle"
+          @click="addMovieModalToggle"
         >
           <IconAddButton class="mr-2" />
           Add movie
@@ -78,15 +78,15 @@ export default {
   },
   watch: {
     search() {
-      this.getResults();
+      this.getSearchResults();
     },
   },
 
   created() {
-    this.allMovies();
+    this.fetchAllMovies();
   },
   methods: {
-    allMovies() {
+    fetchAllMovies() {
       axios
         .get("movies")
         .then((response) => {
@@ -96,11 +96,11 @@ export default {
           this.movies = "Movies doesn't exist";
         });
     },
-    movieAddButtonToggle() {
+    addMovieModalToggle() {
       this.toggle = !this.toggle;
     },
 
-    getResults() {
+    getSearchResults() {
       axios
         .get("movies", {
           params: {
