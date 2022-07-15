@@ -9,9 +9,10 @@
         >
         <div class="flex justify-end items-center">
           <!-- aqedan buttonamde !-->
-          <div>
+          <div class="invisible md:visible">
             <div class="mt-4 mr-4 relative rounded-md">
               <input
+                v-model="search"
                 type="text"
                 class="block w-full pr-10 text-white border-none bg-inherit p-3 rounded-md"
               />
@@ -60,7 +61,7 @@ import { useMovieListStore } from "@/stores/useMovieListStore";
 import MovieCard from "@/components/movies/MovieCard.vue";
 import axios from "@/config/axios/index";
 import IconSearch from "@/components/icons/IconSearch.vue";
-import IconAddButton from "../../components/icons/IconAddButton.vue";
+import IconAddButton from "@/components/icons/IconAddButton.vue";
 
 export default {
   components: {
@@ -71,14 +72,20 @@ export default {
     IconSearch,
     IconAddButton,
   },
+
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),
-    ...mapWritableState(useMovieListStore, ["movies"]),
+    ...mapWritableState(useMovieListStore, ["movies", "search"]),
   },
+  watch: {
+    search() {
+      this.getResults();
+    },
+  },
+
   created() {
     this.allMovies();
   },
-
   methods: {
     allMovies() {
       axios
@@ -92,6 +99,21 @@ export default {
     },
     movieAddButtonToggle() {
       this.toggle = !this.toggle;
+    },
+
+    getResults() {
+      axios
+        .get("movies", {
+          params: {
+            search: this.search,
+          },
+        })
+        .then((response) => {
+          this.movies = response.data.data;
+        })
+        .catch(() => {
+          this.movies = "Movies doesn't exist";
+        });
     },
   },
 };
