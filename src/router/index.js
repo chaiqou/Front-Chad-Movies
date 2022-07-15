@@ -61,7 +61,7 @@ const router = createRouter({
       component: () => import("@/components/movies/MovieIndividual.vue"),
     },
     {
-      path: "/user/:id",
+      path: "/users/:userId",
       name: "user-page",
       component: () => import("@/views/dashboard/UserProfileView.vue"),
     },

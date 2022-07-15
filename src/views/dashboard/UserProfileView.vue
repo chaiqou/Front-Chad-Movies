@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div class="text-white">{{ $route.params.userId }}</div>
 </template>
 
 <script>
@@ -11,10 +11,15 @@ export default {
   computed: {
     ...mapWritableState(useUserProfileStore, ["user", "loading"]),
   },
-  mounted() {
-    axios
-      .get("/api/user" + this.$route.params.id)
+  async created() {
+    await axios
+      .get("users/", {
+        params: {
+          userId: this.$route.params.userId,
+        },
+      })
       .then((response) => {
+        console.log(response.data);
         this.user = response.data.data;
         this.loading = false;
       })
