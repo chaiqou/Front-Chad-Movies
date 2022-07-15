@@ -61,6 +61,11 @@ const router = createRouter({
       component: () => import("@/components/movies/MovieIndividual.vue"),
     },
     {
+      path: "/user/:id",
+      name: "user-page",
+      component: () => import("@/views/dashboard/UserProfileView.vue"),
+    },
+    {
       path: "/unauthorized",
       name: "unauthorized-page",
       component: () => import("@/views/UnauthorizedView.vue"),
