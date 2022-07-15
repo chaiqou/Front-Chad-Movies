@@ -1,7 +1,6 @@
 <template>
   <DashboardLayout />
-  <div v-if="loading">Loading..</div>
-  <DashboardTimeline v-else>
+  <DashboardTimeline v-if="!loading">
     <div class="md:flex container mx-auto">
       <img
         class="md:w-1/2 md:h-72"
@@ -46,6 +45,20 @@
         </p>
       </div>
     </div>
+    <div class="mt-6 flex items-center space-x-2">
+      <p class="text-white mr-2">Quotes (Total 7)</p>
+      <span class="text-gray-500">|</span>
+      <button
+        type="button"
+        class="items-center invisible md:visible inline-flex justify-center rounded-md px-2 py-2 bg-[#E31221] text-base font-medium text-white"
+        @click="quoteAddButtonToggle"
+      >
+        <IconAddButton />
+        Add Quote
+      </button>
+      <p class="text-white">{{ toggle }}</p>
+      <div v-if="toggle"><CrudModal /></div>
+    </div>
   </DashboardTimeline>
 </template>
 
@@ -55,14 +68,20 @@ import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
 import axios from "@/config/axios/index";
-import IconDelete from "../icons/IconDelete.vue";
-import IconEdit from "../icons/IconEdit.vue";
+import IconDelete from "@/components/icons/IconDelete.vue";
+import IconEdit from "@/components/icons/IconEdit.vue";
+import IconAddButton from "@/components/icons/IconAddButton.vue";
+import { useAddMovieStore } from "@/stores/useAddMovieStore.js";
+import CrudModal from "../modals/CrudModal.vue";
+
 export default {
   components: {
     DashboardLayout,
     DashboardTimeline,
     IconDelete,
     IconEdit,
+    IconAddButton,
+    CrudModal,
   },
 
   computed: {
@@ -71,6 +90,8 @@ export default {
       "backurl",
       "loading",
     ]),
+
+    ...mapWritableState(useAddMovieStore, ["toggle"]),
   },
 
   created() {
@@ -85,10 +106,12 @@ export default {
           this.currentMovie = response.data.data;
           this.loading = false;
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.loading = false;
         });
+    },
+    quoteAddButtonToggle() {
+      this.toggle = !this.toggle;
     },
     delete_movie(currentMovie_id) {
       axios.delete(`movies/` + currentMovie_id).then(() => {
