@@ -11,7 +11,7 @@ export default {
   computed: {
     ...mapWritableState(useUserProfileStore, ["user", "loading"]),
   },
-  async created() {
+  async getUser() {
     await axios
       .get("users/", {
         params: {
