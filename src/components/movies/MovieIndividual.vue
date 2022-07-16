@@ -47,14 +47,14 @@
     <div class="mt-6 flex items-center space-x-2">
       <p class="text-white mr-2">Quotes (Total 7)</p>
       <span class="text-gray-500">|</span>
-      <router-link
+      <button
         type="button"
         class="items-center invisible md:visible inline-flex justify-center rounded-md px-2 py-2 bg-[#E31221] text-base font-medium text-white"
-        to="/movie/add-quote"
+        @click="goToAddQuote"
       >
         <IconAddButton />
         Add Quote
-      </router-link>
+      </button>
     </div>
   </DashboardTimeline>
 </template>
@@ -68,6 +68,7 @@ import axios from "@/config/axios/index";
 import IconDelete from "@/components/icons/IconDelete.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
+import { useAddMovieStore } from "@/stores/useAddMovieStore";
 
 export default {
   components: {
@@ -84,6 +85,7 @@ export default {
       "backurl",
       "loading",
     ]),
+    ...mapWritableState(useAddMovieStore, ["toggle"]),
   },
 
   created() {
@@ -106,6 +108,10 @@ export default {
       axios.delete(`movies/` + currentMovie_id).then(() => {
         this.$router.push("/movies");
       });
+    },
+    goToAddQuote() {
+      this.toggle = !this.toggle;
+      this.$router.push("/movie/add-quote");
     },
   },
 };

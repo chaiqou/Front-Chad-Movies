@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="fixed z-10 inset-0 overflow-y-auto">
+    <div class="absolute z-10 inset-0 overflow-y-auto">
       <div
         class="flex items-start min-h-screen min-w-screen sm:items-center justify-center text-center sm:p-0"
       >
@@ -11,7 +11,7 @@
             <button
               type="button"
               class="bg-[#11101A] rounded-md text-gray-400 hover:text-gray-500"
-              @click="onCloseModal"
+              @click="toggle"
             >
               <IconExit />
             </button>
@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { mapWritableState } from "pinia";
-import { useAddMovieStore } from "@/stores/useAddMovieStore";
+// import { mapWritableState } from "pinia";
+// import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import IconExit from "@/components/icons/IconExit.vue";
 
 export default {
@@ -46,14 +46,18 @@ export default {
       type: String,
       default: "",
     },
-  },
-  computed: {
-    ...mapWritableState(useAddMovieStore, ["toggle"]),
-  },
-  methods: {
-    onCloseModal() {
-      this.toggle = !this.toggle;
+    toggle: {
+      type: Function,
+      default: () => {},
     },
   },
+  // computed: {
+  //   ...mapWritableState(useAddMovieStore, ["toggle"]),
+  // },
+  // methods: {
+  //   onCloseModal() {
+  //     this.toggle = !this.toggle;
+  //   },
+  // },
 };
 </script>

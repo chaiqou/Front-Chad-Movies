@@ -37,7 +37,7 @@
       v-if="toggle"
       class="overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center"
     >
-      <CrudModal title="Add movie">
+      <CrudModal :toggle="toggleMovie" title="Add movie">
         <MovieForm />
       </CrudModal>
     </div>
@@ -113,6 +113,9 @@ export default {
         .catch(() => {
           this.movies = "Movies doesn't exist";
         });
+    },
+    toggleMovie() {
+      this.toggle = !this.toggle;
     },
   },
 };

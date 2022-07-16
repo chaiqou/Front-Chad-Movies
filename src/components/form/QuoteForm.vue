@@ -5,18 +5,18 @@
     @submit="onSubmitForm"
   >
     <MovieInput
-      v-model="title_en"
-      name="title_en"
-      placeholder="Movie name"
-      rules="required|min:3"
-      error-name="English title"
+      v-model="quote_en"
+      name="quote_en"
+      placeholder="Quote"
+      rules="required"
+      error-name="English Quote"
     />
     <MovieInput
-      v-model="title_ka"
-      name="title_ka"
-      placeholder="ფილმის სახელი"
-      rules="required|min:3"
-      error-name="ქართული სათაური"
+      v-model="quote_ka"
+      name="quote_ka"
+      placeholder="ციტატა"
+      rules="required"
+      error-name="ქართული ციტატა"
     />
     <Field
       type="file"
@@ -57,6 +57,7 @@ export default {
       "form_submmiting",
       "quote_en",
       "quote_ka",
+      "thumbnail",
     ]),
   },
 

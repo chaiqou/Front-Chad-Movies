@@ -5,6 +5,7 @@ export const useAddQuoteStore = defineStore("useAddQuoteStore", {
     toggleQuote: false,
     quote_en: "",
     quote_ka: "",
+    thumbnail: null,
     form_submmiting: false,
   }),
 });
