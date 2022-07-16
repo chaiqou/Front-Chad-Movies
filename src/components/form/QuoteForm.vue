@@ -53,7 +53,6 @@ export default {
   },
   computed: {
     ...mapWritableState(useAddQuoteStore, [
-      "toggleQuote",
       "form_submmiting",
       "quote_en",
       "quote_ka",

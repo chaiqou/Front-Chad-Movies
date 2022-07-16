@@ -1,5 +1,7 @@
 <template>
-  <DashboardSidebar />
+  <div class="mt-12">
+    <DashboardSidebar />
+  </div>
   <DashboardTimeline>
     <Teleport v-if="toggle" to="body">
       <CrudModal :toggle="toggleQuote" title="Add quote">
