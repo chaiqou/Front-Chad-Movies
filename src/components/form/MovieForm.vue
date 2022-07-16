@@ -150,7 +150,8 @@ export default {
 
       axios
         .post("movies", fields)
-        .then(() => {
+        .then((response) => {
+          console.log(response);
           this.form_submmiting = false;
           this.toggle = false;
         })

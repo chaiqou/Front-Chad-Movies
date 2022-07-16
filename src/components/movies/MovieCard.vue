@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href="`movie/${movie.slug}`">
+    <a :href="`movie/${movie.id}`">
       <img
         :src="backurl + movie.thumbnail"
         alt="movieimage"
@@ -12,7 +12,7 @@
         {{ movie.title.en }} ({{ movie.year }})
       </h3>
       <div class="flex items-center">
-        <span class="text-white mr-2">10</span>
+        <span class="text-white mr-2">{{ movie.quotes.length }}</span>
         <IconComment />
       </div>
     </div>

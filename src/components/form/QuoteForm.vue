@@ -85,6 +85,7 @@ export default {
         .post("/quotes", fields)
         .then(() => {
           this.form_submmiting = false;
+          this.$router.back();
         })
         .catch(() => {
           this.form_submmiting = false;

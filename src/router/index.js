@@ -51,7 +51,7 @@ const router = createRouter({
       component: () => import("@/views/dashboard/DashboardView.vue"),
     },
     {
-      path: "/movie/add-quote/:id",
+      path: "/movie/add-quote",
       name: "add-quote-page",
       component: () => import("@/views/AddQuote.vue"),
     },
@@ -61,7 +61,7 @@ const router = createRouter({
       component: () => import("@/views/dashboard/MovieListView.vue"),
     },
     {
-      path: "/movie/:slug",
+      path: "/movie/:id",
       name: "single-movie-page",
       component: () => import("@/components/movies/MovieIndividual.vue"),
     },
