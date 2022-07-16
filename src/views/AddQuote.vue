@@ -3,11 +3,11 @@
     <DashboardSidebar />
   </div>
   <DashboardTimeline>
-    <Teleport v-if="toggle" to="body">
+    <div v-if="toggle">
       <CrudModal :toggle="toggleQuote" title="Add quote">
         <QuoteForm />
       </CrudModal>
-    </Teleport>
+    </div>
   </DashboardTimeline>
 </template>
 
@@ -18,7 +18,6 @@ import DashboardSidebar from "@/components/dashboard/DashboardSidebar.vue";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
-import { Teleport } from "vue";
 
 export default {
   components: {
@@ -26,7 +25,6 @@ export default {
     QuoteForm,
     DashboardSidebar,
     DashboardTimeline,
-    Teleport,
   },
   computed: {
     ...mapWritableState(useAddMovieStore, ["toggle"]),

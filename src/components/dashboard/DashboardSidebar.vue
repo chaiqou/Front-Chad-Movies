@@ -51,12 +51,10 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response.data.data[0]);
           this.user = response.data.data[0];
           this.loading = false;
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.loading = false;
         });
     },

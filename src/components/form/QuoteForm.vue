@@ -57,6 +57,7 @@ export default {
       "quote_en",
       "quote_ka",
       "thumbnail",
+      "getQuoteData",
     ]),
   },
 
@@ -68,7 +69,6 @@ export default {
       let reader = new FileReader();
       reader.onload = (e) => {
         this.thumbnail = e.target.result;
-        console.log(e.target.result);
       };
       reader.readAsDataURL(file);
     },
@@ -77,15 +77,14 @@ export default {
       this.form_submmiting = true;
 
       let fields = new FormData();
-      for (let key in this.getMovieData) {
-        fields.append(key, this.getMovieData[key]);
+      for (let key in this.getQuoteData) {
+        fields.append(key, this.getQuoteData[key]);
       }
-
+      fields.append("movie_id", this.$route.params.id);
       axios
-        .post("movies", fields)
+        .post("/quotes", fields)
         .then(() => {
           this.form_submmiting = false;
-          this.toggle = false;
         })
         .catch(() => {
           this.form_submmiting = false;

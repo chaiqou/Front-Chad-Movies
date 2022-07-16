@@ -35,8 +35,6 @@
 </template>
 
 <script>
-// import { mapWritableState } from "pinia";
-// import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import IconExit from "@/components/icons/IconExit.vue";
 
 export default {
@@ -51,13 +49,5 @@ export default {
       default: () => {},
     },
   },
-  // computed: {
-  //   ...mapWritableState(useAddMovieStore, ["toggle"]),
-  // },
-  // methods: {
-  //   onCloseModal() {
-  //     this.toggle = !this.toggle;
-  //   },
-  // },
 };
 </script>
