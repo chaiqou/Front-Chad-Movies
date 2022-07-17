@@ -1,13 +1,13 @@
 <template>
   <div class="relative inline-block text-left">
     <div>
-      <button type="button" @click="toggleDropdown">
+      <button type="button" @click="quotetoggle">
         <IconDropdownDots />
       </button>
     </div>
 
     <div
-      v-if="toggle"
+      v-if="quote_toggle"
       class="origin-top-right absolute right-0 mt-2 w-56 rounded-md bg-[#24222F]"
     >
       <div class="py-3 px-3 space-y-2">
@@ -42,13 +42,23 @@ export default {
     IconDropdownPen,
     IconDelete,
   },
-  computed: {
-    ...mapWritableState(useAddQuoteStore, ["toggle"]),
-  },
-  methods: {
-    toggleDropdown() {
-      this.toggle = !this.toggle;
+  props: {
+    id: {
+      type: [String, Number],
+      required: true,
+    },
+    quotetoggle: {
+      type: [Function, Boolean],
+      required: true,
     },
   },
+  computed: {
+    ...mapWritableState(useAddQuoteStore, ["quote_toggle"]),
+  },
+  // methods: {
+  //   toggleDropdown() {
+  //     this.toggle = !this.toggle;
+  //   },
+  // },
 };
 </script>

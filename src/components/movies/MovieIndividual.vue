@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout />
   <DashboardTimeline v-if="!loading">
-    <div class="md:flex container mx-auto">
+    <div class="md:flex container mx-auto mt-12">
       <img
         class="md:w-1/2 md:h-72"
         :src="backurl + currentMovie[0].thumbnail"
@@ -62,6 +62,7 @@
       v-for="quote in currentMovie[0].quotes"
       :key="quote.id"
       :quote="quote"
+      :quotetoggle="toggleQuote"
     />
   </DashboardTimeline>
 </template>
@@ -77,6 +78,7 @@ import IconEdit from "@/components/icons/IconEdit.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import QuoteCard from "../quotes/QuoteCard.vue";
+import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 
 export default {
   components: {
@@ -95,6 +97,7 @@ export default {
       "loading",
     ]),
     ...mapWritableState(useAddMovieStore, ["toggle"]),
+    ...mapWritableState(useAddQuoteStore, ["quote_toggle"]),
   },
 
   created() {
@@ -106,7 +109,6 @@ export default {
       await axios
         .get(`movie-slug/${this.$route.params.id}`)
         .then((response) => {
-          console.log(response);
           this.currentMovie = response.data.data;
           this.loading = false;
         })
@@ -122,6 +124,9 @@ export default {
     goToAddQuote() {
       this.toggle = !this.toggle;
       this.$router.push(`/movie/add-quote/${this.currentMovie[0].id}`);
+    },
+    toggleQuote() {
+      this.quote_toggle = !this.quote_toggle;
     },
   },
 };
