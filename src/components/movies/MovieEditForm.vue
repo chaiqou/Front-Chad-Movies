@@ -75,14 +75,14 @@
       @change="selectFile"
     />
     <div v-if="thumbnail">
-      <img :src="thumbnail" alt="movieimages" height="40" />
+      <img :src="thumbnail" alt="movieimages" height="240" width="600" />
     </div>
 
     <button
       :disabled="form_submmiting"
       class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
     >
-      {{ form_submmiting ? "Please wait..." : "Add Movie" }}
+      {{ form_submmiting ? "Please wait..." : "Save changes" }}
     </button>
   </FormVee>
 </template>
