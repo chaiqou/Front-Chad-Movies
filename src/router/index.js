@@ -51,7 +51,7 @@ const router = createRouter({
       component: () => import("@/views/dashboard/DashboardView.vue"),
     },
     {
-      path: "/movie/add-quote",
+      path: "/movie/add-quote/:id",
       name: "add-quote-page",
       component: () => import("@/views/AddQuote.vue"),
     },

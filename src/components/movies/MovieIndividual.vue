@@ -121,7 +121,7 @@ export default {
     },
     goToAddQuote() {
       this.toggle = !this.toggle;
-      this.$router.push(`/movie/add-quote/${this.currentMovie.id}`);
+      this.$router.push(`/movie/add-quote/${this.currentMovie[0].id}`);
     },
   },
 };

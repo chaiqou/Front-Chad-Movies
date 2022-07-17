@@ -32,9 +32,9 @@
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
 import IconHeart from "../icons/IconHeart.vue";
-import IconComment from "../icons/IconComment.vue";
 import IconFacebookComment from "../icons/IconFacebookComment.vue";
 export default {
+  components: { IconHeart, IconFacebookComment },
   props: {
     quote: {
       type: Object,
@@ -44,6 +44,5 @@ export default {
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
-  components: { IconHeart, IconComment, IconFacebookComment },
 };
 </script>
