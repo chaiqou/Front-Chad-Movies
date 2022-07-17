@@ -30,7 +30,7 @@
         <p class="text-[#CED4DA] mt-4 font-bold">
           Director:
           <span class="text-white font-medium ml-2">{{
-            currentMovie[0].director
+            currentMovie[0].director["en"]
           }}</span>
         </p>
         <p class="text-[#CED4DA] mt-4 font-bold">
@@ -40,12 +40,14 @@
           }}</span>
         </p>
         <p class="text-white font-normal mt-4">
-          {{ currentMovie[0].description }}
+          {{ currentMovie[0].description["en"] }}
         </p>
       </div>
     </div>
     <div class="mt-6 flex items-center space-x-2">
-      <p class="text-white mr-2">Quotes (Total 7)</p>
+      <p class="text-white mr-2">
+        Quotes (Total {{ currentMovie[0].quotes.length }})
+      </p>
       <span class="text-gray-500">|</span>
       <button
         type="button"
@@ -56,6 +58,11 @@
         Add Quote
       </button>
     </div>
+    <QuoteCard
+      v-for="quote in currentMovie[0].quotes"
+      :key="quote.id"
+      :quote="quote"
+    />
   </DashboardTimeline>
 </template>
 
@@ -69,6 +76,7 @@ import IconDelete from "@/components/icons/IconDelete.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
+import QuoteCard from "../quotes/QuoteCard.vue";
 
 export default {
   components: {
@@ -77,6 +85,7 @@ export default {
     IconDelete,
     IconEdit,
     IconAddButton,
+    QuoteCard,
   },
 
   computed: {
