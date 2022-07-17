@@ -46,6 +46,11 @@ const router = createRouter({
       },
     },
     {
+      path: "/users/:userId",
+      name: "user-page",
+      component: () => import("@/views/dashboard/UserProfileView.vue"),
+    },
+    {
       path: "/dashboard",
       name: "dashboard-page",
       component: () => import("@/views/dashboard/DashboardView.vue"),
@@ -66,9 +71,9 @@ const router = createRouter({
       component: () => import("@/components/movies/MovieIndividual.vue"),
     },
     {
-      path: "/users/:userId",
-      name: "user-page",
-      component: () => import("@/views/dashboard/UserProfileView.vue"),
+      path: "/movie/edit/:id",
+      name: "edit-movie-page",
+      component: () => import("@/components/modals/EditModal.vue"),
     },
     {
       path: "/unauthorized",
