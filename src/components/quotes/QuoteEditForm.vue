@@ -26,7 +26,7 @@
       @change="selectFile"
     />
     <div v-if="thumbnail">
-      <img :src="thumbnail" alt="movieimages" height="40" />
+      <img :src="thumbnail" alt="movieimages" height="240" width="600" />
     </div>
 
     <button
@@ -42,8 +42,9 @@
 import { Form as FormVee, Field } from "vee-validate";
 import MovieInput from "@/components/form/MovieInput.vue";
 import axios from "@/config/axios/index";
-import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
+import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
 import { mapWritableState } from "pinia";
+import { useMovieListStore } from "@/stores/useMovieListStore";
 
 export default {
   components: {
@@ -52,13 +53,23 @@ export default {
     MovieInput,
   },
   computed: {
-    ...mapWritableState(useAddQuoteStore, [
+    ...mapWritableState(useEditQuoteStore, [
       "form_submmiting",
       "quote_en",
       "quote_ka",
       "thumbnail",
       "getQuoteData",
+      "backurl",
     ]),
+    ...mapWritableState(useMovieListStore, ["currentMovie"]),
+  },
+  mounted() {
+    axios.get("quotes/" + this.$route.params.id).then((res) => {
+      this.quote_en = res.data.data[0].quote["en"];
+      this.quote_ka = res.data.data[0].quote["ka"];
+      this.id = res.data.data[0].id;
+      this.thumbnail = res.data.data[0].thumbnail;
+    });
   },
 
   methods: {
@@ -80,9 +91,9 @@ export default {
       for (let key in this.getQuoteData) {
         fields.append(key, this.getQuoteData[key]);
       }
-      fields.append("movie_id", this.$route.params.id);
+      fields.append("movie_id", this.currentMovie[0].id);
       axios
-        .post("/quotes", fields)
+        .put(`/quotes/${this.$route.params.id}`, this.getQuoteData)
         .then(() => {
           this.form_submmiting = false;
           this.$router.back();

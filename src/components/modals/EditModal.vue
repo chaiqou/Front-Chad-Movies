@@ -5,7 +5,7 @@
         class="relative flex justify-between bg-[#11101A] rounded-lg overflow-hidden md:p-8 pt-8"
       >
         <div class="absolute flex justify-around md:space-x-52 space-x-28">
-          <button class="flex text-white">
+          <button class="flex text-white" @click="deleteitem">
             <IconDelete />
             Delete
           </button>
@@ -37,7 +37,6 @@
 <script>
 import IconExit from "@/components/icons/IconExit.vue";
 import IconDelete from "@/components/icons/IconDelete.vue";
-
 export default {
   components: { IconExit, IconDelete },
   props: {
