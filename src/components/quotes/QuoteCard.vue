@@ -1,5 +1,6 @@
 <template>
   <figure class="md:flex bg-[#11101A] rounded-xl md:w-1/2 p-8 md:p-0 mt-8">
+    <div class="relative left-full mt-2"><QuoteDropdown /></div>
     <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
       <div class="flex items-center ml-4 space-x-12">
         <img
@@ -8,6 +9,7 @@
           :src="backurl + quote.thumbnail"
           alt="quotethumbnail"
         />
+
         <blockquote>
           <p class="text-lg font-medium text-white">
             "{{ quote.quote["en"] }}"
@@ -31,16 +33,19 @@
 <script>
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
-import IconHeart from "../icons/IconHeart.vue";
-import IconFacebookComment from "../icons/IconFacebookComment.vue";
+import IconHeart from "@/components/icons/IconHeart.vue";
+import IconFacebookComment from "@/components/icons/IconFacebookComment.vue";
+import QuoteDropdown from "./QuoteDropdown.vue";
+
 export default {
-  components: { IconHeart, IconFacebookComment },
+  components: { IconHeart, IconFacebookComment, QuoteDropdown },
   props: {
     quote: {
       type: Object,
       required: true,
     },
   },
+
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
