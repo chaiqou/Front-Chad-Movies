@@ -71,9 +71,9 @@ const router = createRouter({
       component: () => import("@/components/movies/MovieIndividual.vue"),
     },
     {
-      path: "/movie/edit/:id",
-      name: "edit-movie-page",
-      component: () => import("@/components/modals/EditModal.vue"),
+      path: "/quote/edit/:id",
+      name: "edit-quote-page",
+      component: () => import("@/views/quotes/QuoteEditView.vue"),
     },
     {
       path: "/unauthorized",

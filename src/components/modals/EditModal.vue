@@ -10,7 +10,7 @@
             Delete
           </button>
           <h3 class="text-lg text-center leading-6 font-medium text-white">
-            Edit Movie
+            Edit Quote
           </h3>
           <button
             type="button"

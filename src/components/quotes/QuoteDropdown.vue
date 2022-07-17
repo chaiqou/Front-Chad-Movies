@@ -17,7 +17,14 @@
         </div>
         <div class="flex items-center">
           <IconDropdownPen />
-          <a href="#" class="text-white block px-3 py-2 text-sm">Edit</a>
+          <router-link
+            :to="{
+              name: 'edit-quote-page',
+              params: { id: currentMovie[0].quotes[0].id },
+            }"
+            class="text-white block px-3 py-2 text-sm"
+            >Edit</router-link
+          >
         </div>
         <div class="flex items-center">
           <IconDelete />
