@@ -62,7 +62,6 @@
       v-for="quote in currentMovie[0].quotes"
       :key="quote.id"
       :quote="quote"
-      :quotetoggle="toggleQuote"
     />
   </DashboardTimeline>
 </template>
@@ -78,7 +77,6 @@ import IconEdit from "@/components/icons/IconEdit.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import QuoteCard from "../quotes/QuoteCard.vue";
-import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 
 export default {
   components: {
@@ -97,7 +95,6 @@ export default {
       "loading",
     ]),
     ...mapWritableState(useAddMovieStore, ["toggle"]),
-    ...mapWritableState(useAddQuoteStore, ["quote_toggle"]),
   },
 
   created() {
@@ -124,9 +121,6 @@ export default {
     goToAddQuote() {
       this.toggle = !this.toggle;
       this.$router.push(`/movie/add-quote/${this.currentMovie[0].id}`);
-    },
-    toggleQuote() {
-      this.quote_toggle = !this.quote_toggle;
     },
   },
 };

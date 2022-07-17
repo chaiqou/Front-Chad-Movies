@@ -1,13 +1,13 @@
 <template>
   <div class="relative inline-block text-left">
     <div>
-      <button type="button" @click="quotetoggle">
+      <button type="button" @click="toggle">
         <IconDropdownDots />
       </button>
     </div>
 
     <div
-      v-if="quote_toggle"
+      v-if="toggleDropdown"
       class="origin-top-right absolute right-0 mt-2 w-56 rounded-md bg-[#24222F]"
     >
       <div class="py-3 px-3 space-y-2">
@@ -33,8 +33,7 @@ import IconDropdownDots from "@/components/icons/IconDropdownDots.vue";
 import IconDropdownEye from "@/components/icons/IconDropdownEye.vue";
 import IconDropdownPen from "@/components/icons/IconDropdownPen.vue";
 import IconDelete from "@/components/icons/IconDelete.vue";
-import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
-import { mapWritableState } from "pinia";
+
 export default {
   components: {
     IconDropdownDots,
@@ -42,23 +41,15 @@ export default {
     IconDropdownPen,
     IconDelete,
   },
-  props: {
-    id: {
-      type: [String, Number],
-      required: true,
-    },
-    quotetoggle: {
-      type: [Function, Boolean],
-      required: true,
+  data() {
+    return {
+      toggleDropdown: false,
+    };
+  },
+  methods: {
+    toggle() {
+      this.toggleDropdown = !this.toggleDropdown;
     },
   },
-  computed: {
-    ...mapWritableState(useAddQuoteStore, ["quote_toggle"]),
-  },
-  // methods: {
-  //   toggleDropdown() {
-  //     this.toggle = !this.toggle;
-  //   },
-  // },
 };
 </script>

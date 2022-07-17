@@ -1,7 +1,7 @@
 <template>
   <figure class="md:flex bg-[#11101A] rounded-xl md:w-1/2 p-8 md:p-0 mt-8">
     <div class="relative left-[95%] mt-2">
-      <QuoteDropdown :id="quote.id" :quotetoggle="quotetoggle" />
+      <QuoteDropdown />
     </div>
     <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
       <div class="flex items-center ml-4 space-x-12">
@@ -44,10 +44,6 @@ export default {
   props: {
     quote: {
       type: Object,
-      required: true,
-    },
-    quotetoggle: {
-      type: [Function, Boolean],
       required: true,
     },
   },

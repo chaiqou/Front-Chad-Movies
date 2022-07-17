@@ -4,7 +4,6 @@ export const useAddQuoteStore = defineStore("useAddQuoteStore", {
   state: () => ({
     quote_en: "",
     quote_ka: "",
-    quote_toggle: true,
     thumbnail: null,
     form_submmiting: false,
   }),
