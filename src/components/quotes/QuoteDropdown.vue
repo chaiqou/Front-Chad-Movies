@@ -21,7 +21,12 @@
         </div>
         <div class="flex items-center">
           <IconDelete />
-          <a href="#" class="text-white block px-3 py-2 text-sm">Delete</a>
+          <button
+            class="text-white block px-3 py-2 text-sm"
+            @click="delete_quote(currentMovie[0].quotes[0].id)"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
@@ -33,6 +38,9 @@ import IconDropdownDots from "@/components/icons/IconDropdownDots.vue";
 import IconDropdownEye from "@/components/icons/IconDropdownEye.vue";
 import IconDropdownPen from "@/components/icons/IconDropdownPen.vue";
 import IconDelete from "@/components/icons/IconDelete.vue";
+import { mapWritableState } from "pinia";
+import { useMovieListStore } from "@/stores/useMovieListStore";
+import axios from "@/config/axios/index";
 
 export default {
   components: {
@@ -46,9 +54,17 @@ export default {
       toggleDropdown: false,
     };
   },
+  computed: {
+    ...mapWritableState(useMovieListStore, ["currentMovie"]),
+  },
   methods: {
     toggle() {
       this.toggleDropdown = !this.toggleDropdown;
+    },
+    delete_quote(quote_id) {
+      axios.delete(`quotes/` + quote_id).then(() => {
+        window.location.reload();
+      });
     },
   },
 };
