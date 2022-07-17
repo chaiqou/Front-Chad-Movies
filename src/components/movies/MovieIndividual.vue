@@ -19,7 +19,14 @@
               <IconDelete />
             </button>
             <div class="border-r-2">|</div>
-            <IconEdit />
+            <router-link
+              :to="{
+                name: 'edit-movie-page',
+                params: { id: currentMovie[0].id },
+              }"
+            >
+              <IconEdit />
+            </router-link>
           </div>
         </div>
         <p
