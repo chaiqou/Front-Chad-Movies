@@ -1,28 +1,35 @@
 <template>
-  <div class="w-full flex items-center">
+  <div class="w-full flex items-center space-x-12">
     <button
-      class="text-white flex items-center bg-[#222030] w-2/3 h-12 rounded-lg"
+      :class="[toggleDropdown ? 'w-48' : 'w-2/3']"
+      class="text-white flex items-center bg-[#222030] h-12 rounded-lg"
     >
       <IconAddNewQuote class="ml-3" />
       <span class="ml-4"> Write new quote</span>
     </button>
-    <div class="relative rounded-md w-1/3">
-      <input
-        v-model="search"
-        type="text"
-        class="block w-1/3 pr-10 text-white border-none bg-inherit p-3 rounded-md"
-      />
-      <div
-        class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
-      >
+    <div>
+      <button v-if="!toggleDropdown" @click="setToggleDropdown">
         <p class="flex items-center invisible md:visible space-x-2 z-10">
           <IconSearch />
           <span class="text-white">Search by</span>
         </p>
+      </button>
+      <div v-else>
+        <div class="invisible md:visible">
+          <div class="relative rounded-md">
+            <input
+              v-model="search"
+              :class="[toggleDropdown ? 'w-[600px]' : 'w-full']"
+              type="text"
+              class="block pr-10 text-white border-none bg-inherit p-3 rounded-md"
+              placeholder="Enter @ to search movies, Enter # to search quotes"
+            />
+            <div class="border border-gray-800 border-b-1"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
   <CrudModal v-if="false">
     <FormVee
       class="mt-2 min-w-screen space-y-6"
@@ -78,6 +85,16 @@ export default {
     MovieInput,
     IconAddNewQuote,
     IconSearch,
+  },
+  data() {
+    return {
+      toggleDropdown: false,
+    };
+  },
+  methods: {
+    setToggleDropdown() {
+      this.toggleDropdown = !this.toggleDropdown;
+    },
   },
 };
 </script>
