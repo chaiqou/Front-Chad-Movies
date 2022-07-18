@@ -5,16 +5,15 @@
         <div class="w-8">AQ PROFILE IMAGE</div>
         <div class="ml-6">
           <div class="text-sm text-white font-bold">Name user</div>
-          <div class="text-sm text-white font-bold">12 min ago</div>
         </div>
       </div>
       <div class="mt-4">
-        <p class="text-white font-bold text-sm">aq filmis agwera</p>
+        <p class="text-white font-bold text-sm">{{ quote.quote.en }}</p>
       </div>
     </div>
     <div class="w-full p-4">
       <img
-        src="@/assets/landing/interstellar.png"
+        :src="backurl + quote.thumbnail"
         alt="postimage"
         class="w-full rounded-md"
       />
@@ -31,7 +30,7 @@
     </div>
     <div>
       <div>
-        <p></p>
+        <p class="text-white">aq komentarebis</p>
       </div>
     </div>
   </div>
@@ -40,7 +39,18 @@
 <script>
 import IconDashboardComment from "../icons/IconDashboardComment.vue";
 import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
-export default { components: { IconDashboardComment, IconDashboardHearth } };
+import { mapWritableState } from "pinia";
+import { useMovieListStore } from "@/stores/useMovieListStore";
+export default {
+  components: { IconDashboardComment, IconDashboardHearth },
+  props: {
+    quote: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    ...mapWritableState(useMovieListStore, ["backurl"]),
+  },
+};
 </script>
-
-<style lang="scss" scoped></style>

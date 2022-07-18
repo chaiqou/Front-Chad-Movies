@@ -2,7 +2,7 @@
   <DashboardLayout />
   <DashboardTimeline>
     <DashboardNewQuote />
-    <DashboardPost />
+    <DashboardPost v-for="quote in quotes" :key="quote.id" :quote="quote" />
   </DashboardTimeline>
 </template>
 
@@ -31,8 +31,7 @@ export default {
     axios
       .get("quotes")
       .then((response) => {
-        console.log(response);
-        this.quotes = response.data;
+        this.quotes = response.data.data;
       })
       .catch((error) => {
         console.log(error);
