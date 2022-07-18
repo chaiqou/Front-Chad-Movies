@@ -2,6 +2,7 @@
   <DashboardLayout />
   <DashboardTimeline>
     <DashboardNewQuote />
+    <DashboardPost />
   </DashboardTimeline>
 </template>
 
@@ -12,9 +13,15 @@ import { mapWritableState } from "pinia";
 import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import DashboardNewQuote from "@/components/dashboard/DashboardNewQuote.vue";
+import DashboardPost from "@/components/dashboard/DashboardPost.vue";
 
 export default {
-  components: { DashboardLayout, DashboardTimeline, DashboardNewQuote },
+  components: {
+    DashboardLayout,
+    DashboardTimeline,
+    DashboardNewQuote,
+    DashboardPost,
+  },
 
   computed: {
     ...mapWritableState(useDashboardQuotesStore, ["quotes"]),
