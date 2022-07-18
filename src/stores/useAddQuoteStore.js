@@ -6,6 +6,7 @@ export const useAddQuoteStore = defineStore("useAddQuoteStore", {
     quote_ka: "",
     thumbnail: null,
     form_submmiting: false,
+    individual_quote: {},
   }),
 
   getters: {

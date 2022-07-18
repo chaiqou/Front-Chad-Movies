@@ -31,6 +31,7 @@ export default {
     axios
       .get("quotes")
       .then((response) => {
+        console.log(response.data);
         this.quotes = response.data.data;
       })
       .catch((error) => {

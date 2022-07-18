@@ -81,6 +81,11 @@ const router = createRouter({
       component: () => import("@/views/movies/MovieEditView.vue"),
     },
     {
+      path: "/quote/:id",
+      name: "single-quote-page",
+      component: () => import("@/views/quotes/QuoteIndividual.vue"),
+    },
+    {
       path: "/unauthorized",
       name: "unauthorized-page",
       component: () => import("@/views/UnauthorizedView.vue"),
