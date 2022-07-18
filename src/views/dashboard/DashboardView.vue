@@ -1,7 +1,8 @@
 <template>
-  <div class="flex flex-col h-screen overflow-y-hidden">
-    <DashboardLayout />
-  </div>
+  <DashboardLayout />
+  <DashboardTimeline>
+    <DashboardNewQuote />
+  </DashboardTimeline>
 </template>
 
 <script>
@@ -9,9 +10,11 @@ import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import axios from "@/config/axios/index";
 import { mapWritableState } from "pinia";
 import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
+import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
+import DashboardNewQuote from "@/components/dashboard/DashboardNewQuote.vue";
 
 export default {
-  components: { DashboardLayout },
+  components: { DashboardLayout, DashboardTimeline, DashboardNewQuote },
 
   computed: {
     ...mapWritableState(useDashboardQuotesStore, ["quotes"]),

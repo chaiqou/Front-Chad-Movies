@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout />
   <DashboardTimeline>
-    <div class="flex justify-between items-center mt-12">
+    <div class="flex justify-between items-center">
       <span class="text-white font-medium text-24 ml-8 md:ml-0"
         >My list of movies (Total {{ movies.length }})</span
       >

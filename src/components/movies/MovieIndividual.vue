@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout />
   <DashboardTimeline v-if="!loading">
-    <div class="md:flex container mx-auto mt-12">
+    <div class="md:flex container mx-auto">
       <img
         class="md:w-1/2 md:h-72"
         :src="backurl + currentMovie[0].thumbnail"
