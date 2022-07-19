@@ -34,7 +34,6 @@
     <div class="flex border-1 border-green-500 m-4 space-x-4">
       <button
         class="flex justify-center py-2"
-        :class="[]"
         @click="commentToggle = !commentToggle"
       >
         <p class="mr-2 text-white font-bold">{{ quote.comments_count }}</p>
@@ -76,6 +75,7 @@
           name="comment"
           class="w-full pl-4 h-12 border-none text-white focus:outline-none rounded-lg bg-[#24222F] placeholder-[#CED4DA]"
           placeholder="Write a comment"
+          @keypress.enter="addComment"
         />
         <input type="submit" hidden />
       </div>
@@ -88,6 +88,7 @@ import IconDashboardComment from "../icons/IconDashboardComment.vue";
 import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
+import axiosInstance from "@/config/axios";
 export default {
   components: { IconDashboardComment, IconDashboardHearth },
   props: {
@@ -104,6 +105,18 @@ export default {
   },
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
+  },
+  methods: {
+    addComment() {
+      axiosInstance
+        .post("quotes/" + this.quote.id + "/comment", {
+          body: this.commentBody,
+        })
+        .then(() => {
+          this.commentBody = "";
+          window.scrollTo(0, 0);
+        });
+    },
   },
 };
 </script>
