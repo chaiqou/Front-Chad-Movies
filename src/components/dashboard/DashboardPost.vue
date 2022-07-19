@@ -32,6 +32,7 @@
       />
     </div>
     <div class="flex border-1 border-green-500 m-4 space-x-4">
+      <!-- komentarebi aq -->
       <button
         class="flex justify-center py-2"
         @click="commentToggle = !commentToggle"
@@ -39,8 +40,9 @@
         <p class="mr-2 text-white font-bold">{{ quote.comments_count }}</p>
         <IconDashboardComment />
       </button>
-      <button class="flex justify-center py-2 rounded-lg">
-        <p class="mr-2 text-white font-bold">{{ quote.likes_count }}</p>
+      <!-- LIKE BUTTON aq -->
+      <button class="flex justify-center py-2 rounded-lg" @click="likePost">
+        <p class="mr-2 text-white font-bold">{{ likeCount }}</p>
         <IconDashboardHearth />
       </button>
     </div>
@@ -101,6 +103,8 @@ export default {
     return {
       commentToggle: false,
       commentBody: "",
+      likedPost: this.quote.liked,
+      likeCount: this.quote.likes_count,
     };
   },
   computed: {
@@ -114,8 +118,18 @@ export default {
         })
         .then(() => {
           this.commentBody = "";
-          window.scrollTo(0, 0);
         });
+    },
+    likePost() {
+      // aq sheidzleba bug iyos :D  BE CAREFUL
+      this.likedPost ? this.decrementLike() : this.incrementLike();
+      this.likedPost = !this.likedPost;
+    },
+    incrementLike() {
+      this.likeCount++;
+    },
+    decrementLike() {
+      this.likeCount--;
     },
   },
 };
