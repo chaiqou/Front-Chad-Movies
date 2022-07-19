@@ -43,7 +43,7 @@
       <!-- LIKE BUTTON aq -->
       <button class="flex justify-center py-2 rounded-lg" @click="likePost">
         <p class="mr-2 text-white font-bold">{{ likeCount }}</p>
-        <IconDashboardHearth />
+        <IconDashboardHearth :fill="likedPost ? 'red' : 'white'" />
       </button>
     </div>
     <div v-if="commentToggle" class="border-t border-gray-700 p-4 pt-2">
@@ -90,7 +90,7 @@ import IconDashboardComment from "../icons/IconDashboardComment.vue";
 import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
-import axiosInstance from "@/config/axios";
+import axios from "@/config/axios/index";
 export default {
   components: { IconDashboardComment, IconDashboardHearth },
   props: {
@@ -112,24 +112,27 @@ export default {
   },
   methods: {
     addComment() {
-      axiosInstance
+      axios
         .post("quotes/" + this.quote.id + "/comment", {
           body: this.commentBody,
         })
-        .then(() => {
+        .then((response) => {
+          console.log(response);
           this.commentBody = "";
+        })
+        .catch((error) => {
+          console.log(error);
         });
     },
     likePost() {
-      // aq sheidzleba bug iyos :D  BE CAREFUL
       this.likedPost ? this.decrementLike() : this.incrementLike();
       this.likedPost = !this.likedPost;
     },
     incrementLike() {
-      this.likeCount++;
+      axios.post("like/" + this.quote.id).then(() => this.likeCount++);
     },
     decrementLike() {
-      this.likeCount--;
+      axios.delete("like/" + this.quote.id).then(() => this.likeCount--);
     },
   },
 };
