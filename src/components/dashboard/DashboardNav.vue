@@ -56,7 +56,7 @@ import { mapActions, mapWritableState } from "pinia";
 import IconResponsiveNav from "../icons/IconResponsiveNav.vue";
 import IconSearch from "../icons/IconSearch.vue";
 import IconArrowDown from "../icons/IconArrowDown.vue";
-import DashboardNotification from "./DashboardNotification.vue";
+import DashboardNotification from "@/components/dashboard/DashboardNotification.vue";
 export default {
   components: {
     IconResponsiveNav,
