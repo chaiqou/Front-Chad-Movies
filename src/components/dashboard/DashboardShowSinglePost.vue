@@ -22,7 +22,7 @@
       </div>
       <div class="w-full p-4">
         <img
-          :src="backend + post.movieinfo.thumbnail"
+          :src="backend + post.thumbnail"
           alt="postimage"
           class="w-full rounded-md"
         />
