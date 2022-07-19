@@ -22,10 +22,11 @@
 
       <div class="font-medium flex space-x-8">
         <p class="text-white flex items-center">
-          10 <span class="ml-2"><IconFacebookComment /></span>
+          {{ quote.comment.length }}
+          <span class="ml-2"><IconFacebookComment /></span>
         </p>
         <p class="text-white flex items-center">
-          10 <span class="ml-2"><IconHeart /></span>
+          {{ quote.like.length }} <span class="ml-2"><IconHeart /></span>
         </p>
       </div>
     </div>

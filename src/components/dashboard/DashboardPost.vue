@@ -17,7 +17,7 @@
       </div>
       <div class="mt-4">
         <p class="text-white font-bold text-sm">
-          "{{ quote.quote_en }}"
+          "{{ quote.quote.quote.en }}"
           <router-link :to="`/quote/${quote.id}`">
             <span class="text-[#DDCCAA]">{{ quote.movieinfo.title.en }}</span>
           </router-link>
@@ -34,6 +34,7 @@
     <div class="flex border-1 border-green-500 m-4 space-x-4">
       <button
         class="flex justify-center py-2"
+        :class="[]"
         @click="commentToggle = !commentToggle"
       >
         <p class="mr-2 text-white font-bold">{{ quote.comments_count }}</p>

@@ -15,7 +15,7 @@
         </div>
         <div class="mt-4">
           <p class="text-white font-bold text-sm">
-            {{ post.quote_ka }}
+            {{ post.quote.quote.en }}
             <span class="text-[#DDCCAA]">{{ post.movieinfo.title.en }}</span>
           </p>
         </div>
@@ -29,11 +29,11 @@
       </div>
       <div class="flex border-1 border-green-500 m-4 space-x-4">
         <button class="flex justify-center py-2">
-          <p class="mr-2 text-white font-bold">10</p>
+          <p class="mr-2 text-white font-bold">{{ post.comments.length }}</p>
           <IconDashboardComment />
         </button>
         <button class="flex justify-center py-2 rounded-lg">
-          <p class="mr-2 text-white font-bold">20</p>
+          <p class="mr-2 text-white font-bold">{{ post.likes.length }}</p>
           <IconDashboardHearth />
         </button>
       </div>
