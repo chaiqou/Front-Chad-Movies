@@ -13,7 +13,7 @@
         >
           <div class="ml-3 relative flex items-center space-x-4">
             <IconSearch class="md:hidden" />
-            <IconBell />
+            <DashboardNotification />
             <span class="text-white hidden md:flex">
               ENG
               <IconArrowDown class="ml-2" />
@@ -54,11 +54,16 @@ import axios from "@/config/axios/index";
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { mapActions, mapWritableState } from "pinia";
 import IconResponsiveNav from "../icons/IconResponsiveNav.vue";
-import IconBell from "../icons/IconBell.vue";
 import IconSearch from "../icons/IconSearch.vue";
 import IconArrowDown from "../icons/IconArrowDown.vue";
+import DashboardNotification from "./DashboardNotification.vue";
 export default {
-  components: { IconResponsiveNav, IconBell, IconSearch, IconArrowDown },
+  components: {
+    IconResponsiveNav,
+    IconSearch,
+    IconArrowDown,
+    DashboardNotification,
+  },
   data() {
     return {
       isOpen: false,
