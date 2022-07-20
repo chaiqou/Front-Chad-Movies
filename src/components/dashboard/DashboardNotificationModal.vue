@@ -124,18 +124,16 @@ export default {
         .post("markAsRead", {
           id: notification.id,
         })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.unread.splice(notification, 1);
           this.read.push(notification);
           this.unreadCount--;
         });
     },
     readAllNotification() {
-      axios.post("markAllAsRead").then((res) => {
-        console.log(res);
-        this.unread = [];
-        this.read = this.unread;
+      axios.post("markAllAsRead").then(() => {
+        this.read.concat(this.unread);
+        this.unread.splice(0, this.unread.length);
         this.unreadCount = 0;
       });
     },
