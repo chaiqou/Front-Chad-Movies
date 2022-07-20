@@ -3,8 +3,10 @@
     <button @click="toggleNotificationModal">
       <IconBell />
     </button>
-    <span class="text-white font-bold px-2 mr-4 rounded-xl mb-8 bg-red-500"
-      >5</span
+    <span
+      v-if="unreadCount > 0"
+      class="text-white font-bold px-2 mr-4 rounded-xl mb-8 bg-red-500"
+      >{{ unreadCount }}</span
     >
   </div>
   <DashboardNotificationModal v-if="toggleNotification" />
@@ -44,7 +46,6 @@ export default {
       axios
         .post("/notifications")
         .then((response) => {
-          console.log(response);
           this.read = response.data.read;
           this.unread = response.data.unread;
           this.unreadCount = response.data.unread.length;
