@@ -44,17 +44,27 @@
             />
             <div class="flex items-center justify-between">
               <div class="ml-4">
-                <p class="text-base font-medium text-white">
-                  {{ notification.commentBy }}
-                </p>
-                <p class="mt-1 text-sm text-white flex">
+                <div
+                  v-if="notification.data.hasOwnProperty('commentBy')"
+                  class="mt-1 text-sm text-white flex"
+                >
+                  <p class="text-base font-medium text-white">
+                    {{ notification.data.commentBy }}
+                  </p>
                   <IconComment />
-                  <span class="ml-2">{{ notification.comment }}</span>
-                </p>
+                  <span class="ml-2">Commented to your movie quote</span>
+                </div>
+                <div v-else class="mt-1 text-sm text-white flex">
+                  <p class="text-base font-medium text-white">
+                    {{ notification.data.likedBy }}
+                  </p>
+                  <IconSmallHearth />
+                  <span class="ml-2">Reacted to your quote</span>
+                </div>
               </div>
               <div>
                 <p class="text-base font-medium text-white ml-10">
-                  {{ notification.created_at }}
+                  {{ notification.data.created_at }}
                 </p>
                 <p class="mt-1 text-sm text-[#198754] flex">
                   <span class="ml-12">New</span>
@@ -80,17 +90,27 @@
             />
             <div class="flex items-center justify-between">
               <div class="ml-4">
-                <p class="text-base font-medium text-white">
-                  {{ notification.commentBy }}
-                </p>
-                <p class="mt-1 text-sm text-white flex">
+                <div
+                  v-if="notification.data.hasOwnProperty('commentBy')"
+                  class="mt-1 text-sm text-white flex"
+                >
+                  <p class="text-base font-medium text-white">
+                    {{ notification.data.commentBy }}
+                  </p>
                   <IconComment />
-                  <span class="ml-2">{{ notification.comment }}</span>
-                </p>
+                  <span class="ml-2">Commented to your movie quote</span>
+                </div>
+                <div v-else class="mt-1 text-sm text-white flex">
+                  <p class="text-base font-medium text-white">
+                    {{ notification.data.likedBy }}
+                  </p>
+                  <IconSmallHearth />
+                  <span class="ml-2">Reacted to your quote</span>
+                </div>
               </div>
               <div>
                 <p class="text-base font-medium text-white ml-10 mb-6">
-                  {{ notification.created_at }}
+                  {{ notification.data.created_at }}
                 </p>
               </div>
             </div>
@@ -108,8 +128,10 @@ import IconComment from "@/components/icons/IconComment.vue";
 import { mapWritableState } from "pinia";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import axios from "@/config/axios/index";
+import IconSmallHearth from "../icons/IconSmallHearth.vue";
+
 export default {
-  components: { IconComment },
+  components: { IconComment, IconSmallHearth },
   computed: {
     ...mapWritableState(useNotificationsStore, [
       "read",

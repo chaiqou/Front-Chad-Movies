@@ -24,7 +24,7 @@ export default {
 
   data() {
     return {
-      toggleNotification: true,
+      toggleNotification: false,
     };
   },
   computed: {
