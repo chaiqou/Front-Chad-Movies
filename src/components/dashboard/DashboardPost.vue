@@ -91,6 +91,7 @@ import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import axios from "@/config/axios/index";
+
 export default {
   components: { IconDashboardComment, IconDashboardHearth },
   props: {
@@ -107,9 +108,11 @@ export default {
       likeCount: this.quote.likes_count,
     };
   },
+
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
+
   methods: {
     addComment() {
       axios
