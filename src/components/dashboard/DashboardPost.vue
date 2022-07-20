@@ -113,6 +113,15 @@ export default {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
 
+  mounted() {
+    window.Echo.channel(`likeChannel`).listen("LikeEvent", (event) => {
+      console.log(event);
+      if (this.quote.id === event.id) {
+        event.type == 1 ? this.likeCount++ : this.likeCount--;
+      }
+    });
+  },
+
   methods: {
     addComment() {
       axios
