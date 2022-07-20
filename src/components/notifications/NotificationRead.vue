@@ -8,33 +8,39 @@
       class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-900 transition ease-in-out duration-150"
       z
     >
-      <img
-        src="https://i.ibb.co/C1sj76g/Screenshot-from-2022-07-18-22-07-37.png"
-        alt="profildis foto"
-        class="w-8 h-8 object-cover rounded-full"
-      />
       <div class="flex items-center justify-between">
-        <div class="ml-4">
+        <div class="flex">
+          <img
+            src="https://i.ibb.co/C1sj76g/Screenshot-from-2022-07-18-22-07-37.png"
+            alt="profildis foto"
+            class="w-8 h-8 mr-4 object-cover rounded-full"
+          />
           <div
             v-if="notification.data.hasOwnProperty('commentBy')"
-            class="mt-1 text-sm text-white flex"
+            class="text-sm text-white flex-col"
           >
-            <p class="text-base font-medium text-white">
+            <p class="text-base font-medium mb-6 mr-24 text-white">
               {{ notification.data.commentBy }}
             </p>
-            <IconComment />
-            <span class="ml-2">Commented to your movie quote</span>
+            <div class="flex items-center">
+              <IconComment />
+              <p class="ml-2 whitespace-nowrap">
+                Commented to your movie quote
+              </p>
+            </div>
           </div>
-          <div v-else class="mt-1 text-sm text-white flex">
-            <p class="text-base font-medium text-white">
+          <div v-else class="text-sm text-white flex-col">
+            <p class="text-base font-medium mb-6 mr-24 text-white">
               {{ notification.data.likedBy }}
             </p>
-            <IconSmallHearth />
-            <span class="ml-2">Reacted to your quote</span>
+            <div class="flex items-center">
+              <IconSmallHearth />
+              <span class="ml-2">Reacted to your quote</span>
+            </div>
           </div>
         </div>
         <div>
-          <p class="text-base font-medium text-white ml-10 mb-6">
+          <p class="text-base font-medium text-white mb-12">
             {{ notification.data.created_at }}
           </p>
         </div>
