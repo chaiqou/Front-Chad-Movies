@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useAuthTokenStore = defineStore("useAuthTokenStore", {
   state: () => ({
     token: "",
+    userId: "",
   }),
   actions: {
     setToken(ctx) {
@@ -12,6 +13,10 @@ export const useAuthTokenStore = defineStore("useAuthTokenStore", {
     clearToken() {
       localStorage.removeItem("auth");
       this.token = "";
+    },
+    setUserId(ctx) {
+      localStorage.setItem("userId", ctx);
+      this.userId = ctx;
     },
   },
 });

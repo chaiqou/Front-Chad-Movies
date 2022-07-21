@@ -94,7 +94,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(useAuthTokenStore, ["setToken", "clearToken"]),
+    ...mapActions(useAuthTokenStore, ["setToken", "clearToken", "setUserId"]),
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
 
     onSubmitLogin() {
@@ -107,6 +107,8 @@ export default {
         })
 
         .then((response) => {
+          console.log(response);
+          this.setUserId(response.data.user);
           this.form_submmiting = false;
           this.setToken(response.data.access_token);
           axios.defaults.headers[

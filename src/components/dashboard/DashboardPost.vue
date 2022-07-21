@@ -128,8 +128,7 @@ export default {
         .post("quotes/" + this.quote.id + "/comment", {
           body: this.commentBody,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.commentBody = "";
         })
         .catch((error) => {

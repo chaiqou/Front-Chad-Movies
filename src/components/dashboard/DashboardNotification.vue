@@ -56,11 +56,11 @@ export default {
           console.log(error);
         });
 
-      window.Echo.private("App.Models.User." + this.user).notification(
-        (notification) => {
-          console.log(notification.type);
-        }
-      );
+      window.Echo.private(
+        "App.Models.User." + localStorage.getItem("userId")
+      ).notification((notification) => {
+        console.log(notification.type);
+      });
     },
   },
 };
