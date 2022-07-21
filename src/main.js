@@ -1,18 +1,14 @@
 import App from "@/App.vue";
 import router from "@/router";
-
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-
 import "@/config/vee-validate/rules";
 import "@/config/vee-validate/messages";
 import "@/main.css";
-
 import Echo from "laravel-echo";
-
 import Pusher from "pusher-js";
-window.Pusher = Pusher;
 
+window.Pusher = Pusher;
 window.Echo = new Echo({
   authEndpoint: "http://localhost:8000/broadcasting/auth",
   broadcaster: "pusher",

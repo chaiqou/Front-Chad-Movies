@@ -3,6 +3,7 @@
   <DashboardTimeline>
     <DashboardNewQuote />
     <DashboardPost v-for="quote in quotes" :key="quote.id" :quote="quote" />
+    <observer @intersect="intersected" />
   </DashboardTimeline>
 </template>
 
@@ -14,6 +15,7 @@ import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import DashboardNewQuote from "@/components/dashboard/DashboardNewQuote.vue";
 import DashboardPost from "@/components/dashboard/DashboardPost.vue";
+import observer from "@/components/helpers/observer.vue";
 
 export default {
   components: {
@@ -21,6 +23,12 @@ export default {
     DashboardTimeline,
     DashboardNewQuote,
     DashboardPost,
+    observer,
+  },
+  data() {
+    return {
+      page: 1,
+    };
   },
 
   computed: {
@@ -36,6 +44,20 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+
+  methods: {
+    async intersected() {
+      await axios
+        .get(`quotes?page=${this.page++}`)
+        .then((response) => {
+          console.log(response);
+          this.quotes = [...this.quotes, ...response.data.data];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
