@@ -14,11 +14,12 @@ import Pusher from "pusher-js";
 window.Pusher = Pusher;
 
 window.Echo = new Echo({
+  authEndpoint: "http://localhost:8000/broadcasting/auth",
   broadcaster: "pusher",
   key: "a5f71dba33215ec7e280",
   cluster: "ap2",
   forceTLS: true,
-  disableStats: true,
+  encrypted: true,
   auth: {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("auth")}`,

@@ -78,7 +78,7 @@ export default {
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
-  // aqac shemidzlia mixinis gaketeba
+
   mounted() {
     if (localStorage.getItem("auth") !== null) {
       axios
@@ -107,7 +107,6 @@ export default {
         })
 
         .then((response) => {
-          console.log(response);
           this.setUserId(response.data.user);
           this.form_submmiting = false;
           this.setToken(response.data.access_token);

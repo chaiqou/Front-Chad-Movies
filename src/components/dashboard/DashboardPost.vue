@@ -40,14 +40,12 @@
         <p class="mr-2 text-white font-bold">{{ quote.comments_count }}</p>
         <IconDashboardComment />
       </button>
-      <!-- LIKE BUTTON aq -->
       <button class="flex justify-center py-2 rounded-lg" @click="likePost">
         <p class="mr-2 text-white font-bold">{{ likeCount }}</p>
         <IconDashboardHearth :fill="likedPost ? 'red' : 'white'" />
       </button>
     </div>
     <div v-if="commentToggle" class="border-t border-gray-700 p-4 pt-2">
-      <!-- aq tviton komentarebi v-for_it -->
       <div
         v-for="comment in quote.comments"
         :key="comment.id"
@@ -62,14 +60,15 @@
         </div>
         <div class="ml-4 flex-1">
           <div class="bg-[#11101A] rounded-lg p-2 text-sm">
-            <p class="mb-2 font-bold text-white">{{ comment.user }}</p>
+            <p class="mb-2 font-bold text-white">
+              {{ comment.user }}
+            </p>
             <p class="inline text-white">{{ comment.body }}</p>
           </div>
           <div class="border-b border-gray-700 p-4 pt-2"></div>
         </div>
       </div>
 
-      <!-- es komentaris dasaweri div -->
       <div class="flex">
         <input
           v-model="commentBody"
@@ -119,6 +118,10 @@ export default {
       if (this.quote.id === event.id) {
         event.type == 1 ? this.likeCount++ : this.likeCount--;
       }
+    });
+    window.Echo.channel(`commentChannel`).listen("CommentEvent", (event) => {
+      this.quote.comments.unshift(event.comment);
+      this.quote.comments_count++;
     });
   },
 

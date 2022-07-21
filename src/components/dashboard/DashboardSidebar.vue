@@ -51,7 +51,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
           this.user = response.data.data[0];
           this.loading = false;
         })

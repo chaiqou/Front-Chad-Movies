@@ -38,6 +38,15 @@ export default {
   },
   created() {
     this.getNotifications();
+    // console.log("modis");
+    // window.Echo.private(
+    //   `App.Models.User.${localStorage.getItem("userId")}`
+    // ).notification((notification) => {
+    //   console.log(notification);
+    //   this.unread.unshift(notification);
+    //   this.unreadCount++;
+    // });
+    // console.log("modis");
   },
 
   methods: {
@@ -55,12 +64,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-
-      window.Echo.private(
-        "App.Models.User." + localStorage.getItem("userId")
-      ).notification((notification) => {
-        console.log(notification.type);
-      });
     },
   },
 };
