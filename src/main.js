@@ -18,6 +18,12 @@ window.Echo = new Echo({
   key: "a5f71dba33215ec7e280",
   cluster: "ap2",
   forceTLS: true,
+  disableStats: true,
+  auth: {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("auth")}`,
+    },
+  },
 });
 
 const app = createApp(App);

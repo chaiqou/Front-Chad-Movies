@@ -18,6 +18,7 @@ import DashboardNotificationModal from "@/components/dashboard/DashboardNotifica
 import { mapWritableState } from "pinia";
 import axios from "@/config/axios/index";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
   components: { IconBell, DashboardNotificationModal },
@@ -33,6 +34,7 @@ export default {
       "unread",
       "unreadCount",
     ]),
+    ...mapWritableState(useUserProfileStore, ["user"]),
   },
   created() {
     this.getNotifications();
@@ -53,6 +55,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      window.Echo.private("App.Models.User." + this.user).notification(
+        (notification) => {
+          console.log(notification.type);
+        }
+      );
     },
   },
 };

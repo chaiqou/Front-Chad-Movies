@@ -113,7 +113,7 @@ export default {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
 
-  mounted() {
+  created() {
     window.Echo.channel(`likeChannel`).listen("LikeEvent", (event) => {
       console.log(event);
       if (this.quote.id === event.id) {
@@ -141,10 +141,12 @@ export default {
       this.likedPost = !this.likedPost;
     },
     incrementLike() {
-      axios.post("like/" + this.quote.id).then(() => this.likeCount++);
+      axios.post("like/" + this.quote.id).then(() => console.log("gaizarda"));
     },
     decrementLike() {
-      axios.delete("like/" + this.quote.id).then(() => this.likeCount--);
+      axios
+        .delete("like/" + this.quote.id)
+        .then(() => console.log("shemcirda"));
     },
   },
 };
