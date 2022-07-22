@@ -25,6 +25,11 @@
       rules="required"
       @change="selectFile"
     />
+    <Field v-model="movie_id" as="select" rules="required" name="moviename">
+      <option v-for="data in movies" :key="data.id" :value="data.id">
+        {{ JSON.stringify(data.title.en) }}
+      </option>
+    </Field>
     <div v-if="thumbnail">
       <img :src="thumbnail" alt="movieimages" height="40" />
     </div>
@@ -42,6 +47,9 @@
 import { Form as FormVee, Field } from "vee-validate";
 import MovieInput from "../form/MovieInput.vue";
 import axios from "@/config/axios/index";
+import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
+import { mapWritableState } from "pinia";
+
 export default {
   components: {
     FormVee,
@@ -55,10 +63,57 @@ export default {
     };
   },
 
+  computed: {
+    ...mapWritableState(useAddQuoteStore, [
+      "form_submmiting",
+      "quote_en",
+      "quote_ka",
+      "thumbnail",
+      "getQuoteData",
+      "movie_id",
+    ]),
+  },
+
   mounted() {
     axios.get("movies").then((response) => {
+      console.log(response);
       this.movies = response.data.data;
     });
+  },
+
+  methods: {
+    // for mixins
+    selectFile(event) {
+      let file = event.target.files[0];
+      this.thumbnail = file;
+
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        this.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+
+    onSubmitForm() {
+      this.form_submmiting = true;
+
+      let fields = new FormData();
+
+      fields.append("quote_en", this.quote_en);
+      fields.append("quote_ka", this.quote_ka);
+      fields.append("thumbnail", this.thumbnail);
+      fields.append("movie_id", this.movie_id);
+
+      axios
+        .post("/quotes", fields)
+        .then(() => {
+          this.form_submmiting = false;
+          this.$router.back();
+        })
+        .catch(() => {
+          this.form_submmiting = false;
+        });
+    },
   },
 };
 </script>

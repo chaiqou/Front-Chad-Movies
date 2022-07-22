@@ -3,7 +3,7 @@
     <nav class="flex-1 px-2 py-4 space-y-1">
       <li class="text-white space-y-8 list-none">
         <ul v-if="user">
-          <p class="font-bold font-32">{{ user.name }}</p>
+          <p class="font-bold font-32">{{ user.data.name }}</p>
           <router-link class="text-[#CED4DA] text-sm" :to="`/users/${user.id}`"
             >edit your profile</router-link
           >

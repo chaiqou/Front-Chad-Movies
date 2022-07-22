@@ -4,6 +4,7 @@ export const useAddQuoteStore = defineStore("useAddQuoteStore", {
   state: () => ({
     quote_en: "",
     quote_ka: "",
+    movie_id: "",
     thumbnail: null,
     form_submmiting: false,
     individual_quote: {},
