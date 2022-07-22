@@ -6,7 +6,6 @@
         >My list of movies (Total {{ movies.length }})</span
       >
       <div class="flex justify-end items-center">
-        <!-- aqedan buttonamde !-->
         <div class="invisible md:visible">
           <div class="mt-4 mr-4 relative rounded-md">
             <input
@@ -41,7 +40,6 @@
         <MovieForm />
       </CrudModal>
     </div>
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>

@@ -89,67 +89,35 @@ import IconDashboardComment from "../icons/IconDashboardComment.vue";
 import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
-import axios from "@/config/axios/index";
+
+import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
+import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
+import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
 
 export default {
   components: { IconDashboardComment, IconDashboardHearth },
+
+  mixins: [
+    LikeAndUnlikeMixin,
+    ListenToCommentAndLikeMixin,
+    AddCommentToPostMixin,
+  ],
+
   props: {
     quote: {
       type: Object,
       required: true,
     },
   },
+
   data() {
     return {
       commentToggle: false,
-      commentBody: "",
-      likedPost: this.quote.liked,
-      likeCount: this.quote.likes_count,
     };
   },
 
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
-  },
-
-  created() {
-    window.Echo.channel(`likeChannel`).listen("LikeEvent", (event) => {
-      console.log(event);
-      if (this.quote.id === event.id) {
-        event.type == 1 ? this.likeCount++ : this.likeCount--;
-      }
-    });
-    window.Echo.channel(`commentChannel`).listen("CommentEvent", (event) => {
-      this.quote.comments.unshift(event.comment);
-      this.quote.comments_count++;
-    });
-  },
-
-  methods: {
-    addComment() {
-      axios
-        .post("quotes/" + this.quote.id + "/comment", {
-          body: this.commentBody,
-        })
-        .then(() => {
-          this.commentBody = "";
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    likePost() {
-      this.likedPost ? this.decrementLike() : this.incrementLike();
-      this.likedPost = !this.likedPost;
-    },
-    incrementLike() {
-      axios.post("like/" + this.quote.id).then(() => console.log("gaizarda"));
-    },
-    decrementLike() {
-      axios
-        .delete("like/" + this.quote.id)
-        .then(() => console.log("shemcirda"));
-    },
   },
 };
 </script>
