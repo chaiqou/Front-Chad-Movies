@@ -1,19 +1,19 @@
 export default {
   props: {
-    quote: {
+    quotedata: {
       type: Object,
       required: true,
     },
   },
   created() {
     window.Echo.channel(`likeChannel`).listen("LikeEvent", (event) => {
-      if (this.quote.id === event.id) {
+      if (this.quotedata.id === event.id) {
         event.type == 1 ? this.likeCount++ : this.likeCount--;
       }
     });
     window.Echo.channel(`commentChannel`).listen("CommentEvent", (event) => {
-      this.quote.comments.unshift(event.comment);
-      this.quote.comments_count++;
+      this.quotedata.comments.unshift(event.comment);
+      this.quotedata.comments_count++;
     });
   },
 };

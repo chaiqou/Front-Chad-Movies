@@ -2,7 +2,7 @@ import axios from "@/config/axios/index";
 
 export default {
   props: {
-    quote: {
+    quotedata: {
       type: Object,
       required: true,
     },
@@ -10,8 +10,8 @@ export default {
 
   data() {
     return {
-      likedPost: this.quote.liked,
-      likeCount: this.quote.likes_count,
+      likedPost: this.quotedata.liked,
+      likeCount: this.quotedata.likes_count,
     };
   },
 
@@ -21,12 +21,10 @@ export default {
       this.likedPost = !this.likedPost;
     },
     incrementLike() {
-      axios.post("like/" + this.quote.id).then(() => console.log("gaizarda"));
+      axios.post("like/" + this.quotedata.id);
     },
     decrementLike() {
-      axios
-        .delete("like/" + this.quote.id)
-        .then(() => console.log("shemcirda"));
+      axios.delete("like/" + this.quotedata.id);
     },
   },
 };

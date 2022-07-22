@@ -7,7 +7,7 @@ export const useAddQuoteStore = defineStore("useAddQuoteStore", {
     movie_id: "",
     thumbnail: null,
     form_submmiting: false,
-    individual_quote: {},
+    individual_quotes: [],
   }),
 
   getters: {

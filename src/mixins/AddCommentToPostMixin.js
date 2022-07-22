@@ -2,7 +2,7 @@ import axios from "@/config/axios/index";
 
 export default {
   props: {
-    quote: {
+    quotedata: {
       type: Object,
       required: true,
     },
@@ -15,7 +15,7 @@ export default {
   methods: {
     addComment() {
       axios
-        .post("quotes/" + this.quote.id + "/comment", {
+        .post("quotes/" + this.quotedata.id + "/comment", {
           body: this.commentBody,
         })
         .then(() => {

@@ -2,7 +2,11 @@
   <DashboardLayout />
   <DashboardTimeline>
     <DashboardNewQuote />
-    <DashboardPost v-for="quote in quotes" :key="quote.id" :quote="quote" />
+    <DashboardPost
+      v-for="quotedata in quotes || []"
+      :key="quotedata.id"
+      :quotedata="quotedata"
+    />
     <observer @intersect="intersected" />
   </DashboardTimeline>
 </template>

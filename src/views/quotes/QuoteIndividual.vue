@@ -1,6 +1,6 @@
 <template>
   <DashboardShowSinglePost
-    :post="individual_quote"
+    :quotedata="individual_quote"
     :backend="backurl"
   ></DashboardShowSinglePost>
 </template>
@@ -11,15 +11,17 @@ import axios from "@/config/axios/index";
 import { mapWritableState } from "pinia";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { useMovieListStore } from "@/stores/useMovieListStore";
+import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 
 export default {
   components: { DashboardShowSinglePost },
   computed: {
     ...mapWritableState(useAddQuoteStore, ["individual_quote"]),
     ...mapWritableState(useMovieListStore, ["backurl"]),
+    ...mapWritableState(useDashboardQuotesStore, ["quotes"]),
   },
-  created() {
-    axios
+  async created() {
+    await axios
       .get(`/quotes/${this.$route.params.id}`)
       .then((response) => {
         this.individual_quote = response.data.data;

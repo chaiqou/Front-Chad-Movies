@@ -11,22 +11,24 @@
         </div>
         <div class="ml-6">
           <div class="text-sm text-white font-bold">
-            {{ quote.userinfo.name }}
+            {{ quotedata }}
           </div>
         </div>
       </div>
       <div class="mt-4">
         <p class="text-white font-bold text-sm">
-          "{{ quote.quote.quote.en }}"
-          <router-link :to="`/quote/${quote.id}`">
-            <span class="text-[#DDCCAA]">{{ quote.movieinfo.title.en }}</span>
+          "{{ quotedata.quote.quote.en }}"
+          <router-link :to="`/quote/${quotedata.id}`">
+            <span class="text-[#DDCCAA]">{{
+              quotedata.movieinfo.title.en
+            }}</span>
           </router-link>
         </p>
       </div>
     </div>
     <div class="w-full p-4">
       <img
-        :src="backurl + quote.thumbnail"
+        :src="backurl + quotedata.thumbnail"
         alt="postimage"
         class="w-full rounded-md"
       />
@@ -37,7 +39,7 @@
         class="flex justify-center py-2"
         @click="commentToggle = !commentToggle"
       >
-        <p class="mr-2 text-white font-bold">{{ quote.comments_count }}</p>
+        <p class="mr-2 text-white font-bold">{{ quotedata.comments_count }}</p>
         <IconDashboardComment />
       </button>
       <button class="flex justify-center py-2 rounded-lg" @click="likePost">
@@ -47,7 +49,7 @@
     </div>
     <div v-if="commentToggle" class="border-t border-gray-700 p-4 pt-2">
       <div
-        v-for="comment in quote.comments"
+        v-for="comment in quotedata.comments"
         :key="comment.id"
         class="flex my-4 items-center"
       >
@@ -104,7 +106,7 @@ export default {
   ],
 
   props: {
-    quote: {
+    quotedata: {
       type: Object,
       required: true,
     },
