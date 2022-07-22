@@ -1,9 +1,9 @@
 <template>
   <div
-    class="relative overflow-hidden md:-mt-[100vh] -mt-[90vh] overscroll-none"
+    class="relative overflow-hidden md:-mt-[100vh] -mt-[90vh] md:pb-14 overscroll-none"
   >
     <div
-      class="flex items-center md:bg-[#222030] md:max-w-2xl md:rounded-xl md:h-1/8 md:mt-36 md:m-auto justify-center min-h-full p-4 text-center"
+      class="flex items-center md:bg-[#222030] p-8 md:max-w-2xl md:rounded-xl md:h-1/8 md:mt-36 md:m-auto justify-center min-h-full text-center"
     >
       <div
         class="relative rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden sm:my-8 sm:max-w-sm sm:w-full sm:p-6"
