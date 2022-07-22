@@ -41,11 +41,24 @@
 <script>
 import { Form as FormVee, Field } from "vee-validate";
 import MovieInput from "../form/MovieInput.vue";
+import axios from "@/config/axios/index";
 export default {
   components: {
     FormVee,
     Field,
     MovieInput,
+  },
+
+  data() {
+    return {
+      movies: [],
+    };
+  },
+
+  mounted() {
+    axios.get("movies").then((response) => {
+      this.movies = response.data.data;
+    });
   },
 };
 </script>

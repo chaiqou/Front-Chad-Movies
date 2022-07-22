@@ -35,17 +35,6 @@ export default {
     ...mapWritableState(useDashboardQuotesStore, ["quotes"]),
   },
 
-  mounted() {
-    axios
-      .get("quotes")
-      .then((response) => {
-        this.quotes = response.data.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
-
   methods: {
     async intersected() {
       await axios

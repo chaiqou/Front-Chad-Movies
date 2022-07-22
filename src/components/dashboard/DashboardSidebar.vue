@@ -51,7 +51,7 @@ export default {
           },
         })
         .then((response) => {
-          this.user = response.data.data[0];
+          this.user = response.data;
           this.loading = false;
         })
         .catch(() => {
