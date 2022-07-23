@@ -25,7 +25,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/forgot-password",
+      path: "/forgot-password/",
       name: "forgot-password-page",
       components: {
         default: () => import("@/views/forgotPassword/ForgotPasswordView.vue"),
@@ -37,6 +37,22 @@ const router = createRouter({
       name: "forgot-password-email-sent-page",
       components: {
         default: () => import("@/views/forgotPassword/ForgotEmailSend.vue"),
+        HomeView: () => import("@/views/HomeView.vue"),
+      },
+    },
+    {
+      path: "/reset-password",
+      name: "reset-password-page",
+      components: {
+        default: () => import("@/views/forgotPassword/ResetPasswordView.vue"),
+        HomeView: () => import("@/views/HomeView.vue"),
+      },
+    },
+    {
+      path: "/reset-password-success",
+      name: "reset-password-success-page",
+      components: {
+        default: () => import("@/views/forgotPassword/ResetPasswordSucces.vue"),
         HomeView: () => import("@/views/HomeView.vue"),
       },
     },
