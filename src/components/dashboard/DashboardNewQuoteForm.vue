@@ -76,7 +76,6 @@ export default {
 
   mounted() {
     axios.get("movies").then((response) => {
-      console.log(response);
       this.movies = response.data.data;
     });
   },

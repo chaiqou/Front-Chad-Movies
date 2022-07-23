@@ -1,5 +1,8 @@
 <template>
-  <thanks-modal main-text="Your account has been activated.">
+  <thanks-modal
+    header-text="Thanks"
+    main-text="Your account has been activated."
+  >
     <IconEmailVerified />
     <template #modal-button>
       <router-link

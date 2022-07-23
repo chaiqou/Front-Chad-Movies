@@ -25,6 +25,22 @@ const router = createRouter({
       },
     },
     {
+      path: "/forgot-password",
+      name: "forgot-password-page",
+      components: {
+        default: () => import("@/views/forgotPassword/ForgotPasswordView.vue"),
+        HomeView: () => import("@/views/HomeView.vue"),
+      },
+    },
+    {
+      path: "/forgot-password-email-sent",
+      name: "forgot-password-email-sent-page",
+      components: {
+        default: () => import("@/views/forgotPassword/ForgotEmailSend.vue"),
+        HomeView: () => import("@/views/HomeView.vue"),
+      },
+    },
+    {
       path: "/authorize/google/callback",
       name: "authorize-google-page",
       component: () => import("@/views/LoginGoogle.vue"),
