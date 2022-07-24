@@ -43,7 +43,9 @@ import IconAddNewQuote from "../icons/IconAddNewQuote.vue";
 import IconSearch from "../icons/IconSearch.vue";
 import DashboardNewQuoteForm from "./DashboardNewQuoteForm.vue";
 import CrudModal from "../modals/CrudModal.vue";
-import axios from "@/config/axios/index";
+import { useSearchDataStore } from "@/stores/useSearchDataStore";
+import { mapWritableState } from "pinia";
+
 export default {
   components: {
     IconAddNewQuote,
@@ -51,12 +53,21 @@ export default {
     DashboardNewQuoteForm,
     CrudModal,
   },
+  props: {
+    sendSearchRequest: {
+      type: Function,
+      required: true,
+    },
+  },
+
   data() {
     return {
       toggleDropdown: false,
       toggleModal: false,
-      search: "",
     };
+  },
+  computed: {
+    ...mapWritableState(useSearchDataStore, ["search"]),
   },
   methods: {
     setToggleDropdown() {
@@ -64,36 +75,6 @@ export default {
     },
     setToggleModal() {
       this.toggleModal = !this.toggleModal;
-    },
-    param() {
-      if (this.search.includes("@")) {
-        return {
-          search: this.search.replace("@", ""),
-          type: "movie",
-        };
-      } else if (this.search.includes("#")) {
-        return {
-          search: this.search.replace("#", ""),
-          type: "quote",
-        };
-      } else {
-        return {
-          search: this.search,
-          type: "",
-        };
-      }
-    },
-    sendSearchRequest() {
-      axios
-        .get(`/search`, {
-          params: {
-            type: this.param().type,
-            search: this.param().search,
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-        });
     },
   },
 };

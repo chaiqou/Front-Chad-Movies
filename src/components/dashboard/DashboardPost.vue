@@ -11,7 +11,7 @@
         </div>
         <div class="ml-6">
           <div class="text-sm text-white font-bold">
-            {{ quotedata.userinfo.name }}
+            {{ quotedata.user.name }}
           </div>
         </div>
       </div>
@@ -19,9 +19,7 @@
         <p class="text-white font-bold text-sm">
           "{{ quotedata.quote.quote.en }}"
           <router-link :to="`/quote/${quotedata.id}`">
-            <span class="text-[#DDCCAA]">{{
-              quotedata.movieinfo.title.en
-            }}</span>
+            <span class="text-[#DDCCAA]">{{ quotedata.movie.title.en }}</span>
           </router-link>
         </p>
       </div>
