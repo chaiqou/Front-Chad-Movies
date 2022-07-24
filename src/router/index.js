@@ -115,7 +115,7 @@ const router = createRouter({
     {
       path: "/quote/:id",
       name: "single-quote-page",
-      component: () => import("@/views/quotes/QuoteIndividual.vue"),
+      component: () => import("@/views/quotes/QuoteSingle.vue"),
     },
     {
       path: "/unauthorized",

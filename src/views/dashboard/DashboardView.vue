@@ -74,7 +74,6 @@ export default {
       await axios
         .get(`quotes?page=${this.page++}`)
         .then((response) => {
-          console.log(response);
           this.quotes = [...this.quotes, ...response.data.data];
         })
         .catch((error) => {
