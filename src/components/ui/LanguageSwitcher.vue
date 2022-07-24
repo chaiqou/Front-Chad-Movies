@@ -5,11 +5,11 @@
     @change="handleChange($event)"
   >
     <option class="text-white bg-gray-900" value="english">
-      <span class="mr-4">ENG</span>
+      <span class="mr-4">{{ $t("eng") }}</span>
       <IconArrowDown />
     </option>
     <option class="text-white bg-gray-900" value="georgian">
-      <span class="mr-4">GEO</span>
+      <span class="mr-4">{{ $t("ka") }}</span>
       <IconArrowDown />
     </option>
   </select>

@@ -1,3 +1,41 @@
 {
-  "nav.application.name": "ფილმის ციტატები"
+  "nav.application.name": "ფილმის ციტატები",
+  "signup": "რეგისტრაცია",
+  "login": "შესვლა",
+  "getstarted": "დაწყება",
+  "eng": "ინგლ",
+  "ka": "ქარ",
+
+  "createaccount": "შექმენი ექაუნთი",
+  "startjurney": "დაიწყე მოგზაურობა",
+  "email": "ემეილი",
+  "password": "პაროლი",
+  "confirmpassword": "დაადასტურეთ პაროლი",
+  "firstname": "სახელი",
+  "nameplaceholder": "შეიყვანეთ სახელი",
+  "emailplaceholder": "შეიყვანეთ ემეილი",
+  "passwordplaceholder": "შეიყვანეთ პაროლი",
+  "confirmpasswordplaceholder": "დაადასტურეთ პაროლი",
+  "signgoogle": "გაიარეთ რეგისტრაცია Google-ით",
+  "alreadyhaveanaccount": "უკვე გაქვთ ექაუნთი?",
+  "pleasewait": "გთხოვთ დაიცადოთ...",
+
+  "loginpage": "ექაუნთზე შესვლა",
+  "enteryourdetails": "გთხოვთ შეიყვანოთ თქვენი დეტალები.",
+  "remember": "დამახსოვრება",
+  "forgotpassword": "დაგავიწყდათ პაროლი?",
+  "donthaveaccount": "არ გაქვთ ექაუნთი?",
+
+  "logout": "გამოსვლა",
+  "edityourprofile": "შეცვალეთ თქვენი პროფილი",
+  "dashboard": "მთავარი გვერდი",
+  "movies": "ჩემი ფილმები",
+
+  "writenewquote": "ახლის დაწერა",
+  "searchby": "ძებნა",
+  "mylistofmovies": "ჩემი ფილმები",
+  "total": "სულ",
+  "search": "ძებნა",
+  "addmovie": "ფილმის დამატება",
+  "enter@": "შეიყვანეთ @ ფილმებისთვის ხოლო # ციტატებისთვის"
 }

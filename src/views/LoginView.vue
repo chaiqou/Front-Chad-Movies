@@ -1,30 +1,30 @@
 <template>
   <form-modal>
-    <template #major-text>Log in to your account</template>
-    <template #minor-text>Welcome back! Please enter your details.</template>
+    <template #major-text>{{ $t("loginpage") }}</template>
+    <template #minor-text>{{ $t("enteryourdetails") }}</template>
     <FormVee class="space-y-2" @submit="onSubmitLogin">
       <base-input
         v-model="email"
-        label="Email"
+        :label="$t('email')"
         error-name="email"
         type="text"
-        placeholder="Enter your email"
+        :placeholder="$t('emailplaceholder')"
         rules="required|min:3"
       />
 
       <base-input
         v-model="password"
-        label="Password"
+        :label="$t('password')"
         error-name="password"
         type="password"
         rules="required|min:8"
-        placeholder="Password"
+        :placeholder="$t('passwordplaceholder')"
       />
       <div class="flex items-center justify-between">
-        <base-checkbox v-model="remember" label="Remember me" />
-        <router-link class="text-[#0D6EFD] underline" to="/forgot-password"
-          >Forgot password</router-link
-        >
+        <base-checkbox v-model="remember" :label="$t('remember')" />
+        <router-link class="text-[#0D6EFD] underline" to="/forgot-password">{{
+          $t("forgotpassword")
+        }}</router-link>
       </div>
 
       <div class="mt-5 sm:mt-6 items-center text-center">
@@ -32,18 +32,18 @@
           :disabled="form_submmiting"
           class="inline-flex justify-center w-full mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
         >
-          {{ form_submmiting ? "Please wait..." : "Sign in" }}
+          {{ form_submmiting ? `${$t("pleasewait")}` : `${$t("getstarted")}` }}
         </button>
-        <google-button :login-google="onSubmitLoginGoogle"
-          >Sign in with Google</google-button
-        >
+        <google-button :login-google="onSubmitLoginGoogle">{{
+          $t("signgoogle")
+        }}</google-button>
       </div>
     </FormVee>
     <template #have-account>
-      Don't have an account?
-      <router-link class="text-[#0D6EFD] underline" to="/register"
-        >Sign up</router-link
-      >
+      {{ $t("donthaveaccount") }}
+      <router-link class="text-[#0D6EFD] underline" to="/register">{{
+        $t("signup")
+      }}</router-link>
     </template>
   </form-modal>
 </template>

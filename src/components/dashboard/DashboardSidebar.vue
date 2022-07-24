@@ -4,8 +4,10 @@
       <li class="text-white space-y-8 list-none">
         <ul v-if="user">
           <p class="font-bold font-32">{{ user.data.name }}</p>
-          <router-link class="text-[#CED4DA] text-sm" :to="`/users/${user.id}`"
-            >edit your profile</router-link
+          <router-link
+            class="text-[#CED4DA] text-sm"
+            :to="`/users/${user.id}`"
+            >{{ $t("edityourprofile") }}</router-link
           >
         </ul>
         <router-link class="flex items-center" to="/dashboard">
@@ -13,15 +15,15 @@
             class="mr-4"
             :fill="$route.path === '/dashboard' ? 'red' : 'white'"
           ></IconHome>
-          News Feed
-        </router-link>
+          {{ $t("dashboard") }}</router-link
+        >
 
         <router-link to="/movies" class="flex items-center">
           <IconMovie
             class="mr-4"
             :fill="$route.path === '/movies' ? 'red' : 'white'"
           ></IconMovie>
-          List of movies
+          {{ $t("movies") }}
         </router-link>
       </li>
     </nav>

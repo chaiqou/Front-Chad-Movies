@@ -3,7 +3,8 @@
   <DashboardTimeline>
     <div class="flex justify-between items-center">
       <span class="text-white font-medium text-24 ml-8 md:ml-0"
-        >My list of movies (Total {{ movies.length }})</span
+        >{{ $t("mylistofmovies") }} ({{ $t("total") }}
+        {{ movies.length }})</span
       >
       <div class="flex justify-end items-center">
         <div class="invisible md:visible">
@@ -18,7 +19,7 @@
             >
               <p class="flex items-center invisible md:visible space-x-2 z-10">
                 <IconSearch />
-                <span class="text-white">search</span>
+                <span class="text-white">{{ $t("search") }}</span>
               </p>
             </div>
           </div>
@@ -28,7 +29,7 @@
           @click="addMovieModalToggle"
         >
           <IconAddButton class="mr-2" />
-          Add movie
+          {{ $t("addmovie") }}
         </button>
       </div>
     </div>

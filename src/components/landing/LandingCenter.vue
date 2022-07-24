@@ -14,7 +14,7 @@
       <router-link
         to="/register"
         class="text-white bg-[#E31221] hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
-        >Get started</router-link
+        >{{ $t("getstarted") }}</router-link
       >
     </div>
   </div>

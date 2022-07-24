@@ -10,14 +10,14 @@
         <router-link
           to="/register"
           class="invisible md:visible focus:outline-none text-white bg-[#E31221] hover:bg-red-800 focus:ring-4 font-medium rounded-lg text-sm md:px-8 py-2.5 mr-2 mb-2"
-          >Sign Up</router-link
+          >{{ $t("signup") }}</router-link
         >
       </li>
       <li>
         <router-link
           to="/login"
           class="text-white border border-gray-300 focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-8 py-2.5 mr-2 mb-2"
-          >Log In</router-link
+          >{{ $t("login") }}</router-link
         >
       </li>
     </ul>

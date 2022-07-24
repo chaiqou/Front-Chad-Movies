@@ -19,7 +19,7 @@
               class="text-white border border-gray-300 font-medium rounded-md text-sm px-4 py-2 hidden md:flex"
               @click="logout"
             >
-              Log Out
+              {{ $t("logout") }}
             </button>
           </div>
         </div>

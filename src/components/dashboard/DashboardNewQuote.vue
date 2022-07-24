@@ -6,13 +6,13 @@
       @click="setToggleModal"
     >
       <IconAddNewQuote class="ml-3" />
-      <span class="ml-4"> Write new quote</span>
+      <span class="ml-4">{{ $t("writenewquote") }}</span>
     </button>
     <div>
       <button v-if="!toggleDropdown" @click="setToggleDropdown">
         <p class="flex items-center invisible md:visible space-x-2 z-10">
           <IconSearch />
-          <span class="text-white">Search by</span>
+          <span class="text-white">{{ $t("searchby") }}</span>
         </p>
       </button>
       <div v-else>
@@ -23,7 +23,7 @@
               :class="[toggleDropdown ? 'w-[600px]' : 'w-full']"
               type="text"
               class="block pr-10 text-white border-none bg-inherit p-3 rounded-md"
-              placeholder="Enter @ to search movies, Enter # to search quotes"
+              :placeholder="$t('enter@')"
               @keypress.enter="sendSearchRequest"
             />
             <div class="border border-gray-800 border-b-1"></div>

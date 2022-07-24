@@ -1,3 +1,41 @@
 {
-  "nav.application.name": "Movie Quotes"
+  "nav.application.name": "Movie Quotes",
+  "signup": "Sign Up",
+  "login": "Log In",
+  "getstarted": "Get Started",
+  "eng": "ENG",
+  "ka": "KA",
+
+  "createaccount": "Create an Account",
+  "startjurney": "დაიწყე მოგზაურობა",
+  "email": "Email",
+  "password": "Password",
+  "confirmpassword": "Confirm Password",
+  "firstname": "First Name",
+  "nameplaceholder": "Enter your name",
+  "emailplaceholder": "Enter your email",
+  "passwordplaceholder": "Enter your password",
+  "confirmpasswordplaceholder": "Confirm your password",
+  "signgoogle": "Sign in with Google",
+  "alreadyhaveanaccount": "Already have an account?",
+  "pleasewait": "Please wait...",
+
+  "loginpage": "Log in to your account",
+  "enteryourdetails": "Welcome back! Please enter your details.",
+  "remember": "Remember me",
+  "forgotpassword": "Forgot password",
+  "donthaveaccount": "Don't have an account?",
+
+  "logout": "Log Out",
+  "edityourprofile": "Edit your profile",
+  "dashboard": "Dashboard",
+  "movies": "List of movies",
+
+  "writenewquote": "Write a new quote",
+  "searchby": "Search by",
+  "mylistofmovies": "My list of movies",
+  "total": "Total",
+  "search": "Search",
+  "addmovie": "Add movie",
+  "enter@": "Enter @ to search movies, Enter # to search quotes"
 }
