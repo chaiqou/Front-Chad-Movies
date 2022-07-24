@@ -5,9 +5,18 @@
     </p>
 
     <ul class="flex items-center">
-      <span class="invisible md:visible md:text-white px-5 py-2.5 mr-2">
-        ENG S
-      </span>
+      <select
+        class="invisible md:visible flex items-center text-white border-none rounded-lg mr-6 bg-gray-900"
+      >
+        <option value="english">
+          <span class="mr-4">ENG</span>
+          <IconArrowDown />
+        </option>
+        <option value="georgian">
+          <span class="mr-4">GEO</span>
+          <IconArrowDown />
+        </option>
+      </select>
       <li>
         <router-link
           to="/register"
@@ -25,3 +34,8 @@
     </ul>
   </nav>
 </template>
+
+<script>
+import IconArrowDown from "../icons/IconArrowDown.vue";
+export default { components: { IconArrowDown } };
+</script>

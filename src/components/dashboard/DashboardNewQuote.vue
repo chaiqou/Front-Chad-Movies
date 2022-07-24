@@ -24,6 +24,7 @@
               type="text"
               class="block pr-10 text-white border-none bg-inherit p-3 rounded-md"
               placeholder="Enter @ to search movies, Enter # to search quotes"
+              @keypress.enter="sendSearchRequest"
             />
             <div class="border border-gray-800 border-b-1"></div>
           </div>
@@ -42,6 +43,7 @@ import IconAddNewQuote from "../icons/IconAddNewQuote.vue";
 import IconSearch from "../icons/IconSearch.vue";
 import DashboardNewQuoteForm from "./DashboardNewQuoteForm.vue";
 import CrudModal from "../modals/CrudModal.vue";
+import axios from "@/config/axios/index";
 export default {
   components: {
     IconAddNewQuote,
@@ -53,6 +55,7 @@ export default {
     return {
       toggleDropdown: false,
       toggleModal: false,
+      search: "",
     };
   },
   methods: {
@@ -61,6 +64,36 @@ export default {
     },
     setToggleModal() {
       this.toggleModal = !this.toggleModal;
+    },
+    param() {
+      if (this.search.includes("@")) {
+        return {
+          search: this.search.replace("@", ""),
+          type: "movie",
+        };
+      } else if (this.search.includes("#")) {
+        return {
+          search: this.search.replace("#", ""),
+          type: "quote",
+        };
+      } else {
+        return {
+          search: this.search,
+          type: "",
+        };
+      }
+    },
+    sendSearchRequest() {
+      axios
+        .get(`/search`, {
+          params: {
+            type: this.param().type,
+            search: this.param().search,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+        });
     },
   },
 };

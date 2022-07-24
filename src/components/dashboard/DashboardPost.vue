@@ -11,7 +11,7 @@
         </div>
         <div class="ml-6">
           <div class="text-sm text-white font-bold">
-            {{ quotedata }}
+            {{ quotedata.userinfo.name }}
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
       </div>
 
       <div class="flex">
-        <input
+        <textarea
           v-model="commentBody"
           type="text"
           name="comment"
