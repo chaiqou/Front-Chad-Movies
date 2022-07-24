@@ -14,10 +14,7 @@
           <div class="ml-3 relative flex items-center space-x-4">
             <IconSearch class="md:hidden" />
             <DashboardNotification />
-            <span class="text-white hidden md:flex">
-              ENG
-              <IconArrowDown class="ml-2" />
-            </span>
+            <LanguageSwitcher />
             <button
               class="text-white border border-gray-300 font-medium rounded-md text-sm px-4 py-2 hidden md:flex"
               @click="logout"
@@ -55,14 +52,14 @@ import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { mapActions, mapWritableState } from "pinia";
 import IconResponsiveNav from "../icons/IconResponsiveNav.vue";
 import IconSearch from "../icons/IconSearch.vue";
-import IconArrowDown from "../icons/IconArrowDown.vue";
 import DashboardNotification from "@/components/dashboard/DashboardNotification.vue";
+import LanguageSwitcher from "../ui/LanguageSwitcher.vue";
 export default {
   components: {
     IconResponsiveNav,
     IconSearch,
-    IconArrowDown,
     DashboardNotification,
+    LanguageSwitcher,
   },
   data() {
     return {

@@ -8,6 +8,7 @@ import "@/config/vee-validate/messages";
 import "@/main.css";
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
+import i18n from "@/config/i18n/index";
 
 window.Pusher = Pusher;
 window.Echo = new Echo({
@@ -27,6 +28,7 @@ window.Echo = new Echo({
 const app = createApp(App);
 
 app.use(createPinia());
+app.use(i18n);
 app.use(router);
 
 app.mount("#app");

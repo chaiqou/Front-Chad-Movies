@@ -1,22 +1,11 @@
 <template>
   <nav class="p-5 flex items-center justify-between whitespace-nowrap">
     <p class="text-[#DDCCAA] text-lg font-medium leadieng-[150%]">
-      MOVIE QUOTES
+      {{ $t("nav.application.name") }}
     </p>
 
     <ul class="flex items-center">
-      <select
-        class="invisible md:visible flex items-center text-white border-none rounded-lg mr-6 bg-gray-900"
-      >
-        <option value="english">
-          <span class="mr-4">ENG</span>
-          <IconArrowDown />
-        </option>
-        <option value="georgian">
-          <span class="mr-4">GEO</span>
-          <IconArrowDown />
-        </option>
-      </select>
+      <LanguageSwitcher />
       <li>
         <router-link
           to="/register"
@@ -36,6 +25,8 @@
 </template>
 
 <script>
-import IconArrowDown from "../icons/IconArrowDown.vue";
-export default { components: { IconArrowDown } };
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher.vue";
+export default {
+  components: { LanguageSwitcher },
+};
 </script>

@@ -15,7 +15,6 @@ export const useEditQuoteStore = defineStore("useEditQuoteStore", {
         quote_en: state.quote_en,
         quote_ka: state.quote_ka,
         thumbnail: state.thumbnail,
-        //   form_submmiting: state.form_submmiting,
       };
     },
   },
