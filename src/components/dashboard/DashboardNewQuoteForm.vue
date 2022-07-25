@@ -29,7 +29,8 @@
       @drop.prevent="dragAndDropFile"
       @change="selectFile"
     >
-      <img class="ml-2" src="@/assets/Photo.svg" alt="" />
+      <span class="ml-3"> <IconCamera /></span>
+
       <span>Drag or drop File or</span>
       <label class="p-1 text-white bg-[#9747FF66] font-bold" for="dropzone"
         >Choose File</label
@@ -42,14 +43,28 @@
         rules="required"
       />
     </div>
+    <div class="appearance-none outline-0 shadow-0 border-none">
+      <Field
+        v-model="movie_id"
+        as="select"
+        rules="required"
+        name="moviename"
+        class="w-full bg-inherit text-white bg-[#000000] appearance-none outline-0 rounded-lg shadow-0"
+      >
+        <option value="" disabled selected>
+          <p class="text-white">
+            <IconVideo />
+            <span class="text-white hidden"> Choose Movie </span>
+          </p>
+        </option>
+        <option v-for="data in movies" :key="data.id" :value="data.id">
+          {{ data.title.en }}
+        </option>
+      </Field>
+    </div>
 
-    <Field v-model="movie_id" as="select" rules="required" name="moviename">
-      <option v-for="data in movies" :key="data.id" :value="data.id">
-        {{ data.title.en }}
-      </option>
-    </Field>
     <div v-if="thumbnail">
-      <img :src="thumbnail" alt="movieimages" height="40" />
+      <img :src="thumbnail" alt="movieimages" height="40" width="600" />
     </div>
 
     <button
@@ -67,12 +82,16 @@ import MovieInput from "../form/MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
+import IconCamera from "../icons/IconCamera.vue";
+import IconVideo from "../icons/IconVideo.vue";
 
 export default {
   components: {
     FormVee,
     Field,
     MovieInput,
+    IconCamera,
+    IconVideo,
   },
 
   data() {

@@ -24,7 +24,14 @@
               <div
                 class="border border-b-0 opacity-25 text-[#EFEFEF] mt-4"
               ></div>
-              <div class="md:text-left text-white mt-8">Nikoloz Lomtadze</div>
+
+              <div class="md:text-left flex items-center text-white m-4">
+                <img
+                  class="h-4 w-4 mr-4"
+                  src="@/assets/images/forbidden-union.png"
+                />
+                Nikoloz Lomtadze
+              </div>
               <slot></slot>
             </div>
           </div>
