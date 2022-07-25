@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-block text-left">
+  <div class="relative h-full inline-block w-full text-left">
     <div>
       <button type="button" @click="toggle">
         <IconDropdownDots />
@@ -13,14 +13,18 @@
       <div class="py-3 px-3 space-y-2">
         <div class="flex items-center">
           <IconDropdownEye />
-          <a href="#" class="text-white block px-3 py-2 text-sm">View Post</a>
+          <router-link
+            class="text-white block px-3 py-2 text-sm"
+            :to="`/quote/${quote.id}`"
+            >View Post</router-link
+          >
         </div>
         <div class="flex items-center">
           <IconDropdownPen />
           <router-link
             :to="{
               name: 'edit-quote-page',
-              params: { id: currentMovie[0].quotes[0].id },
+              params: { id: quote.id },
             }"
             class="text-white block px-3 py-2 text-sm"
             >Edit</router-link
@@ -30,7 +34,7 @@
           <IconDelete />
           <button
             class="text-white block px-3 py-2 text-sm"
-            @click="delete_quote(currentMovie[0].quotes[0].id)"
+            @click="delete_quote(quote.id)"
           >
             Delete
           </button>
@@ -45,8 +49,6 @@ import IconDropdownDots from "@/components/icons/IconDropdownDots.vue";
 import IconDropdownEye from "@/components/icons/IconDropdownEye.vue";
 import IconDropdownPen from "@/components/icons/IconDropdownPen.vue";
 import IconDelete from "@/components/icons/IconDelete.vue";
-import { mapWritableState } from "pinia";
-import { useMovieListStore } from "@/stores/useMovieListStore";
 import axios from "@/config/axios/index";
 
 export default {
@@ -56,14 +58,20 @@ export default {
     IconDropdownPen,
     IconDelete,
   },
+
+  props: {
+    quote: {
+      type: Object,
+      required: true,
+    },
+  },
+
   data() {
     return {
       toggleDropdown: false,
     };
   },
-  computed: {
-    ...mapWritableState(useMovieListStore, ["currentMovie"]),
-  },
+
   methods: {
     toggle() {
       this.toggleDropdown = !this.toggleDropdown;

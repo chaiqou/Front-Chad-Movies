@@ -18,9 +18,7 @@
       <div class="mt-4">
         <p class="text-white font-bold text-sm">
           "{{ quotedata.quote.quote.en }}"
-          <router-link :to="`/quote/${quotedata.id}`">
-            <span class="text-[#DDCCAA]">{{ quotedata.movie.title.en }}</span>
-          </router-link>
+          <span class="text-[#DDCCAA]">{{ quotedata.movie.title.en }}</span>
         </p>
       </div>
     </div>

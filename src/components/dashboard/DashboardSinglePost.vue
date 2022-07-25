@@ -1,6 +1,7 @@
 <template>
+  <DashboardLayout />
   <DashboardTimeline>
-    <div class="bg-[#11101A] rounded-lg w-2/3 mt-6 overflow-hidden">
+    <div class="bg-[#11101A] rounded-lg mt-6 w-2/3 overflow-hidden">
       <div class="flex flex-col p-4">
         <div class="flex items-center">
           <div class="w-8">
@@ -12,13 +13,13 @@
           </div>
           <div class="ml-6">
             <div class="text-sm text-white font-bold">
-              {{ quotedata }}
+              {{ quotedata.user.name }}
             </div>
           </div>
         </div>
         <div class="mt-4">
           <p class="text-white font-bold text-sm">
-            {{ quotedata.quote }}
+            "{{ quotedata.quote.quote.en }}"
             <router-link :to="`/quote/${quotedata.id}`">
               <span class="text-[#DDCCAA]">{{ quotedata.movie.title.en }}</span>
             </router-link>
@@ -73,7 +74,7 @@
         </div>
 
         <div class="flex">
-          <input
+          <textarea
             v-model="commentBody"
             type="text"
             name="comment"
@@ -98,9 +99,15 @@ import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
+import DashboardLayout from "./DashboardLayout.vue";
 
 export default {
-  components: { IconDashboardComment, IconDashboardHearth, DashboardTimeline },
+  components: {
+    IconDashboardComment,
+    IconDashboardHearth,
+    DashboardTimeline,
+    DashboardLayout,
+  },
 
   mixins: [
     LikeAndUnlikeMixin,
