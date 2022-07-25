@@ -26,7 +26,12 @@
       @change="selectFile"
     />
     <div v-if="thumbnail">
-      <img :src="thumbnail" alt="movieimages" height="240" width="600" />
+      <img
+        :src="backurl + thumbnail"
+        alt="movieimages"
+        height="240"
+        width="600"
+      />
     </div>
 
     <button
@@ -42,9 +47,9 @@
 import { Form as FormVee, Field } from "vee-validate";
 import MovieInput from "@/components/form/MovieInput.vue";
 import axios from "@/config/axios/index";
-import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
+import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
-import { useMovieListStore } from "@/stores/useMovieListStore";
+import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
 
 export default {
   components: {
@@ -53,23 +58,19 @@ export default {
     MovieInput,
   },
   computed: {
-    ...mapWritableState(useEditQuoteStore, [
-      "form_submmiting",
+    ...mapWritableState(useAddQuoteStore, [
       "quote_en",
       "quote_ka",
+      "movie_id",
       "thumbnail",
+      "form_submmiting",
       "getQuoteData",
-      "backurl",
     ]),
-    ...mapWritableState(useMovieListStore, ["currentMovie"]),
+    ...mapWritableState(useEditQuoteStore, ["backurl"]),
   },
+
   mounted() {
-    axios.get("quotes/" + this.$route.params.id).then((res) => {
-      this.quote_en = res.data.data[0].quote["en"];
-      this.quote_ka = res.data.data[0].quote["ka"];
-      this.id = res.data.data[0].id;
-      this.thumbnail = res.data.data[0].thumbnail;
-    });
+    this.fetchAppropiateQuote();
   },
 
   methods: {
@@ -91,16 +92,30 @@ export default {
       for (let key in this.getQuoteData) {
         fields.append(key, this.getQuoteData[key]);
       }
-      fields.append("movie_id", this.currentMovie[0].id);
+
       axios
         .put(`/quotes/${this.$route.params.id}`, this.getQuoteData)
         .then(() => {
           this.form_submmiting = false;
+          this.toggle = false;
           this.$router.back();
         })
         .catch(() => {
           this.form_submmiting = false;
         });
+    },
+    fetchAppropiateQuote() {
+      if (!this.$route.params.id) {
+        console.log("loading");
+      } else {
+        axios.get(`/quotes/${this.$route.params.id}`).then((res) => {
+          console.log(res.data.data);
+          this.quote_en = res.data.data.quote.quote.en;
+          this.quote_ka = res.data.data.quote.quote.ka;
+          this.movie_id = res.data.data.movie.id;
+          this.thumbnail = res.data.data.thumbnail;
+        });
+      }
     },
   },
 };
