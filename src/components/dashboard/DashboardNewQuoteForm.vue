@@ -27,6 +27,7 @@
       @dragleave.prevent="toggleActive"
       @dragover.prevent
       @drop.prevent="dragAndDropFile"
+      @change="selectFile"
     >
       <img class="ml-2" src="@/assets/Photo.svg" alt="" />
       <span>Drag or drop File or</span>
@@ -41,6 +42,7 @@
         rules="required"
       />
     </div>
+
     <Field v-model="movie_id" as="select" rules="required" name="moviename">
       <option v-for="data in movies" :key="data.id" :value="data.id">
         {{ data.title.en }}
@@ -99,11 +101,24 @@ export default {
 
   methods: {
     selectFile(event) {
-      let file = event.target.files[0] || event.dataTransfer.files[0];
+      let file = event.target.files[0];
       this.thumbnail = file;
 
       let reader = new FileReader();
       reader.onload = (e) => {
+        console.log(e.target.result);
+        this.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+
+    dragAndDropFile(event) {
+      let file = event.dataTransfer.files[0];
+      this.thumbnail = file;
+
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -132,10 +147,6 @@ export default {
 
     toggleActive() {
       this.active = !this.active;
-    },
-
-    dragAndDropFile(e) {
-      this.thumbnail = e.dataTransfer.files[0];
     },
   },
 };
