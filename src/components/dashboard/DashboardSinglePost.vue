@@ -1,7 +1,11 @@
 <template>
   <DashboardLayout />
   <DashboardTimeline>
-    <div class="bg-[#11101A] rounded-lg mt-6 w-2/3 overflow-hidden">
+    <div
+      class="bg-[#11101A] rounded-lg mt-8 md:w-3/4 items-center ml-70 overflow-hidden"
+    >
+      <DashboardSinglePostHeader :quotedata="quotedata" />
+      <div class="border-b border-gray-800"></div>
       <div class="flex flex-col p-4">
         <div class="flex items-center">
           <div class="w-8">
@@ -17,12 +21,18 @@
             </div>
           </div>
         </div>
-        <div class="mt-4">
-          <p class="text-white font-bold text-sm">
-            "{{ quotedata.quote.quote.en }}"
-            <router-link :to="`/quote/${quotedata.id}`">
-              <span class="text-[#DDCCAA]">{{ quotedata.movie.title.en }}</span>
-            </router-link>
+        <div class="mt-4 space-y-4">
+          <p
+            class="border flex justify-between border-gray-500 p-4 font-bold text-sm"
+          >
+            <span class="text-white">"{{ quotedata.quote.quote.en }}"</span>
+            <span class="text-[#6C757D]">Eng</span>
+          </p>
+          <p
+            class="text-white border flex justify-between border-gray-500 p-4 font-bold text-sm"
+          >
+            <span>"{{ quotedata.quote.quote.ka }}"</span>
+            <span class="text-[#6C757D]">ქარ</span>
           </p>
         </div>
       </div>
@@ -100,6 +110,7 @@ import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
 import DashboardLayout from "./DashboardLayout.vue";
+import DashboardSinglePostHeader from "./DashboardSinglePostHeader.vue";
 
 export default {
   components: {
@@ -107,6 +118,7 @@ export default {
     IconDashboardHearth,
     DashboardTimeline,
     DashboardLayout,
+    DashboardSinglePostHeader,
   },
 
   mixins: [
