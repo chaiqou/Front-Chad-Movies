@@ -33,7 +33,11 @@
     </div>
   </div>
 
-  <CrudModal v-if="toggleModal">
+  <CrudModal
+    v-if="toggleModal"
+    title="write new quote"
+    :toggle="setToggleModal"
+  >
     <DashboardNewQuoteForm />
   </CrudModal>
 </template>
@@ -42,9 +46,9 @@
 import IconAddNewQuote from "../icons/IconAddNewQuote.vue";
 import IconSearch from "../icons/IconSearch.vue";
 import DashboardNewQuoteForm from "./DashboardNewQuoteForm.vue";
-import CrudModal from "../modals/CrudModal.vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
 import { mapWritableState } from "pinia";
+import CrudModal from "../modals/CrudModal.vue";
 
 export default {
   components: {

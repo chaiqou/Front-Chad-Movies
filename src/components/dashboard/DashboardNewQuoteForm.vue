@@ -7,27 +7,43 @@
     <MovieInput
       v-model="quote_en"
       name="quote_en"
-      placeholder="Quote"
+      placeholder="Start create new quote"
       rules="required"
-      error-name="English Quote"
+      error-name="English quote"
+      class="placeholder-[#6C757D]"
     />
     <MovieInput
       v-model="quote_ka"
       name="quote_ka"
-      placeholder="ციტატა"
+      placeholder="ახალი ციტატა"
       rules="required"
       error-name="ქართული ციტატა"
+      class="placeholder-[#6C757D]"
     />
-    <Field
-      type="file"
-      name="thumbnail"
-      class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
-      rules="required"
-      @change="selectFile"
-    />
+    <div
+      class="w-full h-10 flex whitespace-nowrap justify-left py-6 items-center text-white space-x-2 border border-gray-600 rounded-md"
+      :class="[active ? 'bg-[#9747FF66]' : '']"
+      @dragenter.prevent="toggleActive"
+      @dragleave.prevent="toggleActive"
+      @dragover.prevent
+      @drop.prevent="dragAndDropFile"
+    >
+      <img class="ml-2" src="@/assets/Photo.svg" alt="" />
+      <span>Drag or drop File or</span>
+      <label class="p-1 text-white bg-[#9747FF66] font-bold" for="dropzone"
+        >Choose File</label
+      >
+      <Field
+        id="dropzone"
+        type="file"
+        name="thumbnail"
+        class="hidden"
+        rules="required"
+      />
+    </div>
     <Field v-model="movie_id" as="select" rules="required" name="moviename">
       <option v-for="data in movies" :key="data.id" :value="data.id">
-        {{ JSON.stringify(data.title.en) }}
+        {{ data.title.en }}
       </option>
     </Field>
     <div v-if="thumbnail">
@@ -60,6 +76,7 @@ export default {
   data() {
     return {
       movies: [],
+      active: false,
     };
   },
 
@@ -81,9 +98,8 @@ export default {
   },
 
   methods: {
-    // for mixins
     selectFile(event) {
-      let file = event.target.files[0];
+      let file = event.target.files[0] || event.dataTransfer.files[0];
       this.thumbnail = file;
 
       let reader = new FileReader();
@@ -112,6 +128,14 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
+    },
+
+    toggleActive() {
+      this.active = !this.active;
+    },
+
+    dragAndDropFile(e) {
+      this.thumbnail = e.dataTransfer.files[0];
     },
   },
 };
