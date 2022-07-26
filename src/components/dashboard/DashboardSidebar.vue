@@ -56,7 +56,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
           this.email = response.data.data.email;
           this.name = response.data.data.name;
           this.profile_image = response.data.data.profile_image;

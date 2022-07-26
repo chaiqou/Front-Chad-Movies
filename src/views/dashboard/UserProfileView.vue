@@ -30,7 +30,6 @@
                     type="file"
                     name="profile_image"
                     class="hidden"
-                    rules="required"
                     @change="selectFile"
                   />
                 </div>
@@ -41,7 +40,7 @@
             v-model="name"
             :label="$t('firstname')"
             error-name="name"
-            rules="required|min:3|max:255"
+            rules="min:3|max:255"
             type="text"
             :placeholder="$t('nameplaceholder')"
           />
@@ -49,7 +48,7 @@
             v-model="email"
             :label="$t('email')"
             error-name="email"
-            rules="required|email"
+            rules="email"
             type="email"
             :placeholder="$t('emailplaceholder')"
           />
@@ -58,7 +57,7 @@
             :label="$t('password')"
             error-name="password"
             name="password"
-            rules="required|min:8|max:15"
+            rules="min:8|max:15"
             type="password"
             :placeholder="$t('passwordplaceholder')"
           />
@@ -66,7 +65,7 @@
             v-model="password_confirmation"
             :label="$t('confirmpassword')"
             error-name="confirm"
-            rules="required|confirmed:@password"
+            rules="confirmed:@password"
             type="password"
             :placeholder="$t('confirmpasswordplaceholder')"
           />
@@ -89,6 +88,7 @@ import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import { Form as FormVee, Field } from "vee-validate";
 import BaseInput from "@/components/form/BaseInput.vue";
+import axios from "@/config/axios/index";
 
 export default {
   components: { DashboardLayout, DashboardTimeline, FormVee, BaseInput, Field },
@@ -114,7 +114,10 @@ export default {
         console.log(e.target.result);
         this.profile_image = e.target.result;
       };
-      reader.readAsDataURL(file);
+
+      if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+      }
     },
     onSubmitForm() {
       this.form_submmiting = true;
@@ -123,6 +126,23 @@ export default {
       for (let key in this.getUserData) {
         fields.append(key, this.getUserData[key]);
       }
+
+      axios
+        .put("profile", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+          profile_image: this.profile_image,
+        })
+        .then((response) => {
+          console.log(response);
+          this.form_submmiting = false;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.form_submmiting = false;
+        });
     },
   },
 };
