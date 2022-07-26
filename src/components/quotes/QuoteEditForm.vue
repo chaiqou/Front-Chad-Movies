@@ -18,13 +18,22 @@
       rules="required"
       error-name="ქართული ციტატა"
     />
-    <Field
-      type="file"
-      name="thumbnail"
-      class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
-      rules="required"
-      @change="selectFile"
-    />
+    <BaseDragAndDrop
+      :select-file="selectFile"
+      :active="active"
+      :toggle-active="toggleActive"
+      :drag-and-drop-file="dragAndDropFile"
+    >
+      <Field
+        id="dropzone"
+        v-model="thumbnail"
+        type="file"
+        name="thumbnail"
+        class="hidden"
+        rules="required"
+      />
+    </BaseDragAndDrop>
+
     <div v-if="thumbnail">
       <img
         :src="backurl + thumbnail"
@@ -50,12 +59,14 @@ import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
 import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
+import BaseDragAndDrop from "../form/BaseDragAndDrop.vue";
 
 export default {
   components: {
     FormVee,
     Field,
     MovieInput,
+    BaseDragAndDrop,
   },
   computed: {
     ...mapWritableState(useAddQuoteStore, [
@@ -109,7 +120,6 @@ export default {
         console.log("loading");
       } else {
         axios.get(`/quotes/${this.$route.params.id}`).then((res) => {
-          console.log(res.data.data);
           this.quote_en = res.data.data.quote.quote.en;
           this.quote_ka = res.data.data.quote.quote.ka;
           this.movie_id = res.data.data.movie.id;

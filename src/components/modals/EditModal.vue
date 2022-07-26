@@ -5,18 +5,17 @@
         class="relative flex justify-between bg-[#11101A] rounded-lg overflow-hidden md:p-8 pt-8"
       >
         <div class="absolute flex justify-around md:space-x-52 space-x-28">
-          <button class="flex text-white" @click="deleteitem">
+          <button
+            class="flex text-white"
+            @click="delete_quote($route.params.id)"
+          >
             <IconDelete />
-            Delete
+            <p class="ml-2">Delete</p>
           </button>
           <h3 class="text-lg text-center leading-6 font-medium text-white">
             Edit Quote
           </h3>
-          <button
-            type="button"
-            class="bg-[#11101A] rounded-md text-gray-400"
-            @click="toggle"
-          >
+          <button class="bg-[#11101A] rounded-md text-gray-400" @click="exit">
             <IconExit />
           </button>
         </div>
@@ -37,6 +36,7 @@
 <script>
 import IconExit from "@/components/icons/IconExit.vue";
 import IconDelete from "@/components/icons/IconDelete.vue";
+import axios from "@/config/axios/index";
 export default {
   components: { IconExit, IconDelete },
   props: {
@@ -47,6 +47,16 @@ export default {
     toggle: {
       type: Function,
       default: () => {},
+    },
+  },
+  methods: {
+    async delete_quote(quote_id) {
+      await axios.delete(`quotes/` + quote_id).then(() => {
+        this.$router.back();
+      });
+    },
+    exit() {
+      this.$router.back();
     },
   },
 };
