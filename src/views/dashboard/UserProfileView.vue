@@ -9,7 +9,7 @@
           <div class="w-full flex justify-center">
             <div v-if="profile_image" class="relative">
               <img
-                :src="backurl + profile_image"
+                :src="getUserProfilePhoto()"
                 alt="movieimages"
                 class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
@@ -107,13 +107,20 @@ export default {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
   methods: {
+    getUserProfilePhoto() {
+      let profileImage =
+        this.profile_image.length > 50
+          ? this.profile_image
+          : this.backurl + this.profile_image;
+
+      return profileImage;
+    },
     selectFile(event) {
       let file = event.target.files[0];
       this.profile_image = file;
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.profile_image = e.target.result;
       };
 
@@ -137,12 +144,10 @@ export default {
           password_confirmation: this.password_confirmation,
           profile_image: this.profile_image,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.form_submmiting = false;
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.form_submmiting = false;
         });
     },
