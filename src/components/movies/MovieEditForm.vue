@@ -75,7 +75,12 @@
       @change="selectFile"
     />
     <div v-if="thumbnail">
-      <img :src="thumbnail" alt="movieimages" height="240" width="600" />
+      <img
+        :src="getUserProfilePhoto()"
+        alt="movieimages"
+        height="240"
+        width="600"
+      />
     </div>
 
     <button
@@ -94,6 +99,7 @@ import BaseSelect from "@/components/form/BaseSelect.vue";
 import axios from "@/config/axios/index";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
   components: {
@@ -120,6 +126,7 @@ export default {
       "form_submmiting",
       "getMovieData",
     ]),
+    ...mapWritableState(useUserProfileStore, ["backurl"]),
   },
   mounted() {
     axios.get("movies/" + this.$route.params.id).then((res) => {
@@ -143,6 +150,14 @@ export default {
   },
 
   methods: {
+    getUserProfilePhoto() {
+      let profileImage =
+        this.thumbnail.length > 50
+          ? this.thumbnail
+          : this.backurl + this.thumbnail;
+
+      return profileImage;
+    },
     selectFile(event) {
       let file = event.target.files[0];
       this.thumbnail = file;

@@ -18,7 +18,7 @@
           </div>
         </div>
         <FormVee enctype="multipart/form-data" @submit="onSubmitForm">
-          <div class="w-full text-center mt-5">
+          <div class="w-full text-center mt-20">
             <div class="flex justify-center lg:pt-4 pt-8 pb-0">
               <div class="p-3 text-center">
                 <div class="text-lg font-bold block text-white">
