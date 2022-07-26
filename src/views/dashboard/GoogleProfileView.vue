@@ -1,5 +1,6 @@
 <template>
   <DashboardLayout />
+
   <DashboardTimeline>
     <div
       class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full mb-6 shadow-lg rounded-xl mt-16"
@@ -38,37 +39,26 @@
           </div>
           <base-input
             v-model="name"
-            :label="$t('firstname')"
+            label="Username"
             error-name="name"
             rules="min:3|max:255"
             type="text"
             :placeholder="$t('nameplaceholder')"
           />
-          <base-input
-            v-model="email"
-            :label="$t('email')"
-            error-name="email"
-            rules="email"
-            type="email"
-            :placeholder="$t('emailplaceholder')"
-          />
-          <base-input
-            v-model="password"
-            :label="$t('password')"
-            error-name="password"
-            name="password"
-            rules="min:8|max:15"
-            type="password"
-            :placeholder="$t('passwordplaceholder')"
-          />
-          <base-input
-            v-model="password_confirmation"
-            :label="$t('confirmpassword')"
-            error-name="confirm"
-            rules="confirmed:@password"
-            type="password"
-            :placeholder="$t('confirmpasswordplaceholder')"
-          />
+          <div class="mt-4">
+            <label
+              class="text-md flex font-bold text-white whitespace-normal mb-2"
+              for="email"
+              >Email</label
+            >
+            <p
+              id="email"
+              class="border flex justify-between rounded-lg bg-[#CED4DA] t border-gray-500 p-4 font-bold text-sm"
+            >
+              <span>{{ email }}</span>
+              <span>Eng</span>
+            </p>
+          </div>
           <button
             :disabled="form_submmiting"
             class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
@@ -98,10 +88,7 @@ export default {
       "email",
       "name",
       "profile_image",
-      "loading",
       "form_submmiting",
-      "password",
-      "password_confirmation",
       "getUserData",
     ]),
     ...mapWritableState(useMovieListStore, ["backurl"]),
@@ -124,17 +111,9 @@ export default {
     onSubmitForm() {
       this.form_submmiting = true;
 
-      let fields = new FormData();
-      for (let key in this.getUserData) {
-        fields.append(key, this.getUserData[key]);
-      }
-
       axios
         .put("profile", {
           name: this.name,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password_confirmation,
           profile_image: this.profile_image,
         })
         .then((response) => {

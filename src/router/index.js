@@ -83,6 +83,11 @@ const router = createRouter({
       component: () => import("@/views/dashboard/UserProfileView.vue"),
     },
     {
+      path: "/google-profile",
+      name: "google-profile-page",
+      component: () => import("@/views/dashboard/GoogleProfileView.vue"),
+    },
+    {
       path: "/dashboard",
       name: "dashboard-page",
       component: () => import("@/views/dashboard/DashboardView.vue"),

@@ -5,6 +5,7 @@ export const useUserProfileStore = defineStore("useUserProfileStore", {
     email: "",
     name: "",
     profile_image: "",
+    provider: "",
     password: null,
     password_confirmation: null,
     form_submmiting: false,

@@ -4,9 +4,16 @@
       <li class="text-white space-y-8 list-none">
         <ul v-if="name">
           <p class="font-bold font-32">{{ name }}</p>
-          <router-link class="text-[#CED4DA] text-sm" :to="`/profile/`">{{
-            $t("edityourprofile")
-          }}</router-link>
+          <div v-if="provider === null">
+            <router-link class="text-[#CED4DA] text-sm" :to="`/profile/`">{{
+              $t("edityourprofile")
+            }}</router-link>
+          </div>
+          <div v-else>
+            <router-link class="text-[#CED4DA] text-sm" :to="`/google-profile`"
+              >{{ $t("edityourprofile") }}
+            </router-link>
+          </div>
         </ul>
         <router-link class="flex items-center" to="/dashboard">
           <IconHome
@@ -42,6 +49,7 @@ export default {
       "email",
       "name",
       "profile_image",
+      "provider",
     ]),
   },
   created() {
@@ -56,9 +64,11 @@ export default {
           },
         })
         .then((response) => {
+          console.log(response.data.data);
           this.email = response.data.data.email;
           this.name = response.data.data.name;
           this.profile_image = response.data.data.profile_image;
+          this.provider = response.data.data.provider;
           this.loading = false;
         })
         .catch(() => {
