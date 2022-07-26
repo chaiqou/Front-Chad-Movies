@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout />
 
-  <DashboardTimeline>
+  <DashboardTimeline header="My profile">
     <div
       class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full mb-6 shadow-lg rounded-xl mt-16"
     >
@@ -10,15 +10,15 @@
           <div class="w-full flex justify-center">
             <div v-if="profile_image" class="relative">
               <img
-                :src="backurl + profile_image"
+                :src="getUserProfilePhoto()"
                 alt="movieimages"
-                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
             </div>
           </div>
         </div>
         <FormVee enctype="multipart/form-data" @submit="onSubmitForm">
-          <div class="w-full text-center mt-20">
+          <div class="w-full text-center mt-5">
             <div class="flex justify-center lg:pt-4 pt-8 pb-0">
               <div class="p-3 text-center">
                 <div class="text-lg font-bold block text-white">
@@ -94,6 +94,14 @@ export default {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
   methods: {
+    getUserProfilePhoto() {
+      let profileImage =
+        this.profile_image.length > 50
+          ? this.profile_image
+          : this.backurl + this.profile_image;
+
+      return profileImage;
+    },
     selectFile(event) {
       let file = event.target.files[0];
       this.profile_image = file;
@@ -116,12 +124,11 @@ export default {
           name: this.name,
           profile_image: this.profile_image,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.form_submmiting = false;
+          this.$router.push("/dashboard");
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.form_submmiting = false;
         });
     },

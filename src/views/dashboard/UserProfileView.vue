@@ -1,8 +1,8 @@
 <template>
   <DashboardLayout />
-  <DashboardTimeline>
+  <DashboardTimeline header="My profile">
     <div
-      class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full mb-6 shadow-lg rounded-xl mt-16"
+      class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full mb-16 shadow-lg rounded-xl mt-16"
     >
       <div class="px-6">
         <div class="flex flex-wrap justify-center">
@@ -17,7 +17,7 @@
           </div>
         </div>
         <FormVee enctype="multipart/form-data" @submit="onSubmitForm">
-          <div class="w-full text-center mt-20">
+          <div class="w-full text-center mt-10 cursor-pointer">
             <div class="flex justify-center lg:pt-4 pt-8 pb-0">
               <div class="p-3 text-center">
                 <div class="text-lg font-bold block text-white">
@@ -59,7 +59,7 @@
             name="password"
             rules="min:8|max:15"
             type="password"
-            :placeholder="$t('passwordplaceholder')"
+            placeholder="At least 8 & max.15 lower case characters"
           />
           <base-input
             v-model="password_confirmation"
@@ -67,7 +67,7 @@
             error-name="confirm"
             rules="confirmed:@password"
             type="password"
-            :placeholder="$t('confirmpasswordplaceholder')"
+            placeholder="Confirm password"
           />
           <button
             :disabled="form_submmiting"
@@ -131,11 +131,6 @@ export default {
     onSubmitForm() {
       this.form_submmiting = true;
 
-      let fields = new FormData();
-      for (let key in this.getUserData) {
-        fields.append(key, this.getUserData[key]);
-      }
-
       axios
         .put("profile", {
           name: this.name,
@@ -146,6 +141,7 @@ export default {
         })
         .then(() => {
           this.form_submmiting = false;
+          this.$router.push("/dashboard");
         })
         .catch(() => {
           this.form_submmiting = false;
