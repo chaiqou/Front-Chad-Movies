@@ -78,8 +78,8 @@ const router = createRouter({
       },
     },
     {
-      path: "/users/:userId",
-      name: "user-page",
+      path: "/profile",
+      name: "profile-page",
       component: () => import("@/views/dashboard/UserProfileView.vue"),
     },
     {

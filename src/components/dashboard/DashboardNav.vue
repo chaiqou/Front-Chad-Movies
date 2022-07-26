@@ -78,6 +78,7 @@ export default {
         })
         .then(() => {
           this.clearToken();
+          localStorage.removeItem("userId");
           this.$router.push({ name: "home-page" });
         });
     },

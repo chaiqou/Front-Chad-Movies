@@ -2,13 +2,11 @@
   <div class="flex-1 ml-8 flex flex-col overflow-y-hidden mt-8">
     <nav class="flex-1 px-2 py-4 space-y-1">
       <li class="text-white space-y-8 list-none">
-        <ul v-if="user">
-          <p class="font-bold font-32">{{ user.data.name }}</p>
-          <router-link
-            class="text-[#CED4DA] text-sm"
-            :to="`/users/${user.id}`"
-            >{{ $t("edityourprofile") }}</router-link
-          >
+        <ul v-if="name">
+          <p class="font-bold font-32">{{ name }}</p>
+          <router-link class="text-[#CED4DA] text-sm" :to="`/profile/`">{{
+            $t("edityourprofile")
+          }}</router-link>
         </ul>
         <router-link class="flex items-center" to="/dashboard">
           <IconHome
@@ -39,7 +37,12 @@ import { useUserProfileStore } from "@/stores/useUserProfileStore";
 export default {
   components: { IconMovie, IconHome },
   computed: {
-    ...mapWritableState(useUserProfileStore, ["user", "loading"]),
+    ...mapWritableState(useUserProfileStore, [
+      "loading",
+      "email",
+      "name",
+      "profile_image",
+    ]),
   },
   created() {
     this.getUser();
@@ -53,7 +56,10 @@ export default {
           },
         })
         .then((response) => {
-          this.user = response.data;
+          console.log(response);
+          this.email = response.data.data.email;
+          this.name = response.data.data.name;
+          this.profile_image = response.data.data.profile_image;
           this.loading = false;
         })
         .catch(() => {
