@@ -20,29 +20,21 @@
       error-name="ქართული ციტატა"
       class="placeholder-[#6C757D]"
     />
-    <div
-      class="w-full h-10 flex whitespace-nowrap justify-left py-6 items-center text-white space-x-2 border border-gray-600 rounded-md"
-      :class="[active ? 'bg-[#9747FF66]' : '']"
-      @dragenter.prevent="toggleActive"
-      @dragleave.prevent="toggleActive"
-      @dragover.prevent
-      @drop.prevent="dragAndDropFile"
-      @change="selectFile"
+    <BaseDragAndDrop
+      :toggle-active="toggleActive"
+      :drag-and-drop-file="dragAndDropFile"
+      :select-file="selectFile"
+      :active="active"
     >
-      <span class="ml-3"> <IconCamera /></span>
-
-      <span>Drag or drop File or</span>
-      <label class="p-1 text-white bg-[#9747FF66] font-bold" for="dropzone"
-        >Choose File</label
-      >
       <Field
         id="dropzone"
+        v-model="thumbnail"
         type="file"
         name="thumbnail"
         class="hidden"
         rules="required"
       />
-    </div>
+    </BaseDragAndDrop>
     <div class="appearance-none outline-0 shadow-0 border-none">
       <Field
         v-model="movie_id"
@@ -82,16 +74,14 @@ import MovieInput from "../form/MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
-import IconCamera from "../icons/IconCamera.vue";
-import IconVideo from "../icons/IconVideo.vue";
+import BaseDragAndDrop from "../form/BaseDragAndDrop.vue";
 
 export default {
   components: {
     FormVee,
     Field,
     MovieInput,
-    IconCamera,
-    IconVideo,
+    BaseDragAndDrop,
   },
 
   data() {
@@ -119,6 +109,26 @@ export default {
   },
 
   methods: {
+    onSubmitForm() {
+      this.form_submmiting = true;
+
+      let fields = new FormData();
+
+      fields.append("quote_en", this.quote_en);
+      fields.append("quote_ka", this.quote_ka);
+      fields.append("thumbnail", this.thumbnail);
+      fields.append("movie_id", this.movie_id);
+
+      axios
+        .post("/quotes", fields)
+        .then(() => {
+          this.form_submmiting = false;
+          this.$router.back();
+        })
+        .catch(() => {
+          this.form_submmiting = false;
+        });
+    },
     selectFile(event) {
       let file = event.target.files[0];
       this.thumbnail = file;
@@ -141,27 +151,6 @@ export default {
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
-    },
-
-    onSubmitForm() {
-      this.form_submmiting = true;
-
-      let fields = new FormData();
-
-      fields.append("quote_en", this.quote_en);
-      fields.append("quote_ka", this.quote_ka);
-      fields.append("thumbnail", this.thumbnail);
-      fields.append("movie_id", this.movie_id);
-
-      axios
-        .post("/quotes", fields)
-        .then(() => {
-          this.form_submmiting = false;
-          this.$router.back();
-        })
-        .catch(() => {
-          this.form_submmiting = false;
-        });
     },
 
     toggleActive() {

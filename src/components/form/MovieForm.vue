@@ -67,15 +67,24 @@
       rules="required"
       error-name="Year"
     />
-    <Field
-      type="file"
-      name="thumbnail"
-      class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
-      rules="required"
-      @change="selectFile"
-    />
+    <BaseDragAndDrop
+      :select-file="selectFile"
+      :active="active"
+      :toggle-active="toggleActive"
+      :drag-and-drop-file="dragAndDropFile"
+    >
+      <Field
+        id="dropzone"
+        v-model="thumbnail"
+        type="file"
+        name="thumbnail"
+        class="hidden"
+        rules="required"
+      />
+    </BaseDragAndDrop>
+
     <div v-if="thumbnail">
-      <img :src="thumbnail" alt="movieimages" height="40" />
+      <img :src="thumbnail" alt="movieimages" height="40" width="600" />
     </div>
 
     <button
@@ -94,6 +103,7 @@ import BaseSelect from "./BaseSelect.vue";
 import axios from "@/config/axios/index";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
+import BaseDragAndDrop from "./BaseDragAndDrop.vue";
 
 export default {
   components: {
@@ -101,7 +111,15 @@ export default {
     Field,
     MovieInput,
     BaseSelect,
+    BaseDragAndDrop,
   },
+
+  data() {
+    return {
+      toggle: false,
+    };
+  },
+
   computed: {
     ...mapWritableState(useAddMovieStore, [
       "selectedGenre",
@@ -129,17 +147,6 @@ export default {
   },
 
   methods: {
-    selectFile(event) {
-      let file = event.target.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-
     onSubmitForm() {
       this.form_submmiting = true;
 
@@ -158,6 +165,33 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
+    },
+    selectFile(event) {
+      let file = event.target.files[0];
+      this.thumbnail = file;
+
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(e.target.result);
+        this.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+
+    dragAndDropFile(event) {
+      let file = event.dataTransfer.files[0];
+      this.thumbnail = file;
+
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(e.target.result);
+        this.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+
+    toggleActive() {
+      this.active = !this.active;
     },
   },
 };
