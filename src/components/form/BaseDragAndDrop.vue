@@ -8,8 +8,6 @@
     @drop.prevent="dragAndDropFile"
     @change="selectFile"
   >
-    <span class="ml-3"> <IconCamera /></span>
-
     <span>Drag or drop File or</span>
     <label class="p-1 text-white bg-[#9747FF66] font-bold" for="dropzone"
       >Choose File</label

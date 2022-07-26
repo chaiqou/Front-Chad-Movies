@@ -4,6 +4,7 @@ export const useAuthTokenStore = defineStore("useAuthTokenStore", {
   state: () => ({
     token: "",
     userId: "",
+    userName: "",
   }),
   actions: {
     setToken(ctx) {
@@ -17,6 +18,10 @@ export const useAuthTokenStore = defineStore("useAuthTokenStore", {
     setUserId(ctx) {
       localStorage.setItem("userId", ctx);
       this.userId = ctx;
+    },
+    setUserName(ctx) {
+      localStorage.setItem("userName", ctx);
+      this.userName = ctx;
     },
   },
 });

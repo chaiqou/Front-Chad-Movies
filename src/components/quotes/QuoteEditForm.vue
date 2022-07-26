@@ -36,7 +36,7 @@
 
     <div v-if="thumbnail">
       <img
-        :src="backurl + thumbnail"
+        :src="getUserProfilePhoto()"
         alt="movieimages"
         height="240"
         width="600"
@@ -68,6 +68,12 @@ export default {
     MovieInput,
     BaseDragAndDrop,
   },
+
+  data() {
+    return {
+      active: false,
+    };
+  },
   computed: {
     ...mapWritableState(useAddQuoteStore, [
       "quote_en",
@@ -85,12 +91,33 @@ export default {
   },
 
   methods: {
+    getUserProfilePhoto() {
+      let profileImage =
+        this.thumbnail.length > 50
+          ? this.thumbnail
+          : this.backurl + this.thumbnail;
+
+      return profileImage;
+    },
+
     selectFile(event) {
       let file = event.target.files[0];
       this.thumbnail = file;
 
       let reader = new FileReader();
       reader.onload = (e) => {
+        this.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+
+    dragAndDropFile(event) {
+      let file = event.dataTransfer.files[0];
+      this.thumbnail = file;
+
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -126,6 +153,10 @@ export default {
           this.thumbnail = res.data.data.thumbnail;
         });
       }
+    },
+
+    toggleActive() {
+      this.active = !this.active;
     },
   },
 };

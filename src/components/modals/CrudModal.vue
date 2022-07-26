@@ -27,8 +27,9 @@
 
               <div class="md:text-left flex items-center text-white m-4">
                 <img
-                  class="h-4 w-4 mr-4"
-                  src="@/assets/images/forbidden-union.png"
+                  :src="backurl + profile_image"
+                  alt="profile"
+                  class="w-10 h-10 mr-2 object-cover rounded-full"
                 />
                 Nikoloz Lomtadze
               </div>
@@ -43,6 +44,8 @@
 
 <script>
 import IconExit from "@/components/icons/IconExit.vue";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
+import { mapWritableState } from "pinia";
 
 export default {
   components: { IconExit },
@@ -55,6 +58,9 @@ export default {
       type: Function,
       default: () => {},
     },
+  },
+  computed: {
+    ...mapWritableState(useUserProfileStore, ["backurl", "profile_image"]),
   },
 };
 </script>

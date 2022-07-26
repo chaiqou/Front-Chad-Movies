@@ -3,14 +3,23 @@
     <nav class="flex-1 px-2 py-4 space-y-1">
       <li class="text-white space-y-8 list-none">
         <ul v-if="name">
-          <p class="font-bold font-32">{{ name }}</p>
+          <div class="flex items-center">
+            <img
+              :src="backurl + profile_image"
+              alt="profile"
+              class="w-10 h-10 rounded-xl mr-2"
+            />
+            <p class="font-bold font-32">{{ name }}</p>
+          </div>
           <div v-if="provider === null">
             <router-link class="text-[#CED4DA] text-sm" :to="`/profile/`">{{
               $t("edityourprofile")
             }}</router-link>
           </div>
           <div v-else>
-            <router-link class="text-[#CED4DA] text-sm" :to="`/google-profile`"
+            <router-link
+              class="text-[#CED4DA] text-sm ml-12"
+              :to="`/google-profile`"
               >{{ $t("edityourprofile") }}
             </router-link>
           </div>
@@ -50,6 +59,7 @@ export default {
       "name",
       "profile_image",
       "provider",
+      "backurl",
     ]),
   },
   created() {

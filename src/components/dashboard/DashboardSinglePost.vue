@@ -10,9 +10,9 @@
         <div class="flex items-center">
           <div class="w-8">
             <img
-              src="https://i.ibb.co/C1sj76g/Screenshot-from-2022-07-18-22-07-37.png"
-              alt="profildis foto"
-              class="w-8 h-8 object-cover rounded-full"
+              :src="backurl + quotedata.user.profile_image"
+              alt="profile"
+              class="w-10 h-10 mr-2 object-cover rounded-full"
             />
           </div>
           <div class="ml-6">
@@ -67,9 +67,9 @@
         >
           <div class="w-8">
             <img
-              src="https://i.ibb.co/C1sj76g/Screenshot-from-2022-07-18-22-07-37.png"
-              alt="profildis foto"
-              class="w-8 h-8 object-cover rounded-full"
+              :src="backurl + quotedata.user.profile_image"
+              alt="profile"
+              class="w-10 h-10 mr-2 object-cover rounded-full"
             />
           </div>
           <div class="ml-4 flex-1">
@@ -111,6 +111,7 @@ import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
 import DashboardLayout from "./DashboardLayout.vue";
 import DashboardSinglePostHeader from "./DashboardSinglePostHeader.vue";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
   components: {
@@ -146,6 +147,7 @@ export default {
 
   computed: {
     ...mapWritableState(useDashboardQuotesStore, ["quotes"]),
+    ...mapWritableState(useUserProfileStore, ["profile_image", "backurl"]),
   },
 };
 </script>

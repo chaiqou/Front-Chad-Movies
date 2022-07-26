@@ -10,6 +10,7 @@ export const useUserProfileStore = defineStore("useUserProfileStore", {
     password_confirmation: null,
     form_submmiting: false,
     loading: true,
+    backurl: import.meta.env.VITE_BACKEND_BASE_URL,
   }),
 
   getters: {
