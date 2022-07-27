@@ -18,12 +18,15 @@
       rules="required|min:3"
       error-name="ქართული სათაური"
     />
-    <BaseSelect
-      v-model="genre"
-      name="genres"
+    <Multiselect
+      v-model="selectedGenre"
+      mode="tags"
+      :limit="10"
+      :max="3"
+      :close-on-select="false"
+      :searchable="true"
       :options="genresOption"
-      rules="required"
-      error-name="Genre"
+      @change="updateSelectedGenres"
     />
     <MovieInput
       v-model="director_en"
@@ -99,24 +102,24 @@
 <script>
 import { Form as FormVee, Field } from "vee-validate";
 import MovieInput from "./MovieInput.vue";
-import BaseSelect from "./BaseSelect.vue";
 import axios from "@/config/axios/index";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
 import BaseDragAndDrop from "./BaseDragAndDrop.vue";
+import Multiselect from "@vueform/multiselect";
 
 export default {
   components: {
     FormVee,
     Field,
     MovieInput,
-    BaseSelect,
+    Multiselect,
     BaseDragAndDrop,
   },
 
   data() {
     return {
-      toggle: false,
+      active: false,
     };
   },
 
@@ -140,9 +143,15 @@ export default {
     ]),
   },
 
-  created() {
-    axios.get("genres").then((response) => {
-      this.genresOption = response.data.data;
+  async created() {
+    await axios.get("genres").then((response) => {
+      const optionsForGenres = response.data.data.map((genre) => {
+        return {
+          label: genre.name,
+          value: genre.id,
+        };
+      });
+      this.genresOption = optionsForGenres;
     });
   },
 
@@ -172,7 +181,6 @@ export default {
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -184,7 +192,6 @@ export default {
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -193,6 +200,36 @@ export default {
     toggleActive() {
       this.active = !this.active;
     },
+    updateSelectedGenres(value) {
+      value.map((genre) => {
+        if (this.genre.includes(genre)) {
+          return;
+        } else {
+          this.genresOption.forEach((option) => {
+            if (option.value === genre) {
+              if (this.genre.includes(option.label)) {
+                return;
+              } else {
+                this.genre.push(option.label);
+              }
+            }
+          });
+        }
+      });
+    },
   },
 };
 </script>
+
+<style src="@vueform/multiselect/themes/default.css" />
+<style>
+body {
+  --ms-bg: transparent;
+  --ms-tag-bg: #6c757d;
+  --ms-border-color: #6c757d;
+}
+
+.multiselect-tags-search {
+  background-color: inherit;
+}
+</style>

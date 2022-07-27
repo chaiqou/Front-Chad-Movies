@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col flex-1 h-screen overflow-y-hidden">
+  <div class="flex flex-col flex-1 h-screen w-screen overflow-y-hidden">
     <div class="invisible md:visible blur-sm pointer-events-none">
       <router-view name="HomeView"></router-view>
     </div>

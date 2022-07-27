@@ -5,16 +5,17 @@ export const useAddMovieStore = defineStore("useAddMovieStore", {
     toggle: false,
     form_submmiting: false,
     genresOption: [],
-    genre: "",
     title_en: "",
     title_ka: "",
     director_en: "",
     director_ka: "",
     description_en: "",
     description_ka: "",
+    genre: [],
     budget: null,
     year: null,
     thumbnail: null,
+    selectedGenre: [],
   }),
 
   getters: {

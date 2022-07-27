@@ -6,12 +6,14 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-22 sm:px-6 md:px-8">
+        <!-- Replace with your content -->
         <slot name="header"></slot>
         <div class="py-4">
           <div class="rounded-lg h-24">
             <slot></slot>
           </div>
         </div>
+        <!-- /End replace -->
       </div>
     </div>
   </main>
