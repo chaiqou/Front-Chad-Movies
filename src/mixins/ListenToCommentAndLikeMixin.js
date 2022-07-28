@@ -17,13 +17,14 @@ export default {
       this.quotedata.comments_count++;
     });
 
-    // dsada
-
-    const channel = window.Echo.private(`notification.2`);
+    const channel = window.Echo.private(
+      `notification.${this.quotedata.user.id}`
+    );
 
     channel
       .subscribed(() => {
         console.log("subscribed");
+        console.log(this.quotedata.user.id);
       })
       .listen("NotificationEvent", (event) => {
         this.unread.unshift(event);

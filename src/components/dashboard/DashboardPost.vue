@@ -88,10 +88,11 @@ import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
+import axios from "@/config/axios/index";
 
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
-import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
+// import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
 
 export default {
   components: { IconDashboardComment, IconDashboardHearth },
@@ -99,7 +100,7 @@ export default {
   mixins: [
     LikeAndUnlikeMixin,
     ListenToCommentAndLikeMixin,
-    AddCommentToPostMixin,
+    // AddCommentToPostMixin,
   ],
 
   props: {
@@ -112,6 +113,7 @@ export default {
   data() {
     return {
       commentToggle: false,
+      commentBody: "",
     };
   },
 
@@ -122,6 +124,20 @@ export default {
       "unread",
       "unreadCount",
     ]),
+  },
+  methods: {
+    addComment() {
+      axios
+        .post("quotes/" + this.quotedata.id + "/comment", {
+          body: this.commentBody,
+        })
+        .then(() => {
+          this.commentBody = "";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
