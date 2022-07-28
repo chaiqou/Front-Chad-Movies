@@ -2,9 +2,10 @@
   <DashboardLayout />
   <DashboardTimeline>
     <div class="flex justify-between items-center">
-      <span class="text-white font-medium text-24 ml-8 md:ml-0"
-        >{{ $t("mylistofmovies") }} ({{ $t("total") }}
-        {{ movies.length }})</span
+      <span
+        class="text-white font-medium text-24 ml-8 md:ml-0 whitespace-nowrap"
+        >{{ $t("mylistofmovies") }} <br />
+        ({{ $t("total") }} {{ movies.length }})</span
       >
       <div class="flex justify-end items-center">
         <div class="invisible md:visible">

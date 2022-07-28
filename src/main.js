@@ -1,22 +1,25 @@
 import App from "@/App.vue";
 import router from "@/router";
+import Echo from "laravel-echo";
+import Pusher from "pusher-js";
+import i18n from "@/config/i18n/index";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
 import "@/config/vee-validate/rules";
 import "@/config/vee-validate/messages";
 import "@/main.css";
-import Echo from "laravel-echo";
-import Pusher from "pusher-js";
-import i18n from "@/config/i18n/index";
 
 window.Pusher = Pusher;
+// Pusher.logToConsole = true;
+
 window.Echo = new Echo({
   authEndpoint: "http://localhost:8000/broadcasting/auth",
   broadcaster: "pusher",
   key: "a5f71dba33215ec7e280",
   cluster: "ap2",
-  encrypted: true,
+  encrypted: false,
+  forceTLS: true,
   auth: {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("auth")}`,

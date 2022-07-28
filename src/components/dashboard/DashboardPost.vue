@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#11101A] rounded-lg w-2/3 mt-6 overflow-hidden">
+  <div class="bg-[#11101A] rounded-lg md:w-2/3 mt-6 overflow-hidden">
     <div class="flex flex-col p-4">
       <div class="flex items-center">
         <div class="w-8">
@@ -87,6 +87,7 @@ import IconDashboardComment from "../icons/IconDashboardComment.vue";
 import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
+import { useNotificationsStore } from "@/stores/useNotificationsStore";
 
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
@@ -116,6 +117,11 @@ export default {
 
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
+    ...mapWritableState(useNotificationsStore, [
+      "read",
+      "unread",
+      "unreadCount",
+    ]),
   },
 };
 </script>

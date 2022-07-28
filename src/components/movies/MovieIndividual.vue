@@ -3,7 +3,7 @@
   <DashboardTimeline v-if="!loading" class="overflow-y-scroll">
     <div class="md:flex container mx-auto">
       <img
-        class="md:w-1/2 md:h-72"
+        class="md:w-1/2 md:h-72 w-screen"
         :src="backurl + currentMovie[0].thumbnail"
         alt="moviephoto"
       />
@@ -51,14 +51,14 @@
         </p>
       </div>
     </div>
-    <div class="mt-6 flex items-center space-x-2">
+    <div class="mt-6 md:flex items-center space-x-2 space-y-8 md:space-y-0">
       <p class="text-white mr-2">
         Quotes (Total {{ currentMovie[0].quotes.length }})
       </p>
       <span class="text-gray-500">|</span>
       <button
         type="button"
-        class="items-center invisible md:visible inline-flex justify-center rounded-md px-2 py-2 bg-[#E31221] text-base font-medium text-white"
+        class="items-center inline-flex justify-center rounded-md px-2 py-2 bg-[#E31221] text-base font-medium text-white"
         @click="goToAddQuote"
       >
         <IconAddButton />

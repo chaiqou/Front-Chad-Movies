@@ -8,6 +8,7 @@
       class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-900 transition ease-in-out duration-150"
       z
     >
+      <h1 class="text-white">{{ notification }}</h1>
       <div class="flex items-center justify-between">
         <div class="flex">
           <img
@@ -16,7 +17,7 @@
             class="w-8 h-8 mr-4 object-cover rounded-full"
           />
           <div
-            v-if="notification.data.hasOwnProperty('commentBy')"
+            v-if="notification['commentBy']"
             class="text-sm text-white flex-col"
           >
             <p class="text-base font-medium mb-6 mr-24 text-white">
@@ -31,7 +32,7 @@
           </div>
           <div v-else class="text-sm text-white flex-col">
             <p class="text-base font-medium mb-6 mr-24 text-white">
-              {{ notification.data.likedBy }}
+              laiqebistvis
             </p>
             <div class="flex items-center">
               <IconSmallHearth />
@@ -40,9 +41,7 @@
           </div>
         </div>
         <div>
-          <p class="text-base font-medium text-white mb-12">
-            {{ notification.data.created_at }}
-          </p>
+          <p class="text-base font-medium text-white mb-12">dasda created at</p>
         </div>
       </div>
     </button>

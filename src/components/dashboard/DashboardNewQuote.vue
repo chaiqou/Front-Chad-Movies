@@ -1,8 +1,8 @@
 <template>
   <div v-if="!toggleModal" class="w-full flex items-center space-x-12">
     <button
-      :class="[toggleDropdown ? 'w-48' : 'w-2/3']"
-      class="text-white flex items-center bg-[#222030] h-12 rounded-lg"
+      :class="[toggleDropdown ? 'md:w-48' : 'md:w-2/3']"
+      class="text-white flex items-center md:bg-[#222030] h-12 rounded-lg w-screen"
       @click="setToggleModal"
     >
       <IconAddNewQuote class="ml-3" />

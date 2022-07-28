@@ -1,11 +1,11 @@
 <template>
-  <main class="flex-1 mt-16 overflow-y-auto">
+  <main class="flex-1 md:mt-16 mt-8 overflow-y-auto">
     <div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-xl font-semibold mt-12 text-white">{{ header }}</h1>
       </div>
 
-      <div class="max-w-7xl mx-auto px-22 sm:px-6 md:px-8">
+      <div class="max-w-6xl mx-auto px-22 sm:px-6 md:px-8">
         <!-- Replace with your content -->
         <slot name="header"></slot>
         <div class="py-4">

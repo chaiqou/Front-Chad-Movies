@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-12">
+  <div class="hidden md:visible mt-12">
     <DashboardSidebar />
   </div>
   <EditModal>
@@ -20,6 +20,7 @@ export default {
     DashboardSidebar,
     EditModal,
   },
+
   computed: {
     ...mapWritableState(useMovieListStore, ["currentMovie"]),
   },

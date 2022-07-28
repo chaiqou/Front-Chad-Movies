@@ -38,15 +38,19 @@ export default {
   },
   created() {
     this.getNotifications();
-    // console.log("modis");
-    // window.Echo.private(
-    //   `App.Models.User.${localStorage.getItem("userId")}`
-    // ).notification((notification) => {
-    //   console.log(notification);
-    //   this.unread.unshift(notification);
-    //   this.unreadCount++;
-    // });
-    // console.log("modis");
+
+    // const channel = window.Echo.private(`notification.3`);
+
+    // channel
+    //   .subscribed(() => {
+    //     console.log("subscribed");
+    //   })
+    //   .listen("mushaobs", (notification) => {
+    //     console.log(notification);
+    //     console.log("mushaobs");
+    //     this.unread.unshift(notification);
+    //     this.unreadCount++;
+    //   });
   },
 
   methods: {

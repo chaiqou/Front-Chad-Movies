@@ -1,6 +1,6 @@
 <template>
   <div
-    v-for="notification in unreaddata"
+    v-for="notification in unread"
     :key="notification.id"
     class="relative grid gap-6 bg-[#000000] px-5 py-6 sm:gap-8 sm:p-8"
   >
@@ -17,11 +17,11 @@
             class="w-8 h-8 mr-4 object-cover rounded-full"
           />
           <div
-            v-if="notification.data.hasOwnProperty('commentBy')"
+            v-if="notification.message !== null"
             class="text-sm text-white flex-col"
           >
             <p class="text-base font-medium mb-6 mr-24 text-white">
-              {{ notification.data.commentBy }}
+              {{ notification.message.name }}
             </p>
             <div class="flex items-center">
               <IconComment />
@@ -32,7 +32,7 @@
           </div>
           <div v-else class="text-sm text-white flex-col">
             <p class="text-base font-medium mb-6 mr-24 text-white">
-              {{ notification.data.likedBy }}
+              laiqebis notifikacia
             </p>
             <div class="flex items-center">
               <IconSmallHearth />
@@ -42,7 +42,7 @@
         </div>
         <div>
           <p class="text-base font-medium text-white mb-6">
-            {{ notification.data.created_at }}
+            {{ notification.message.created_at }}
           </p>
           <p class="text-md text-[#198754] font-bold">New</p>
         </div>

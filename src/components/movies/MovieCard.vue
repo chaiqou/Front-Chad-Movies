@@ -4,7 +4,7 @@
       <img
         :src="backurl + movie.thumbnail"
         alt="movieimage"
-        class="hover:opacity-50 transition ease-in-out duration-500 rounded-lg h-full w-full"
+        class="hover:opacity-50 transition ease-in-out duration-500 rounded-lg h-full md:w-full w-screen"
       />
     </a>
     <div class="mt-4 text-24 ml-8 md:ml-0">
