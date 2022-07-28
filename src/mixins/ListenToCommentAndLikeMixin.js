@@ -28,5 +28,16 @@ export default {
         this.unreadCount++;
       }
     });
+
+    const likeChannel = window.Echo.private(
+      `likeNotification.${this.quotedata.user.id}`
+    );
+
+    likeChannel.listen("LikeNotificationEvent", (event) => {
+      if (this.quotedata.id === event.message.quote_id) {
+        this.unread.unshift(event);
+        this.unreadCount++;
+      }
+    });
   },
 };
