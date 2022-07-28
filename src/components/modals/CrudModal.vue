@@ -31,7 +31,7 @@
                   alt="profile"
                   class="w-10 h-10 mr-2 object-cover rounded-full"
                 />
-                Nikoloz Lomtadze
+                {{ name }}
               </div>
               <slot></slot>
             </div>
@@ -60,7 +60,11 @@ export default {
     },
   },
   computed: {
-    ...mapWritableState(useUserProfileStore, ["backurl", "profile_image"]),
+    ...mapWritableState(useUserProfileStore, [
+      "backurl",
+      "profile_image",
+      "name",
+    ]),
   },
 };
 </script>

@@ -8,7 +8,7 @@
       v-model="quote_en"
       name="quote_en"
       placeholder="Start create new quote"
-      rules="required"
+      rules="required|english-keyboard"
       error-name="English quote"
       class="placeholder-[#6C757D]"
     />
@@ -16,7 +16,7 @@
       v-model="quote_ka"
       name="quote_ka"
       placeholder="ახალი ციტატა"
-      rules="required"
+      rules="required|georgian-keyboard"
       error-name="ქართული ციტატა"
       class="placeholder-[#6C757D]"
     />

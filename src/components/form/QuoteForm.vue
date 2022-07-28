@@ -8,14 +8,14 @@
       v-model="quote_en"
       name="quote_en"
       placeholder="Quote"
-      rules="required"
+      rules="required|english-keyboard"
       error-name="English Quote"
     />
     <MovieInput
       v-model="quote_ka"
       name="quote_ka"
       placeholder="ციტატა"
-      rules="required"
+      rules="required|georgian-keyboard"
       error-name="ქართული ციტატა"
     />
     <Field

@@ -8,7 +8,7 @@
     @drop.prevent="dragAndDropFile"
     @change="selectFile"
   >
-    <span>Drag or drop File or</span>
+    <span class="ml-3">Drag or drop File or</span>
     <label class="p-1 text-white bg-[#9747FF66] font-bold" for="dropzone"
       >Choose File</label
     >

@@ -2,7 +2,7 @@
   <DashboardLayout />
   <DashboardTimeline>
     <div
-      class="bg-[#11101A] rounded-lg mt-8 md:w-3/4 items-center ml-70 overflow-hidden"
+      class="bg-[#11101A] rounded-lg md:w-3/4 items-center ml-70 overflow-hidden"
     >
       <DashboardSinglePostHeader :quotedata="quotedata" />
       <div class="border-b border-gray-800"></div>
