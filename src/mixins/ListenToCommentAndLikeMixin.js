@@ -12,25 +12,21 @@ export default {
       }
     });
     window.Echo.channel(`comment`).listen("CommentEvent", (event) => {
-      console.log(event);
-      this.quotedata.comments.unshift(event.comment);
-      this.quotedata.comments_count++;
+      if (this.quotedata.id === event.comment.quote_id) {
+        this.quotedata.comments.unshift(event.comment);
+        this.quotedata.comments_count++;
+      }
     });
 
     const channel = window.Echo.private(
       `notification.${this.quotedata.user.id}`
     );
 
-    channel
-      .subscribed(() => {
-        console.log("subscribed");
-        console.log(this.quotedata.user.id);
-      })
-      .listen("NotificationEvent", (event) => {
+    channel.listen("NotificationEvent", (event) => {
+      if (this.quotedata.id === event.message.quote_id) {
         this.unread.unshift(event);
         this.unreadCount++;
-        console.log(event);
-        console.log("mushaobs");
-      });
+      }
+    });
   },
 };
