@@ -20,3 +20,17 @@ defineRule("lower-case", (value) => {
   }
   return "Must contain all lowercase letters";
 });
+
+defineRule("georgian-keyboard", (value) => {
+  if (/^[ა-ჰ]+$/.test(value) === true) {
+    return true;
+  }
+  return "Must contain all Georgian letters";
+});
+
+defineRule("english-keyboard", (value) => {
+  if (/^[a-zA-Z]+$/.test(value) === true) {
+    return true;
+  }
+  return "Must contain all English letters";
+});
