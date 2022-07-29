@@ -31,4 +31,8 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
 </style>

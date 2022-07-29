@@ -16,9 +16,13 @@
         </div>
       </div>
       <div class="mt-4">
-        <p class="text-white font-bold text-sm">
+        <p v-if="language === 'english'" class="text-white font-bold text-sm">
           "{{ quotedata.quote.quote.en }}"
           <span class="text-[#DDCCAA]">{{ quotedata.movie.title.en }}</span>
+        </p>
+        <p v-else class="text-white font-bold text-sm">
+          "{{ quotedata.quote.quote.ka }}"
+          <span class="text-[#DDCCAA]">{{ quotedata.movie.title.ka }}</span>
         </p>
       </div>
     </div>
@@ -88,11 +92,11 @@ import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
-// import axios from "@/config/axios/index";
 
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
+import { useLanguageSwitchStore } from "@/stores/useLanguageSwitchStore";
 
 export default {
   components: { IconDashboardComment, IconDashboardHearth },
@@ -119,25 +123,12 @@ export default {
 
   computed: {
     ...mapWritableState(useMovieListStore, ["backurl"]),
+    ...mapWritableState(useLanguageSwitchStore, ["language"]),
     ...mapWritableState(useNotificationsStore, [
       "read",
       "unread",
       "unreadCount",
     ]),
   },
-  // methods: {
-  //   addComment() {
-  //     axios
-  //       .post("quotes/" + this.quotedata.id + "/comment", {
-  //         body: this.commentBody,
-  //       })
-  //       .then(() => {
-  //         this.commentBody = "";
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   },
-  // },
 };
 </script>

@@ -1,7 +1,11 @@
 <template>
   <DashboardLayout />
-  <DashboardTimeline v-if="!loading" class="overflow-y-scroll">
-    <div class="md:flex container mx-auto">
+  <DashboardTimeline
+    v-if="!loading"
+    header="Movie description"
+    class="overflow-y-scroll"
+  >
+    <div class="md:flex container mx-auto mt-8">
       <img
         class="md:w-1/2 md:h-72 w-screen"
         :src="backurl + currentMovie[0].thumbnail"

@@ -1,5 +1,9 @@
 <template>
-  <div class="snap-y snap-proximity h-screen overflow-y-scroll">
+  <div
+    id="parallax"
+    class="snap-y snap-proximity h-screen overflow-y-auto bg-fixed"
+    @scroll="handleScroll"
+  >
     <div>
       <landing-nav-bar />
       <landing-center />
@@ -40,6 +44,15 @@ export default {
           }
         });
     }
+  },
+  methods: {
+    handleScroll() {
+      let parallax = document.getElementById("parallax");
+      window.addEventListener("scroll", function () {
+        let offset = window.pageYOffset;
+        parallax.style.backgroundPositionY = offset * 0.7 + "px";
+      });
+    },
   },
 };
 </script>

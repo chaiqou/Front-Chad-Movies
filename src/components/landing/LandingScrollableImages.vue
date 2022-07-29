@@ -1,6 +1,8 @@
 <template>
   <section
-    class="h-[100vh] text-white bg-interstellar-movie bg-no-repeat bg-cover bg-center snap-start"
+    id="parallax"
+    class="h-[100vh] text-white bg-interstellar-movie bg-no-repeat bg-cover bg-center snap-start bg-fixed"
+    @scroll="handleScroll"
   >
     <div class="flex items-center justify-left h-screen ml-6 md:ml-12">
       <IconLine class="md:mb-28 w-1/12 md:w-12 mr-4 mb-24" />
@@ -14,7 +16,7 @@
     </div>
   </section>
   <section
-    class="h-[100vh] text-white bg-the-royal-tenenbaums bg-no-repeat bg-cover bg-center snap-start"
+    class="h-[100vh] text-white bg-the-royal-tenenbaums bg-no-repeat bg-cover bg-center snap-start bg-fixed"
   >
     <div class="flex items-center justify-left h-screen ml-6 md:ml-12">
       <IconLine class="md:mb-30 w-1/12 md:w-12 mr-4 mb-40" />
@@ -29,7 +31,7 @@
     </div>
   </section>
   <section
-    class="h-[99vh] text-white bg-shutter-island bg-no-repeat bg-cover bg-center snap-start"
+    class="h-[99vh] text-white bg-shutter-island bg-no-repeat bg-cover bg-center snap-start bg-fixed"
   >
     <div class="flex items-center justify-left h-screen ml-6 md:ml-12">
       <IconLine class="md:mb-30 w-1/12 md:w-12 mr-4 mb-40" />
@@ -49,6 +51,19 @@
 </template>
 
 <script>
-import IconLine from "../icons/IconLine.vue";
-export default { components: { IconLine } };
+import IconLine from "@/components/icons/IconLine.vue";
+export default {
+  components: { IconLine },
+  methods: {
+    handleScroll() {
+      let parallax = document.getElementById("parallax");
+      window.addEventListener("scroll", function () {
+        let offset = window.pageYOffset;
+        parallax.style.backgroundPositionY = offset * 0.7 + "px";
+      });
+
+      console.log("test");
+    },
+  },
+};
 </script>
