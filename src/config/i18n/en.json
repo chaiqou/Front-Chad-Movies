@@ -37,5 +37,18 @@
   "total": "Total",
   "search": "Search",
   "addmovie": "Add movie",
-  "enter@": "Enter @ to search movies, Enter # to search quotes"
+  "enter@": "Enter @ to search movies, Enter # to search quotes",
+
+  "thanks": "Thanks",
+  "close": "Close",
+  "pleasecheckyouremail": "Please check your email and follow the instructions to activate your account.",
+  "passwordsent": "We have sent a password recover instructions to your email.",
+  "accountacctivated": "Your account has been activated.",
+  "passwordchanged": "Your password has been changed.",
+  "success": "Success!",
+  "enteremailandwesendpassword": "Enter the email and we will send an email with instructions to reset your password",
+  "backtologin": "Back to log in",
+  "uploadphoto": "Upload new photo",
+  "myprofile": "My profile",
+  "savechanges": "Save changes"
 }

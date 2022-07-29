@@ -1,23 +1,23 @@
 <template>
   <DashboardLayout />
 
-  <DashboardTimeline header="My profile">
+  <DashboardTimeline :header="$t('myprofile')">
     <div
       class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full mb-6 shadow-lg rounded-xl mt-16"
     >
       <div class="px-6">
         <div class="flex flex-wrap justify-center">
           <div class="w-full flex justify-center">
-            <div v-if="profile_image" class="relative">
+            <div class="relative">
               <img
+                v-if="profile_image"
                 :src="getUserProfilePhoto()"
-                alt="movieimages"
+                alt="profile image"
                 class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
-            </div>
-            <div v-else class="relative">
               <img
-                src="@/assets/vue-profile.jpg"
+                v-else
+                src="@/assets/images/vue-profile.jpg"
                 alt="vue profile photo"
                 class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
@@ -29,9 +29,9 @@
             <div class="flex justify-center lg:pt-4 pt-8 pb-0">
               <div class="p-3 text-center">
                 <div class="text-lg font-bold block text-white">
-                  <label class="p-1 text-white font-bold" for="dropzone"
-                    >Upload new photo</label
-                  >
+                  <label class="p-1 text-white font-bold" for="dropzone">{{
+                    $t("uploadphoto")
+                  }}</label>
                   <Field
                     id="dropzone"
                     v-model="profile_image"
@@ -70,7 +70,9 @@
             :disabled="form_submmiting"
             class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
           >
-            {{ form_submmiting ? "Please wait..." : "Save changes" }}
+            {{
+              form_submmiting ? `${$t("pleasewait")}` : `${$t("savechanges")}`
+            }}
           </button>
         </FormVee>
       </div>

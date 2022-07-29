@@ -94,7 +94,7 @@
       :disabled="form_submmiting"
       class="flex w-full justify-center mt-4 rounded-md px-4 py-2 bg-[#E31221] text-base font-medium text-white"
     >
-      {{ form_submmiting ? "Please wait..." : "Add Movie" }}
+      {{ form_submmiting ? `${$t("pleasewait")}` : `${$t("addmovie")}` }}
     </button>
   </FormVee>
 </template>

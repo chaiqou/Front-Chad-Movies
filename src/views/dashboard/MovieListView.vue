@@ -38,7 +38,7 @@
       v-if="toggle"
       class="overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center"
     >
-      <CrudModal :toggle="toggleMovie" title="Add movie">
+      <CrudModal :toggle="toggleMovie" :title="$t('addmovie')">
         <MovieForm />
       </CrudModal>
     </div>

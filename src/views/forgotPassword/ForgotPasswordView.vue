@@ -1,17 +1,14 @@
 <template>
   <form-modal>
-    <template #major-text>Forgot Password?</template>
-    <template #minor-text
-      >Enter the email and we’ll send an email with instructions to reset your
-      password</template
-    >
+    <template #major-text>{{ $t("forgotpassword") }}</template>
+    <template #minor-text>{{ $t("enteremailandwesendpassword") }}</template>
     <FormVee class="space-y-2" @submit="sendForgotPasswordEmail">
       <base-input
         v-model="email"
-        label="Email"
+        :label="$t('email')"
         error-name="email"
         type="text"
-        placeholder="Enter your email"
+        :placeholder="$t('email')"
         rules="required|min:3"
       />
 
@@ -26,7 +23,7 @@
     </FormVee>
     <template #have-account>
       <router-link to="/login">
-        <span class="text-white text-2xl">&larr; </span> Back to log in
+        <span class="text-white text-2xl">&larr; </span> {{ $t("backtologin") }}
       </router-link>
     </template>
   </form-modal>

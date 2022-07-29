@@ -1,8 +1,5 @@
 <template>
-  <thanks-modal
-    header-text="Success!"
-    main-text="Your Email changed successfully"
-  >
+  <thanks-modal :header-text="$t('success')" :main-text="$t('passwordchanged')">
     <IconEmailVerified />
     <template #modal-button>
       <router-link

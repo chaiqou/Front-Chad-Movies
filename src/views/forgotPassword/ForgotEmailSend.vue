@@ -1,7 +1,7 @@
 <template>
   <thanks-modal
-    header-text="Check your email"
-    main-text="We have sent a password recover instructions to your email"
+    :header-text="$t('pleasecheckyouremail')"
+    :main-text="$t('passwordsent')"
   >
     <IconSendEmail />
     <template #modal-button>
@@ -9,7 +9,7 @@
         to="/"
         class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
       >
-        Go to my email
+        {{ $t("close") }}
       </router-link>
     </template>
   </thanks-modal>
