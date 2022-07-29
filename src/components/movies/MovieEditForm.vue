@@ -75,12 +75,7 @@
       @change="selectFile"
     />
     <div v-if="thumbnail">
-      <img
-        :src="getUserProfilePhoto()"
-        alt="movieimages"
-        height="240"
-        width="600"
-      />
+      <img :src="getMoviePhoto()" alt="movieimages" height="240" width="600" />
     </div>
 
     <button
@@ -150,7 +145,7 @@ export default {
   },
 
   methods: {
-    getUserProfilePhoto() {
+    getMoviePhoto() {
       let profileImage =
         this.thumbnail.length > 50
           ? this.thumbnail

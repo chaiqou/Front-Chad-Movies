@@ -38,19 +38,6 @@ export default {
   },
   created() {
     this.getNotifications();
-
-    // const channel = window.Echo.private(`notification.3`);
-
-    // channel
-    //   .subscribed(() => {
-    //     console.log("subscribed");
-    //   })
-    //   .listen("mushaobs", (notification) => {
-    //     console.log(notification);
-    //     console.log("mushaobs");
-    //     this.unread.unshift(notification);
-    //     this.unreadCount++;
-    //   });
   },
 
   methods: {

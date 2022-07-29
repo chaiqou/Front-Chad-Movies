@@ -123,7 +123,7 @@ export default {
         .post("/quotes", fields)
         .then(() => {
           this.form_submmiting = false;
-          this.$router.back();
+          this.$router.push("/movies");
         })
         .catch(() => {
           this.form_submmiting = false;

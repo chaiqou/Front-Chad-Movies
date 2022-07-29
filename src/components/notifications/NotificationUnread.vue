@@ -17,11 +17,11 @@
             class="w-8 h-8 mr-4 object-cover rounded-full"
           />
           <div
-            v-if="notification.message !== null"
+            v-if="notification.hasOwnProperty('commentBy')"
             class="text-sm text-white flex-col"
           >
             <p class="text-base font-medium mb-6 mr-24 text-white">
-              {{ notification.message.name }}
+              {{ notification.commentBy }}
             </p>
             <div class="flex items-center">
               <IconComment />
@@ -32,7 +32,7 @@
           </div>
           <div v-else class="text-sm text-white flex-col">
             <p class="text-base font-medium mb-6 mr-24 text-white">
-              laiqebis notifikacia
+              {{ notification.likedBy }}
             </p>
             <div class="flex items-center">
               <IconSmallHearth />
@@ -42,7 +42,7 @@
         </div>
         <div>
           <p class="text-base font-medium text-white mb-6">
-            {{ notification.message.created_at }}
+            {{ convertNotificationDateForHumans }}
           </p>
           <p class="text-md text-[#198754] font-bold">New</p>
         </div>
@@ -57,6 +57,7 @@ import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import axios from "@/config/axios/index";
 import IconSmallHearth from "../icons/IconSmallHearth.vue";
 import IconComment from "../icons/IconComment.vue";
+import moment from "moment";
 
 export default {
   components: {
@@ -75,6 +76,13 @@ export default {
       "unread",
       "unreadCount",
     ]),
+
+    convertNotificationDateForHumans() {
+      let timestamp = Number(new Date());
+      let date = new Date(timestamp);
+      let formatedDate = moment(date).fromNow();
+      return formatedDate;
+    },
   },
 
   methods: {
