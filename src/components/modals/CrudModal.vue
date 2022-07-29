@@ -27,9 +27,16 @@
 
               <div class="md:text-left flex items-center text-white m-4">
                 <img
+                  v-if="profile_image"
                   :src="backurl + profile_image"
-                  alt="profile"
-                  class="w-10 h-10 mr-2 object-cover rounded-full"
+                  alt="user profile"
+                  class="w-8 h-8 mr-2 object-cover rounded-full"
+                />
+                <img
+                  v-else
+                  src="@/assets/images/vue-profile.jpg"
+                  alt="vue profile photo"
+                  class="w-8 h-8 mr-2 object-cover rounded-full"
                 />
                 {{ name }}
               </div>

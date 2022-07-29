@@ -10,9 +10,16 @@
         <div class="flex items-center">
           <div class="w-8">
             <img
+              v-if="quotedata.user.profile_image"
               :src="backurl + quotedata.user.profile_image"
-              alt="profile"
-              class="w-10 h-10 mr-2 object-cover rounded-full"
+              alt="user profile"
+              class="w-8 h-8 mr-2 object-cover rounded-full"
+            />
+            <img
+              v-else
+              src="@/assets/images/vue-profile.jpg"
+              alt="vue profile photo"
+              class="w-8 h-8 mr-2 object-cover rounded-full"
             />
           </div>
           <div class="ml-6">

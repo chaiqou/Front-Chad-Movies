@@ -11,7 +11,14 @@
               <img
                 :src="getUserProfilePhoto()"
                 alt="movieimages"
-                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+              />
+            </div>
+            <div v-else class="relative">
+              <img
+                src="@/assets/images/vue-profile.jpg"
+                alt="vue profile photo"
+                class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
             </div>
           </div>
