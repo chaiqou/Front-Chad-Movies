@@ -50,6 +50,10 @@ export default {
     ...mapWritableState(useSearchDataStore, ["search", "searchedData"]),
   },
 
+  unmounted() {
+    this.quotes = [];
+  },
+
   methods: {
     param() {
       if (this.search.includes("@")) {

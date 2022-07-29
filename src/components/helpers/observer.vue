@@ -17,6 +17,10 @@ export default {
     });
     this.observer.observe(this.$el);
   },
+
+  unmounted() {
+    this.observer = null;
+  },
 };
 </script>
 
