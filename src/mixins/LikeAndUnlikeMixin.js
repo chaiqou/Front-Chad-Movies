@@ -21,7 +21,13 @@ export default {
       this.likedPost = !this.likedPost;
     },
     incrementLike() {
-      axios.post("like/" + this.quotedata.id);
+      axios({
+        method: "post",
+        url: "like/" + this.quotedata.id,
+        headers: {
+          "X-Socket-Id": window.Echo.socketId(),
+        },
+      });
     },
     decrementLike() {
       axios.delete("like/" + this.quotedata.id);

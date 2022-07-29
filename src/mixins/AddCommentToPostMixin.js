@@ -14,16 +14,18 @@ export default {
   },
   methods: {
     addComment() {
-      axios
-        .post("quotes/" + this.quotedata.id + "/comment", {
+      axios({
+        method: "post",
+        url: "quotes/" + this.quotedata.id + "/comment",
+        data: {
           body: this.commentBody,
-        })
-        .then(() => {
-          this.commentBody = "";
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        },
+        headers: {
+          "X-Socket-Id": window.Echo.socketId(),
+        },
+      }).then(() => {
+        this.commentBody = "";
+      });
     },
   },
 };

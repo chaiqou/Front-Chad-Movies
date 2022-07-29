@@ -41,7 +41,7 @@
         </div>
         <div>
           <p class="text-base font-medium text-white mb-12">
-            {{ notification.message.created_at }}
+            {{ convertNotificationDateForHumans }}
           </p>
         </div>
       </div>
@@ -54,7 +54,7 @@ import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import axios from "@/config/axios/index";
 import IconSmallHearth from "../icons/IconSmallHearth.vue";
 import IconComment from "../icons/IconComment.vue";
-
+import moment from "moment";
 export default {
   components: {
     IconComment,
@@ -72,6 +72,13 @@ export default {
       "unread",
       "unreadCount",
     ]),
+
+    convertNotificationDateForHumans() {
+      let timestamp = Number(new Date());
+      let date = new Date(timestamp);
+      let formatedDate = moment(date).fromNow();
+      return formatedDate;
+    },
   },
 
   methods: {
