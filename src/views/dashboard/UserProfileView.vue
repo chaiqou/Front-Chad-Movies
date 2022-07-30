@@ -2,7 +2,7 @@
   <DashboardLayout />
   <DashboardTimeline :header="$t('myprofile')">
     <div
-      class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full mb-16 shadow-lg rounded-xl mt-16"
+      class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full shadow-lg rounded-xl mt-16"
     >
       <div class="px-6">
         <div class="flex flex-wrap justify-center">
@@ -12,13 +12,13 @@
                 v-if="profile_image"
                 :src="getUserProfilePhoto()"
                 alt="profile image"
-                class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
               <img
                 v-else
                 src="@/assets/images/vue-profile.jpg"
                 alt="vue profile photo"
-                class="shadow-xl rounded-lg align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
               />
             </div>
           </div>

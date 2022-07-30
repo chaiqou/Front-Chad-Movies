@@ -1,10 +1,12 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen w-screen">
     <slot></slot>
-    <h1 class="text-white text-center font-bold text-5xl mt-6">
+    <h1 class="text-white text-center font-bold text-3xl md:text-5xl mt-6">
       <slot name="major-text"></slot>
     </h1>
-    <h5 class="text-white text-center font-medium text-2xl mt-6">
+    <h5
+      class="text-white text-center font-medium text-xl px-2 md:text-2xl mt-6"
+    >
       <slot name="minor-text"></slot>
     </h5>
     <RouterLink

@@ -7,7 +7,7 @@
     <Field
       v-bind="$attrs"
       :name="errorName"
-      class="p-30 inline-block w-full placeholder-[#626262] py-2 px-4 rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
+      class="p-30 inline-block md:w-full placeholder-[#626262] py-2 px-4 rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
       :placeholder="placeholder"
     />
   </div>

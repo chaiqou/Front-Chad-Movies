@@ -42,7 +42,7 @@
         <MovieForm />
       </CrudModal>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20 md:mt-14 mt-4">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
   </DashboardTimeline>

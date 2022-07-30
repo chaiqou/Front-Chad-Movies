@@ -36,7 +36,7 @@
     <div class="w-full p-4">
       <img
         :src="backurl + quotedata.thumbnail"
-        alt="postimage"
+        alt="post image"
         class="w-full rounded-md"
       />
     </div>

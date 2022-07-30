@@ -60,6 +60,7 @@ import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
 import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
 import BaseDragAndDrop from "../form/BaseDragAndDrop.vue";
+import BaseInput from "../form/BaseInput.vue";
 
 export default {
   components: {
@@ -67,6 +68,7 @@ export default {
     Field,
     MovieInput,
     BaseDragAndDrop,
+    BaseInput,
   },
 
   data() {

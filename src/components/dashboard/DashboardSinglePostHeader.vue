@@ -13,7 +13,9 @@
         <IconDelete />
       </button>
     </div>
-    <div class="text-white font-medium text-xl">View quote</div>
+    <div class="invisible md:visible text-white font-medium text-xl">
+      View quote
+    </div>
     <div>
       <button @click="exit">
         <IconExit />

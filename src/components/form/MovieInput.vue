@@ -1,10 +1,10 @@
 <template>
-  <div class="md:w-[600px] w-[400px]">
+  <div class="mt-2 flex">
     <Field
       v-bind="$attrs"
       :name="errorName"
       :placeholder="placeholder"
-      class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
+      class="bg-[#11101A] w-full rounded-md p-30 inline-block md:w-full py-2 px-4 placeholder-white text-white"
       type="text"
     />
     <p class="mt-2 text-sm text-red-500">

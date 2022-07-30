@@ -4,10 +4,10 @@
       <img
         :src="backurl + movie.thumbnail"
         alt="movieimage"
-        class="hover:opacity-50 transition ease-in-out duration-500 rounded-lg h-full md:w-full w-screen"
+        class="hover:opacity-50 transition ease-in-out duration-500 rounded-2xl md:rounded-lg h-full md:w-full p-8 md:p-0"
       />
     </a>
-    <div class="mt-4 text-24 ml-8 md:ml-0">
+    <div class="md:mt-4 text-24 ml-8 md:ml-0">
       <h3 class="text-white md:mb-2 md:mt-2">
         {{ movie.title.en }} ({{ movie.year }})
       </h3>
