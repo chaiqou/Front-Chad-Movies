@@ -3,7 +3,7 @@
   <DashboardTimeline
     v-if="!loading"
     header="Movie description"
-    class="overflow-y-scroll"
+    class="overflow-y-scroll overflow-x-hidden p-4"
   >
     <div class="md:flex container mx-auto mt-8">
       <img
@@ -34,7 +34,7 @@
           </div>
         </div>
         <p
-          class="text-white bg-gray-500 inline-block p-1 rounded-lg font-bold mt-4"
+          class="text-white bg-gray-500 inline-block p-1 rounded-lg font-bold mt-2 md:mt-4"
         >
           {{ currentMovie[0].genre }}
         </p>
@@ -56,10 +56,10 @@
       </div>
     </div>
     <div class="mt-6 md:flex items-center space-x-2 space-y-8 md:space-y-0">
-      <p class="text-white mr-2">
+      <p class="text-white ml-2">
         Quotes (Total {{ currentMovie[0].quotes.length }})
       </p>
-      <span class="text-gray-500">|</span>
+      <span class="text-gray-500 invisible md:visible">|</span>
       <button
         type="button"
         class="items-center inline-flex justify-center rounded-md px-2 py-2 bg-[#E31221] text-base font-medium text-white"

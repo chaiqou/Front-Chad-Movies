@@ -8,7 +8,7 @@
 
     <div
       v-if="toggleDropdown"
-      class="origin-top-right absolute right-0 mt-2 w-56 rounded-md bg-[#24222F]"
+      class="origin-bottom-top md:origin-top-right absolute left-[-20vw] md:right-0 mt-2 w-56 rounded-md bg-[#24222F]"
     >
       <div class="py-3 px-3 space-y-2">
         <div class="flex items-center">

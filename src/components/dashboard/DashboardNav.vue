@@ -12,7 +12,23 @@
           class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <div class="ml-3 relative flex items-center space-x-4">
-            <IconSearch class="md:hidden" />
+            <div
+              class="md:invisible mr-4 relative flex items-center rounded-md"
+            >
+              <input
+                v-model="search"
+                type="text"
+                class="block w-48 pr-10 text-white border-none bg-inherit p-3 rounded-md"
+              />
+              <div
+                class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
+              >
+                <p class="flex items-center space-x-2 z-10">
+                  <IconSearch />
+                  <span class="text-white">{{ $t("search") }}</span>
+                </p>
+              </div>
+            </div>
             <DashboardNotification />
             <LanguageSwitcher />
             <button
@@ -27,16 +43,64 @@
     </div>
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden">
-      <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
+      <div class="relative z-40 md:hidden">
         <div
-          :class="[isOpen ? 'block bg-red-500 w-[90%] h-[70%]' : 'hidden']"
+          :class="[
+            isOpen ? 'block bg-[#11101A] rounded-xl w-[90%] h-[70%]' : 'hidden',
+          ]"
           class="fixed inset-0 flex z-40"
         >
           <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4">
             <div class="absolute top-0 right-0 -mr-12 pt-2"></div>
 
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
-              <nav class="px-2 space-y-1">gg mobile</nav>
+              <nav class="px-2 space-y-1">
+                <li class="text-white space-y-8 ml-10 list-none">
+                  <ul>
+                    <div class="flex items-center">
+                      <img
+                        v-if="profile_image"
+                        :src="backurl + profile_image"
+                        alt="profile"
+                        class="w-10 h-10 rounded-xl mr-2"
+                      />
+                      <p class="font-bold font-32">
+                        {{ name }}
+                      </p>
+                    </div>
+                    <div v-if="provider === null">
+                      <router-link
+                        class="text-[#CED4DA] text-sm"
+                        :to="`/profile/`"
+                        >{{ $t("edityourprofile") }}</router-link
+                      >
+                    </div>
+                    <div v-else>
+                      <router-link
+                        :class="[profile_image ? 'ml-12' : 'ml-0']"
+                        class="text-[#CED4DA] text-sm whitespace-nowrap"
+                        :to="`/google-profile`"
+                        >{{ $t("edityourprofile") }}
+                      </router-link>
+                    </div>
+                  </ul>
+                  <router-link class="flex items-center" to="/dashboard">
+                    <IconHome
+                      class="mr-4"
+                      :fill="$route.path === '/dashboard' ? 'red' : 'white'"
+                    ></IconHome>
+                    {{ $t("dashboard") }}</router-link
+                  >
+
+                  <router-link to="/movies" class="flex items-center">
+                    <IconMovie
+                      class="mr-4"
+                      :fill="$route.path === '/movies' ? 'red' : 'white'"
+                    ></IconMovie>
+                    {{ $t("movies") }}
+                  </router-link>
+                </li>
+              </nav>
             </div>
           </div>
         </div>
@@ -54,12 +118,17 @@ import IconResponsiveNav from "../icons/IconResponsiveNav.vue";
 import IconSearch from "../icons/IconSearch.vue";
 import DashboardNotification from "@/components/dashboard/DashboardNotification.vue";
 import LanguageSwitcher from "../ui/LanguageSwitcher.vue";
+import IconMovie from "@/components/icons/IconMovie.vue";
+import IconHome from "@/components/icons/IconHome.vue";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 export default {
   components: {
     IconResponsiveNav,
     IconSearch,
     DashboardNotification,
     LanguageSwitcher,
+    IconMovie,
+    IconHome,
   },
   data() {
     return {
@@ -68,6 +137,14 @@ export default {
   },
   computed: {
     ...mapWritableState(useAuthTokenStore, ["token"]),
+    ...mapWritableState(useUserProfileStore, [
+      "loading",
+      "email",
+      "name",
+      "profile_image",
+      "provider",
+      "backurl",
+    ]),
   },
   methods: {
     ...mapActions(useAuthTokenStore, ["setToken", "clearToken"]),

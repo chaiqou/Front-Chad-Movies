@@ -1,6 +1,6 @@
 <template>
   <FormVee
-    class="mt-2 min-w-screen space-y-6"
+    class="mt-2 space-y-6"
     enctype="multipart/form-data"
     @submit="onSubmitForm"
   >

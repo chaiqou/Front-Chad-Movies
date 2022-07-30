@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 flex">
+  <div class="md:w-[600px] w-[90vw]">
     <Field
       v-bind="$attrs"
       :name="errorName"
