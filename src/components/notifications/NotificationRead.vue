@@ -5,10 +5,9 @@
     class="relative grid gap-6 bg-[#000000] px-5 py-6 sm:gap-8 sm:p-8"
   >
     <button
-      class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-900 transition ease-in-out duration-150"
-      z
+      class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-900 border border-gray-700 transition ease-in-out duration-150"
     >
-      <div class="flex items-center justify-between">
+      <div class="md:flex flex-col items-center justify-between">
         <div class="flex">
           <img
             src="https://i.ibb.co/C1sj76g/Screenshot-from-2022-07-18-22-07-37.png"
@@ -35,15 +34,17 @@
             </p>
             <div class="flex items-center">
               <IconSmallHearth />
-              <span class="ml-2">Reacted to your quote</span>
+              <span class="ml-2 whitespace-nowrap"
+                >Reacted to your movie quote</span
+              >
             </div>
           </div>
         </div>
-        <div>
-          <p class="text-base font-medium text-white mb-12">
-            {{ convertNotificationDateForHumans }}
-          </p>
-        </div>
+      </div>
+      <div class="flex items-center ml-12">
+        <p class="text-base font-medium text-white">
+          {{ convertNotificationDateForHumans }}
+        </p>
       </div>
     </button>
   </div>

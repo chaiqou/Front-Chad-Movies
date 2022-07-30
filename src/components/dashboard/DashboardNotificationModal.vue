@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-10 fixed">
+  <div class="mt-10 flex">
     <div
-      class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0"
+      class="absolute z-10 left-1/3 transform -translate-x-60 mt-3 w-screen max-w-xl"
     >
       <div
         class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden"
@@ -9,7 +9,7 @@
         <div
           class="px-5 py-5 bg-[#000000] flex justify-between space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8"
         >
-          <div class="flow-root">
+          <div class="flex">
             <a
               href="#"
               class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-white"
@@ -18,7 +18,7 @@
             </a>
           </div>
 
-          <div class="flow-root">
+          <div class="flex">
             <button
               class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-white"
               @click="readAllNotification"
