@@ -13,7 +13,7 @@ export default {
     });
     await window.Echo.channel(`comment`).listen("CommentEvent", (event) => {
       if (this.quotedata.id === event.comment.quote_id) {
-        this.quotedata.comments.unshift(event.comment);
+        this.quotedata.comments.unshift(event);
         this.quotedata.comments_count++;
       }
     });

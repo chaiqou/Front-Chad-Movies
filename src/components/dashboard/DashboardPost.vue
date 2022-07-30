@@ -77,7 +77,7 @@
         <div class="ml-4 flex-1">
           <div class="bg-[#11101A] rounded-lg p-2 text-sm">
             <p class="mb-2 font-bold text-white">
-              {{ quotedata.user.name }}
+              {{ comment.commentBy }}
             </p>
             <p class="inline text-white">{{ comment.body }}</p>
           </div>
