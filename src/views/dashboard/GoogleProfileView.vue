@@ -117,7 +117,6 @@ export default {
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.profile_image = e.target.result;
       };
 
