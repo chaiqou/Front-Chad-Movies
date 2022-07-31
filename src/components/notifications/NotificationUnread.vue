@@ -10,11 +10,20 @@
     >
       <div class="md:flex flex-col items-center justify-between">
         <div class="flex">
-          <img
-            src="https://i.ibb.co/C1sj76g/Screenshot-from-2022-07-18-22-07-37.png"
-            alt="profildis foto"
-            class="w-8 h-8 mr-4 object-cover rounded-full"
-          />
+          <div class="w-8">
+            <img
+              v-if="notification.message.user.profile_image"
+              :src="backurl + notification.message.user.profile_image"
+              alt="user profile"
+              class="w-8 h-8 mr-2 object-cover rounded-full"
+            />
+            <img
+              v-else
+              src="@/assets/images/vue-profile.jpg"
+              alt="vue profile photo"
+              class="w-8 h-8 mr-2 object-cover rounded-full"
+            />
+          </div>
           <div
             v-if="notification.hasOwnProperty('commentBy')"
             class="text-sm text-white flex-col"
@@ -47,7 +56,7 @@
           <p class="text-base font-medium text-white">
             {{ convertNotificationDateForHumans }}
           </p>
-          <p class="text-white text-base font-medium">new</p>
+          <p class="text-base font-medium mt-6 text-[#198754]">New</p>
         </div>
       </div>
     </button>
@@ -60,6 +69,7 @@ import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import axios from "@/config/axios/index";
 import IconSmallHearth from "../icons/IconSmallHearth.vue";
 import IconComment from "../icons/IconComment.vue";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 import moment from "moment";
 
 export default {
@@ -79,6 +89,7 @@ export default {
       "unread",
       "unreadCount",
     ]),
+    ...mapWritableState(useUserProfileStore, ["backurl"]),
 
     convertNotificationDateForHumans() {
       let timestamp = Number(new Date());
