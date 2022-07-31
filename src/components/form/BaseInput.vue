@@ -8,7 +8,7 @@
       v-bind="$attrs"
       :name="errorName"
       class="inline-block w-full placeholder-[#626262] rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
-      :placeholder="errorName ? $t(errorName) : placeholder"
+      :placeholder="placeholder"
     />
   </div>
   <span class="text-sm text-red-500">

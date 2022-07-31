@@ -20,7 +20,7 @@
           error-name="password"
           :type="showPasswordType"
           rules="required|min:8"
-          :placeholder="$t('passwordplaceholder')"
+          :placeholder="$t('basicpasswordplaceholder')"
         />
       </ShowHidePassword>
       <div class="flex items-center justify-between">

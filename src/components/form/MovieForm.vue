@@ -8,14 +8,14 @@
       v-model="title_en"
       name="title_en"
       placeholder="Movie name"
-      rules="required|min:3"
+      rules="required|min:3|english-keyboard"
       error-name="English title"
     />
     <MovieInput
       v-model="title_ka"
       name="title_ka"
       placeholder="ფილმის სახელი"
-      rules="required|min:3"
+      rules="required|min:3|georgian-keyboard"
       error-name="ქართული სათაური"
     />
     <Multiselect
@@ -32,28 +32,28 @@
       v-model="director_en"
       name="director_en"
       placeholder="Director"
-      rules="required|min:3"
+      rules="required|min:3|english-keyboard"
       error-name="Director"
     />
     <MovieInput
       v-model="director_ka"
       name="director_ka"
       placeholder="რეჟისორი"
-      rules="required|min:3"
+      rules="required|min:3|georgian-keyboard"
       error-name="რეჟისორი"
     />
     <MovieInput
       v-model="description_en"
       name="description_en"
       placeholder="Movie Description"
-      rules="required|min:3|max:255"
+      rules="required|min:3|max:255|english-keyboard"
       error-name="English description"
     />
     <MovieInput
       v-model="description_ka"
       name="description_ka"
       placeholder="ფილმის აღწერა"
-      rules="required|min:3|max:255"
+      rules="required|min:3|max:255|georgian-keyboard"
       error-name="ქართული აღწერა"
     />
     <MovieInput

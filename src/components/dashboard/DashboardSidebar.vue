@@ -2,19 +2,19 @@
   <div class="flex-1 ml-8 flex flex-col overflow-y-hidden mt-8">
     <nav class="flex-1 px-2 py-4 space-y-1">
       <li class="text-white space-y-8 list-none">
-        <ul v-if="name">
+        <ul v-if="name" class="flex mb-2">
           <div class="flex items-center">
             <img
               v-if="profile_image"
               :src="backurl + profile_image"
               alt="profile"
-              class="w-10 h-10 rounded-xl mr-2"
+              class="w-10 h-10 mr-2 object-cover rounded-full"
             />
+          </div>
+          <div v-if="provider === null">
             <p class="font-bold font-32">
               {{ name }}
             </p>
-          </div>
-          <div v-if="provider === null">
             <router-link class="text-[#CED4DA] text-sm" :to="`/profile/`">{{
               $t("edityourprofile")
             }}</router-link>

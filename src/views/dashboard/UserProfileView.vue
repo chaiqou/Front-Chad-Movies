@@ -12,13 +12,13 @@
                 v-if="profile_image"
                 :src="getUserProfilePhoto()"
                 alt="profile image"
-                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                class="shadow-xl rounded-full object-cover w-30 h-20 align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[10rem]"
               />
               <img
                 v-else
                 src="@/assets/images/vue-profile.jpg"
                 alt="vue profile photo"
-                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+                class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[10rem]"
               />
             </div>
           </div>

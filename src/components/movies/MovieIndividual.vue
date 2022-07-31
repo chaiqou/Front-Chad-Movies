@@ -5,9 +5,9 @@
     header="Movie description"
     class="overflow-y-scroll overflow-x-hidden p-4"
   >
-    <div class="md:flex container mx-auto mt-8">
+    <div class="md:flex container mx-auto mt-4">
       <img
-        class="md:w-1/2 md:h-72 w-screen"
+        class="md:w-1/2 md:h-72 w-screen rounded-lg"
         :src="backurl + currentMovie[0].thumbnail"
         alt="moviephoto"
       />
@@ -66,7 +66,7 @@
         @click="goToAddQuote"
       >
         <IconAddButton />
-        Add Quote
+        <p class="ml-2">Add Quote</p>
       </button>
     </div>
     <QuoteCard

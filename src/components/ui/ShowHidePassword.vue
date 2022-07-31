@@ -2,7 +2,7 @@
   <div class="relative">
     <slot></slot>
     <button
-      class="absolute flex top-1/2 w-6 cursor-pointer items-center right-4 translate-y-2"
+      class="absolute flex top-1/2 w-6 cursor-pointer items-center right-4 translate-y-1"
       @click.prevent="toggleInputType"
     >
       <IconShowHidePassword />

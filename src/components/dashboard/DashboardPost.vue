@@ -2,18 +2,18 @@
   <div class="bg-[#11101A] rounded-lg md:w-2/3 mt-6 overflow-hidden">
     <div class="flex flex-col p-4">
       <div class="flex items-center">
-        <div class="w-8">
+        <div class="w-10">
           <img
             v-if="quotedata.user.profile_image"
             :src="backurl + quotedata.user.profile_image"
             alt="user profile"
-            class="w-8 h-8 mr-2 object-cover rounded-full"
+            class="w-10 h-10 mr-2 object-cover rounded-full"
           />
           <img
             v-else
             src="@/assets/images/vue-profile.jpg"
             alt="vue profile photo"
-            class="w-8 h-8 mr-2 object-cover rounded-full"
+            class="w-10 h-10 mr-2 object-cover rounded-full"
           />
         </div>
         <div class="ml-6">
@@ -60,18 +60,18 @@
         :key="comment.id"
         class="flex my-4 items-center"
       >
-        <div class="w-8">
+        <div class="w-10">
           <img
             v-if="quotedata.user.profile_image"
             :src="backurl + quotedata.user.profile_image"
             alt="profile"
-            class="w-8 h-8 mr-2 mb-10 object-cover rounded-full"
+            class="w-10 h-10 mr-2 mb-10 object-cover rounded-full"
           />
           <img
             v-else
             src="@/assets/images/vue-profile.jpg"
             alt="vue profile photo"
-            class="w-8 h-8 mr-2 mb-10 object-cover rounded-full"
+            class="w-10 h-10 mr-2 mb-10 object-cover rounded-full"
           />
         </div>
         <div class="ml-4 flex-1">

@@ -88,7 +88,6 @@ export default {
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
-  // aq unda sheqmna reusable logika romelsac iyeneb login viewshic
   mounted() {
     if (localStorage.getItem("auth") !== null) {
       axios
@@ -112,9 +111,8 @@ export default {
           this.form_submmiting = false;
           this.$router.push({ name: "user-registered-page" });
         })
-        .catch((error) => {
+        .catch(() => {
           this.form_submmiting = false;
-          console.log(error);
         });
     },
     onSubmitRegisterGoogle() {
