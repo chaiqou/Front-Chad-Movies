@@ -135,7 +135,6 @@ export default {
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -147,7 +146,6 @@ export default {
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);

@@ -11,7 +11,6 @@ import "@/config/vee-validate/messages";
 import "@/main.css";
 
 window.Pusher = Pusher;
-// Pusher.logToConsole = true;
 
 window.Echo = new Echo({
   authEndpoint: "http://localhost:8000/broadcasting/auth",

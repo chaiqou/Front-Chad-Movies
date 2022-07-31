@@ -75,14 +75,9 @@ export default {
     },
 
     async intersected() {
-      await axios
-        .get(`quotes?page=${this.page++}`)
-        .then((response) => {
-          this.quotes = [...this.quotes, ...response.data.data];
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      await axios.get(`quotes?page=${this.page++}`).then((response) => {
+        this.quotes = [...this.quotes, ...response.data.data];
+      });
     },
 
     async sendSearchRequest() {

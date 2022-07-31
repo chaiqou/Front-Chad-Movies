@@ -45,16 +45,11 @@ export default {
       this.toggleNotification = !this.toggleNotification;
     },
     getNotifications() {
-      axios
-        .post("/notifications")
-        .then((response) => {
-          this.read = response.data.read;
-          this.unread = response.data.unread;
-          this.unreadCount = response.data.unread.length;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      axios.post("/notifications").then((response) => {
+        this.read = response.data.read;
+        this.unread = response.data.unread;
+        this.unreadCount = response.data.unread.length;
+      });
     },
   },
 };

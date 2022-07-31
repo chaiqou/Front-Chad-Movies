@@ -28,9 +28,7 @@ export default {
 
   methods: {
     showAppropiateQuote() {
-      if (!this.$route.params.id) {
-        console.log("loading");
-      } else {
+      if (this.$route.params.id) {
         axios
           .get(`/quotes/${this.$route.params.id}`, {
             params: {
@@ -38,11 +36,7 @@ export default {
             },
           })
           .then((response) => {
-            console.log(response.data);
             this.single_quote = response.data;
-          })
-          .catch((error) => {
-            console.log(error);
           });
       }
     },

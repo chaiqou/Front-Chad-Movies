@@ -1,6 +1,6 @@
 <template>
   <header class="flex justify-between items-center p-4 mt-6">
-    <div class="flex space-x-4">
+    <div class="flex items-center space-x-4">
       <router-link
         :to="{
           name: 'edit-quote-page',
@@ -9,6 +9,7 @@
       >
         <IconEdit />
       </router-link>
+      <div class="border-r-2">|</div>
       <button @click="delete_quote(quotedata.id)">
         <IconDelete />
       </button>

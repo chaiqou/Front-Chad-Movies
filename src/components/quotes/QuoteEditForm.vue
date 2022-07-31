@@ -117,7 +117,6 @@ export default {
 
       let reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result);
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -143,9 +142,7 @@ export default {
         });
     },
     fetchAppropiateQuote() {
-      if (!this.$route.params.id) {
-        console.log("loading");
-      } else {
+      if (this.$route.params.id) {
         axios.get(`/quotes/${this.$route.params.id}`).then((res) => {
           this.quote_en = res.data.data.quote.quote.en;
           this.quote_ka = res.data.data.quote.quote.ka;
