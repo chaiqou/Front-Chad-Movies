@@ -3,17 +3,17 @@
     >{{ label }}
     <p class="text-red-500 ml-1">*</p></label
   >
-  <div class="mt-2 flex">
+  <div class="flex">
     <Field
       v-bind="$attrs"
       :name="errorName"
-      class="p-30 inline-block w-full placeholder-[#626262] py-2 px-4 rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
-      :placeholder="placeholder"
+      class="inline-block w-full placeholder-[#626262] rounded-md border border-[#626262] bg-[#CED4DA] whitespace-nowrap"
+      :placeholder="errorName ? $t(errorName) : placeholder"
     />
   </div>
-  <p class="mt-2 text-sm text-red-500">
+  <span class="text-sm text-red-500">
     <ErrorMessage :name="errorName" />
-  </p>
+  </span>
 </template>
 
 <script>

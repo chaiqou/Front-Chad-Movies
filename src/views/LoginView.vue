@@ -3,23 +3,26 @@
     <template #major-text>{{ $t("loginpage") }}</template>
     <template #minor-text>{{ $t("enteryourdetails") }}</template>
     <FormVee class="space-y-2" @submit="onSubmitLogin">
-      <base-input
-        v-model="email"
-        :label="$t('email')"
-        error-name="email"
-        type="text"
-        :placeholder="$t('emailplaceholder')"
-        rules="required|min:3"
-      />
-
-      <base-input
-        v-model="password"
-        :label="$t('password')"
-        error-name="password"
-        type="password"
-        rules="required|min:8"
-        :placeholder="$t('passwordplaceholder')"
-      />
+      <div>
+        <base-input
+          v-model="email"
+          :label="$t('email')"
+          error-name="email"
+          type="text"
+          :placeholder="$t('emailplaceholder')"
+          rules="required|min:3"
+        />
+      </div>
+      <ShowHidePassword>
+        <base-input
+          v-model="password"
+          :label="$t('password')"
+          error-name="password"
+          :type="showPasswordType"
+          rules="required|min:8"
+          :placeholder="$t('passwordplaceholder')"
+        />
+      </ShowHidePassword>
       <div class="flex items-center justify-between">
         <base-checkbox v-model="remember" :label="$t('remember')" />
         <router-link class="text-[#0D6EFD] underline" to="/forgot-password">{{
@@ -59,6 +62,7 @@ import { useLoginStore } from "@/stores/useLoginStore";
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
+import ShowHidePassword from "@/components/ui/ShowHidePassword.vue";
 
 export default {
   components: {
@@ -67,6 +71,7 @@ export default {
     FormModal,
     GoogleButton,
     FormVee,
+    ShowHidePassword,
   },
   computed: {
     ...mapWritableState(useLoginStore, [
@@ -75,6 +80,7 @@ export default {
       "remember",
       "form_submmiting",
       "getUserData",
+      "showPasswordType",
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
@@ -113,7 +119,6 @@ export default {
 
         .then((response) => {
           this.form_submmiting = false;
-          console.log(response.data);
           this.setUserId(response.data.user);
           this.setToken(response.data.access_token);
           this.setUserName(response.data.user.name);

@@ -5,6 +5,7 @@ export const useLoginStore = defineStore("useLoginStore", {
   state: () => ({
     email: "",
     password: "",
+    showPasswordType: "password",
     remember: false,
     form_submmiting: false,
   }),
