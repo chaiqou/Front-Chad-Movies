@@ -22,8 +22,10 @@
             >
           </div>
           <div v-else>
+            <p class="font-bold font-32">
+              {{ name }}
+            </p>
             <router-link
-              :class="[profile_image ? 'ml-12' : 'ml-0']"
               class="text-[#CED4DA] text-sm whitespace-nowrap"
               :to="`/google-profile`"
               >{{ $t("edityourprofile") }}
