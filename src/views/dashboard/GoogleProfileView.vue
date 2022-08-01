@@ -81,14 +81,15 @@
 </template>
 
 <script>
-import { mapWritableState } from "pinia";
-import { useUserProfileStore } from "@/stores/useUserProfileStore";
 import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
-import { Form as FormVee, Field } from "vee-validate";
 import BaseInput from "@/components/form/BaseInput.vue";
 import axios from "@/config/axios/index";
+
+import { Form as FormVee, Field } from "vee-validate";
 import { useMovieListStore } from "@/stores/useMovieListStore";
+import { mapWritableState } from "pinia";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
   components: { DashboardLayout, DashboardTimeline, FormVee, BaseInput, Field },

@@ -60,11 +60,12 @@
 </template>
 
 <script>
+import axios from "@/config/axios/index";
+import IconSmallHearth from "@/components/icons/IconSmallHearth.vue";
+import IconComment from "@/components/icons/IconComment.vue";
+
 import { mapWritableState } from "pinia";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
-import axios from "@/config/axios/index";
-import IconSmallHearth from "../icons/IconSmallHearth.vue";
-import IconComment from "../icons/IconComment.vue";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
 import moment from "moment";
 

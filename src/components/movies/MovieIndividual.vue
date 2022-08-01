@@ -80,14 +80,15 @@
 <script>
 import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
-import { useMovieListStore } from "@/stores/useMovieListStore";
-import { mapWritableState } from "pinia";
 import axios from "@/config/axios/index";
 import IconDelete from "@/components/icons/IconDelete.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
+import QuoteCard from "@/components/quotes/QuoteCard.vue";
+
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
-import QuoteCard from "../quotes/QuoteCard.vue";
+import { useMovieListStore } from "@/stores/useMovieListStore";
+import { mapWritableState } from "pinia";
 
 export default {
   components: {

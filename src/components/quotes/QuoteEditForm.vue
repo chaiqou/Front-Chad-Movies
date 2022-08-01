@@ -57,7 +57,7 @@ import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
 import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
-import BaseDragAndDrop from "../form/BaseDragAndDrop.vue";
+import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {

@@ -54,6 +54,7 @@
 import IconMovie from "@/components/icons/IconMovie.vue";
 import IconHome from "@/components/icons/IconHome.vue";
 import axios from "@/config/axios/index";
+
 import { mapWritableState } from "pinia";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
 export default {

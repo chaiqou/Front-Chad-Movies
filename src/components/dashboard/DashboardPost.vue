@@ -101,16 +101,17 @@
 </template>
 
 <script>
-import IconDashboardComment from "../icons/IconDashboardComment.vue";
-import IconDashboardHearth from "../icons/IconDashboardHearth.vue";
+import IconDashboardComment from "@/components/icons/IconDashboardComment.vue";
+import IconDashboardHearth from "@/components/icons/IconDashboardHearth.vue";
+
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
+import { useLanguageSwitchStore } from "@/stores/useLanguageSwitchStore";
 
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
-import { useLanguageSwitchStore } from "@/stores/useLanguageSwitchStore";
 
 export default {
   components: { IconDashboardComment, IconDashboardHearth },

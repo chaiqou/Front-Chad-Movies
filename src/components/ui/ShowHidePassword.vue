@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import IconShowHidePassword from "../icons/IconShowHidePassword.vue";
+import IconShowHidePassword from "@/components/icons/IconShowHidePassword.vue";
 import { mapWritableState } from "pinia";
 import { useLoginStore } from "@/stores/useLoginStore";
 export default {

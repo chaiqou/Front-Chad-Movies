@@ -52,14 +52,15 @@
 import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import CrudModal from "@/components/modals/CrudModal.vue";
-import { mapWritableState } from "pinia";
-import { useAddMovieStore } from "@/stores/useAddMovieStore";
-import { useMovieListStore } from "@/stores/useMovieListStore";
 import MovieCard from "@/components/movies/MovieCard.vue";
 import axios from "@/config/axios/index";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconAddButton from "@/components/icons/IconAddButton.vue";
 import MovieForm from "@/components/form/MovieForm.vue";
+
+import { mapWritableState } from "pinia";
+import { useAddMovieStore } from "@/stores/useAddMovieStore";
+import { useMovieListStore } from "@/stores/useMovieListStore";
 
 export default {
   components: {

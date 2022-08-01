@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import DashboardNav from "./DashboardNav.vue";
-import DashboardSidebar from "./DashboardSidebar.vue";
+import DashboardNav from "@/components/dashboard/DashboardNav.vue";
+import DashboardSidebar from "@/components/dashboard/DashboardSidebar.vue";
 export default {
   components: { DashboardNav, DashboardSidebar },
 };

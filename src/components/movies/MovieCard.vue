@@ -22,7 +22,7 @@
 <script>
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
-import IconComment from "../icons/IconComment.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 
 export default {
   components: { IconComment },

@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import IconDelete from "../icons/IconDelete.vue";
-import IconEdit from "../icons/IconEdit.vue";
-import IconExit from "../icons/IconExit.vue";
+import IconDelete from "@/components/icons/IconDelete.vue";
+import IconEdit from "@/components/icons/IconEdit.vue";
+import IconExit from "@/components/icons/IconExit.vue";
 import axios from "@/config/axios/index";
 export default {
   components: {

@@ -103,14 +103,15 @@
 </template>
 
 <script>
-import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 import MovieInput from "./MovieInput.vue";
 import axios from "@/config/axios/index";
+import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
+
+import Multiselect from "@vueform/multiselect";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
-import BaseDragAndDrop from "./BaseDragAndDrop.vue";
-import Multiselect from "@vueform/multiselect";
-import SelectImageMixin from "@/mixins/SelectImageMixin";
+import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 
 export default {
   components: {

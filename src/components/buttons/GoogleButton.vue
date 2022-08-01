@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import IconGoogle from "../icons/IconGoogle.vue";
+import IconGoogle from "@/components/icons/IconGoogle.vue";
 export default {
   components: { IconGoogle },
   props: {

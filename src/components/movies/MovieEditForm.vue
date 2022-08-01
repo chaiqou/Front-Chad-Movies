@@ -88,14 +88,15 @@
 </template>
 
 <script>
-import { Form as FormVee, Field } from "vee-validate";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
 import MovieInput from "@/components/form/MovieInput.vue";
 import BaseSelect from "@/components/form/BaseSelect.vue";
 import axios from "@/config/axios/index";
+
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
+import { Form as FormVee, Field } from "vee-validate";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
-import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {
   components: {

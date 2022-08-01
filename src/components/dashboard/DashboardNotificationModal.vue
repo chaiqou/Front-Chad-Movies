@@ -37,6 +37,7 @@
 <script>
 import { mapWritableState } from "pinia";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
+
 import axios from "@/config/axios/index";
 import NotificationUnread from "@/components/notifications/NotificationUnread.vue";
 import NotificationRead from "@/components/notifications/NotificationRead.vue";

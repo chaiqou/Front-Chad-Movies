@@ -18,7 +18,7 @@
 <script>
 import { useLanguageSwitchStore } from "@/stores/useLanguageSwitchStore";
 import { mapWritableState } from "pinia";
-import IconArrowDown from "../icons/IconArrowDown.vue";
+import IconArrowDown from "@/components/icons/IconArrowDown.vue";
 
 export default {
   components: { IconArrowDown },

@@ -15,8 +15,9 @@
 <script>
 import IconBell from "@/components/icons/IconBell.vue";
 import DashboardNotificationModal from "@/components/dashboard/DashboardNotificationModal.vue";
-import { mapWritableState } from "pinia";
 import axios from "@/config/axios/index";
+
+import { mapWritableState } from "pinia";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
 

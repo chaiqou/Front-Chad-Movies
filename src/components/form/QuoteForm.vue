@@ -40,7 +40,7 @@
 
 <script>
 import { Form as FormVee, Field } from "vee-validate";
-import MovieInput from "./MovieInput.vue";
+import MovieInput from "@/components/form/MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";

@@ -62,9 +62,10 @@
 import { mapWritableState } from "pinia";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
+
 import axios from "@/config/axios/index";
-import IconSmallHearth from "../icons/IconSmallHearth.vue";
-import IconComment from "../icons/IconComment.vue";
+import IconSmallHearth from "@/components/icons/IconSmallHearth.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 import moment from "moment";
 export default {
   components: {

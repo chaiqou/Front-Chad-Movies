@@ -23,13 +23,13 @@
 <script>
 import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
 import axios from "@/config/axios/index";
-import { mapWritableState } from "pinia";
-import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import DashboardNewQuote from "@/components/dashboard/DashboardNewQuote.vue";
 import DashboardPost from "@/components/dashboard/DashboardPost.vue";
 import observer from "@/components/helpers/observer.vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
+import { mapWritableState } from "pinia";
+import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 
 export default {
   components: {

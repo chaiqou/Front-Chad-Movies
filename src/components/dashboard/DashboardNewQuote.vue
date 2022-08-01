@@ -43,12 +43,14 @@
 </template>
 
 <script>
-import IconAddNewQuote from "../icons/IconAddNewQuote.vue";
-import IconSearch from "../icons/IconSearch.vue";
-import DashboardNewQuoteForm from "./DashboardNewQuoteForm.vue";
+import IconAddNewQuote from "@/components/icons/IconAddNewQuote.vue";
+import IconSearch from "@/components/icons/IconSearch.vue";
+
+import DashboardNewQuoteForm from "@/components/dashboard/DashboardNewQuoteForm.vue";
+import CrudModal from "@/components/modals/CrudModal.vue";
+
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
 import { mapWritableState } from "pinia";
-import CrudModal from "../modals/CrudModal.vue";
 
 export default {
   components: {
@@ -57,6 +59,7 @@ export default {
     DashboardNewQuoteForm,
     CrudModal,
   },
+
   props: {
     sendSearchRequest: {
       type: Function,

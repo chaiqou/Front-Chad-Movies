@@ -74,13 +74,15 @@
 </template>
 
 <script>
-import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
-import MovieInput from "../form/MovieInput.vue";
 import axios from "@/config/axios/index";
+
+import MovieInput from "@/components/form/MovieInput.vue";
+import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
+
+import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
-import BaseDragAndDrop from "../form/BaseDragAndDrop.vue";
-import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {
   components: {

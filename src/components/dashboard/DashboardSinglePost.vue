@@ -113,14 +113,15 @@
 <script>
 import IconDashboardComment from "@/components/icons/IconDashboardComment.vue";
 import IconDashboardHearth from "@/components/icons/IconDashboardHearth.vue";
-import { mapWritableState } from "pinia";
-import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
-import DashboardLayout from "./DashboardLayout.vue";
-import DashboardSinglePostHeader from "./DashboardSinglePostHeader.vue";
+import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
+import DashboardSinglePostHeader from "@/components/dashboard/DashboardSinglePostHeader.vue";
+
+import { mapWritableState } from "pinia";
+import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
