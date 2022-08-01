@@ -10,7 +10,7 @@
           error-name="email"
           type="text"
           :placeholder="$t('emailplaceholder')"
-          rules="required|min:3"
+          rules="required|min:3|email"
         />
       </div>
       <ShowHidePassword>

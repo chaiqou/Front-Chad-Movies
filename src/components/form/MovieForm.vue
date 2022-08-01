@@ -9,14 +9,14 @@
       name="title_en"
       placeholder="Movie name"
       rules="required|min:3|english-keyboard"
-      error-name="English title"
+      error-name="title_en"
     />
     <MovieInput
       v-model="title_ka"
       name="title_ka"
       placeholder="ფილმის სახელი"
       rules="required|min:3|georgian-keyboard"
-      error-name="ქართული სათაური"
+      error-name="title_ka"
     />
     <Multiselect
       v-model="selectedGenre"
@@ -33,42 +33,42 @@
       name="director_en"
       placeholder="Director"
       rules="required|min:3|english-keyboard"
-      error-name="Director"
+      error-name="director_en"
     />
     <MovieInput
       v-model="director_ka"
       name="director_ka"
       placeholder="რეჟისორი"
       rules="required|min:3|georgian-keyboard"
-      error-name="რეჟისორი"
+      error-name="director_ka"
     />
     <MovieInput
       v-model="description_en"
       name="description_en"
       placeholder="Movie Description"
       rules="required|min:3|max:255|english-keyboard"
-      error-name="English description"
+      error-name="description_en"
     />
     <MovieInput
       v-model="description_ka"
       name="description_ka"
       placeholder="ფილმის აღწერა"
       rules="required|min:3|max:255|georgian-keyboard"
-      error-name="ქართული აღწერა"
+      error-name="description_ka"
     />
     <MovieInput
       v-model="budget"
       name="budget"
       placeholder="Movie budget"
-      rules="required"
-      error-name="Budget"
+      rules="required|numeric"
+      error-name="budget"
     />
     <MovieInput
       v-model="year"
       name="year"
       placeholder="Movie year"
-      rules="required"
-      error-name="Year"
+      rules="required|numeric"
+      error-name="year"
     />
     <BaseDragAndDrop
       :select-file="selectFile"
@@ -84,6 +84,9 @@
         class="hidden"
         rules="required"
       />
+      <p class="mt-2 text-sm text-red-500">
+        <ErrorMessage name="thumbnail" />
+      </p>
     </BaseDragAndDrop>
 
     <div v-if="thumbnail">
@@ -100,7 +103,7 @@
 </template>
 
 <script>
-import { Form as FormVee, Field } from "vee-validate";
+import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 import MovieInput from "./MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
@@ -115,6 +118,7 @@ export default {
     MovieInput,
     Multiselect,
     BaseDragAndDrop,
+    ErrorMessage,
   },
 
   data() {
