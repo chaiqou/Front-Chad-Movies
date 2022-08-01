@@ -23,7 +23,7 @@
       name="thumbnail"
       class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
       rules="required"
-      @change="selectFile"
+      @change="selectImage"
     />
     <div v-if="thumbnail">
       <img :src="thumbnail" alt="movieimages" height="40" />
@@ -44,6 +44,7 @@ import MovieInput from "./MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {
   components: {
@@ -51,6 +52,7 @@ export default {
     Field,
     MovieInput,
   },
+  mixins: [SelectImageMixin],
   computed: {
     ...mapWritableState(useAddQuoteStore, [
       "form_submmiting",
@@ -62,17 +64,6 @@ export default {
   },
 
   methods: {
-    selectFile(event) {
-      let file = event.target.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-
     onSubmitForm() {
       this.form_submmiting = true;
 

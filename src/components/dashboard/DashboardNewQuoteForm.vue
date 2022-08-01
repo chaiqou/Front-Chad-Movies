@@ -23,7 +23,7 @@
     <BaseDragAndDrop
       :toggle-active="toggleActive"
       :drag-and-drop-file="dragAndDropFile"
-      :select-file="selectFile"
+      :select-file="selectImage"
       :active="active"
     >
       <Field
@@ -48,7 +48,6 @@
       >
         <option value="" disabled selected>
           <p class="text-white">
-            <IconVideo />
             <span class="text-white hidden"> Choose Movie </span>
           </p>
         </option>
@@ -81,6 +80,7 @@ import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
 import BaseDragAndDrop from "../form/BaseDragAndDrop.vue";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {
   components: {
@@ -90,6 +90,7 @@ export default {
     BaseDragAndDrop,
     ErrorMessage,
   },
+  mixins: [SelectImageMixin],
 
   data() {
     return {
@@ -135,16 +136,6 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
-    },
-    selectFile(event) {
-      let file = event.target.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
     },
 
     dragAndDropFile(event) {

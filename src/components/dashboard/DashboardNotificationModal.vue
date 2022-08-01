@@ -27,7 +27,6 @@
             </button>
           </div>
         </div>
-        <!-- NOTIFIKACIEBI IWYEBA AQEDAN -->
         <NotificationUnread :unreaddata="unread" />
         <NotificationRead :readdata="read" />
       </div>

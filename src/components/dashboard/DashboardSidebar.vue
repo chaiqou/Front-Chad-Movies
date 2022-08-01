@@ -15,9 +15,11 @@
             <p class="font-bold font-32">
               {{ name }}
             </p>
-            <router-link class="text-[#CED4DA] text-sm" :to="`/profile/`">{{
-              $t("edityourprofile")
-            }}</router-link>
+            <router-link
+              class="text-[#CED4DA] text-sm whitespace-nowrap"
+              :to="`/profile/`"
+              >{{ $t("edityourprofile") }}</router-link
+            >
           </div>
           <div v-else>
             <router-link

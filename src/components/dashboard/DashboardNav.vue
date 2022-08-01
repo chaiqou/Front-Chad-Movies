@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <!-- Mobile menu, show/hide based on menu state. -->
+    <!-- Mobile menu -->
     <div class="sm:hidden">
       <div class="relative z-40 md:hidden">
         <div

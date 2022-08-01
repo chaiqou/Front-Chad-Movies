@@ -72,7 +72,7 @@
       name="thumbnail"
       class="bg-[#11101A] w-full rounded-md placeholder-white text-white"
       rules="required"
-      @change="selectFile"
+      @change="selectImage"
     />
     <div v-if="thumbnail">
       <img :src="getMoviePhoto()" alt="movieimages" height="240" width="600" />
@@ -95,6 +95,7 @@ import axios from "@/config/axios/index";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {
   components: {
@@ -103,6 +104,7 @@ export default {
     MovieInput,
     BaseSelect,
   },
+  mixins: [SelectImageMixin],
   computed: {
     ...mapWritableState(useAddMovieStore, [
       "selectedGenre",
@@ -152,16 +154,6 @@ export default {
           : this.backurl + this.thumbnail;
 
       return moviePhoto;
-    },
-    selectFile(event) {
-      let file = event.target.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
     },
 
     onSubmitForm() {

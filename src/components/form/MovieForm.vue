@@ -71,7 +71,7 @@
       error-name="year"
     />
     <BaseDragAndDrop
-      :select-file="selectFile"
+      :select-file="selectImage"
       :active="active"
       :toggle-active="toggleActive"
       :drag-and-drop-file="dragAndDropFile"
@@ -110,6 +110,7 @@ import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
 import BaseDragAndDrop from "./BaseDragAndDrop.vue";
 import Multiselect from "@vueform/multiselect";
+import SelectImageMixin from "@/mixins/SelectImageMixin";
 
 export default {
   components: {
@@ -120,6 +121,7 @@ export default {
     BaseDragAndDrop,
     ErrorMessage,
   },
+  mixins: [SelectImageMixin],
 
   data() {
     return {
@@ -178,16 +180,6 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
-    },
-    selectFile(event) {
-      let file = event.target.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
     },
 
     dragAndDropFile(event) {
