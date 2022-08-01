@@ -12,7 +12,7 @@
           >
             <button
               class="flex text-white"
-              @click="delete_quote($route.params.id)"
+              @click="deleteQuote($route.params.id)"
             >
               <IconDelete />
               <p class="ml-2">Delete</p>
@@ -83,7 +83,7 @@ export default {
     ]),
   },
   methods: {
-    async delete_quote(quote_id) {
+    async deleteQuote(quote_id) {
       await axios.delete(`quotes/` + quote_id).then(() => {
         this.$router.back();
       });

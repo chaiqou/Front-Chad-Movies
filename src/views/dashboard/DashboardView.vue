@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout />
   <DashboardTimeline>
-    <DashboardNewQuote :send-search-request="sendSearchRequest" />
+    <DashboardNewQuote :send-search-request="sendSearchParameters" />
     <div v-if="!searchedData.length">
       <DashboardPost
         v-for="quotedata in quotes || []"
@@ -55,7 +55,7 @@ export default {
   },
 
   methods: {
-    param() {
+    searchAppropiateParameters() {
       if (this.search.includes("@")) {
         return {
           search: this.search.replace("@", ""),
@@ -80,12 +80,12 @@ export default {
       });
     },
 
-    async sendSearchRequest() {
+    async sendSearchParameters() {
       await axios
         .get(`/search`, {
           params: {
-            type: this.param().type,
-            search: this.param().search,
+            type: this.searchAppropiateParameters().type,
+            search: this.searchAppropiateParameters().search,
           },
         })
         .then((response) => {

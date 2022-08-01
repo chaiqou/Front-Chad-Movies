@@ -166,16 +166,11 @@ export default {
         fields.append(key, this.getMovieData[key]);
       }
 
-      axios
-        .post("movies", fields)
-        .then(() => {
-          this.form_submmiting = false;
-          this.toggle = false;
-          window.location.reload();
-        })
-        .catch(() => {
-          this.form_submmiting = false;
-        });
+      axios.post("movies", fields).then(() => {
+        this.form_submmiting = false;
+        this.toggle = false;
+        window.location.reload();
+      });
     },
 
     updateSelectedGenres(value) {

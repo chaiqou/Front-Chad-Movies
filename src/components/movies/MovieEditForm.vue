@@ -2,7 +2,7 @@
   <FormVee
     class="mt-2 min-w-screen space-y-6"
     enctype="multipart/form-data"
-    @submit="onSubmitForm"
+    @submit="onSubmitMoveEditForm"
   >
     <MovieInput
       v-model="title_en"
@@ -154,7 +154,7 @@ export default {
   },
 
   methods: {
-    onSubmitForm() {
+    onSubmitMoveEditForm() {
       this.form_submmiting = true;
 
       let fields = new FormData();

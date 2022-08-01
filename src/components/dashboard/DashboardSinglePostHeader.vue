@@ -10,7 +10,7 @@
         <IconEdit />
       </router-link>
       <div class="border-r-2">|</div>
-      <button @click="delete_quote(quotedata.id)">
+      <button @click="deleteQuote(quotedata.id)">
         <IconDelete />
       </button>
     </div>
@@ -18,7 +18,7 @@
       View quote
     </div>
     <div>
-      <button @click="exit">
+      <button @click="closeSinglePostPage">
         <IconExit />
       </button>
     </div>
@@ -43,19 +43,13 @@ export default {
     },
   },
 
-  data() {
-    return {
-      toggleDropdown: false,
-    };
-  },
-
   methods: {
-    delete_quote(quote_id) {
+    deleteQuote(quote_id) {
       axios.delete(`quotes/` + quote_id).then(() => {
         this.$router.back();
       });
     },
-    exit() {
+    closeSinglePostPage() {
       this.$router.back();
     },
   },

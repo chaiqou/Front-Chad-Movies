@@ -80,9 +80,6 @@ export default {
         .then(() => {
           this.form_submmiting = false;
           this.$router.push("/reset-password-success");
-        })
-        .catch(() => {
-          this.form_submmiting = false;
         });
     },
   },

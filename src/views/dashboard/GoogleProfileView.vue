@@ -24,7 +24,10 @@
             </div>
           </div>
         </div>
-        <FormVee enctype="multipart/form-data" @submit="onSubmitForm">
+        <FormVee
+          enctype="multipart/form-data"
+          @submit="onSubmitEditGoogleProfile"
+        >
           <div class="w-full text-center mt-20">
             <div class="flex justify-center lg:pt-4 pt-8 pb-0">
               <div class="p-3 text-center">
@@ -125,7 +128,7 @@ export default {
         reader.readAsDataURL(event.target.files[0]);
       }
     },
-    onSubmitForm() {
+    onSubmitEditGoogleProfile() {
       this.form_submmiting = true;
 
       axios

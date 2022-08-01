@@ -58,9 +58,6 @@ export default {
         .then(() => {
           this.form_submmiting = false;
           this.$router.push("/forgot-password-email-sent");
-        })
-        .catch(() => {
-          this.form_submmiting = false;
         });
     },
   },

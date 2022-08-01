@@ -38,14 +38,14 @@ export default {
     ...mapWritableState(useUserProfileStore, ["user"]),
   },
   created() {
-    this.getNotifications();
+    this.fetchNotifications();
   },
 
   methods: {
     toggleNotificationModal() {
       this.toggleNotification = !this.toggleNotification;
     },
-    getNotifications() {
+    fetchNotifications() {
       axios.post("/notifications").then((response) => {
         this.read = response.data.read;
         this.unread = response.data.unread;

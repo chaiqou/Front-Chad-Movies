@@ -70,10 +70,10 @@ export default {
     ]),
   },
   created() {
-    this.getUser();
+    this.fetchUser();
   },
   methods: {
-    async getUser() {
+    async fetchUser() {
       await axios
         .get("users/", {
           params: {
@@ -85,9 +85,6 @@ export default {
           this.name = response.data.data.name;
           this.profile_image = response.data.data.profile_image;
           this.provider = response.data.data.provider;
-          this.loading = false;
-        })
-        .catch(() => {
           this.loading = false;
         });
     },

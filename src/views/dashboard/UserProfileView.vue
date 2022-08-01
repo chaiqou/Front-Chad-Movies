@@ -23,7 +23,10 @@
             </div>
           </div>
         </div>
-        <FormVee enctype="multipart/form-data" @submit="onSubmitForm">
+        <FormVee
+          enctype="multipart/form-data"
+          @submit="onSubmitNormalUserParamsChange"
+        >
           <div class="w-full text-center mt-10 cursor-pointer">
             <div class="flex justify-center lg:pt-4 pt-8 pb-0">
               <div class="p-3 text-center">
@@ -138,7 +141,7 @@ export default {
         reader.readAsDataURL(event.target.files[0]);
       }
     },
-    onSubmitForm() {
+    onSubmitNormalUserParamsChange() {
       this.form_submmiting = true;
 
       axios

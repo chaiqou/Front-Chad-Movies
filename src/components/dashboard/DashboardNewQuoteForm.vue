@@ -2,7 +2,7 @@
   <FormVee
     class="mt-2 space-y-6"
     enctype="multipart/form-data"
-    @submit="onSubmitForm"
+    @submit="onSubmitDashboardNewQuoteForm"
   >
     <MovieInput
       v-model="quote_en"
@@ -118,7 +118,7 @@ export default {
   },
 
   methods: {
-    onSubmitForm() {
+    onSubmitDashboardNewQuoteForm() {
       this.form_submmiting = true;
       let fields = new FormData();
       fields.append("quote_en", this.quote_en);
@@ -126,15 +126,10 @@ export default {
       fields.append("thumbnail", this.thumbnail);
       fields.append("movie_id", this.movie_id);
 
-      axios
-        .post("/quotes", fields)
-        .then(() => {
-          this.form_submmiting = false;
-          this.$router.push("/movies");
-        })
-        .catch(() => {
-          this.form_submmiting = false;
-        });
+      axios.post("/quotes", fields).then(() => {
+        this.form_submmiting = false;
+        this.$router.push("/movies");
+      });
     },
   },
 };
