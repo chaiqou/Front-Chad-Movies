@@ -97,7 +97,6 @@ export default {
   data() {
     return {
       movies: [],
-      active: false,
     };
   },
 
@@ -136,10 +135,6 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
-    },
-
-    toggleActive() {
-      this.active = !this.active;
     },
   },
 };

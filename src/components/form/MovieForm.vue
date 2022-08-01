@@ -125,12 +125,6 @@ export default {
   },
   mixins: [SelectImageMixin, DragAndDropMixin],
 
-  data() {
-    return {
-      active: false,
-    };
-  },
-
   computed: {
     ...mapWritableState(useAddMovieStore, [
       "selectedGenre",
@@ -183,9 +177,7 @@ export default {
           this.form_submmiting = false;
         });
     },
-    toggleActive() {
-      this.active = !this.active;
-    },
+
     updateSelectedGenres(value) {
       value.map((genre) => {
         if (this.genre.includes(genre)) {

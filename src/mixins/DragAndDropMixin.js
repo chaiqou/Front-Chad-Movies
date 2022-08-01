@@ -1,4 +1,9 @@
 export default {
+  data() {
+    return {
+      active: false,
+    };
+  },
   methods: {
     dragAndDropFile(event) {
       let file = event.dataTransfer.files[0];
@@ -9,6 +14,10 @@ export default {
         this.thumbnail = e.target.result;
       };
       reader.readAsDataURL(file);
+    },
+
+    toggleActive() {
+      this.active = !this.active;
     },
   },
 };

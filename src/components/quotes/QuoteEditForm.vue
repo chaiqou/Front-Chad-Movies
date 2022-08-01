@@ -81,11 +81,6 @@ export default {
     CheckFetchedThumbnailLengthMixin,
   ],
 
-  data() {
-    return {
-      active: false,
-    };
-  },
   computed: {
     ...mapWritableState(useAddQuoteStore, [
       "quote_en",
@@ -128,10 +123,6 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
-    },
-
-    toggleActive() {
-      this.active = !this.active;
     },
   },
 };
