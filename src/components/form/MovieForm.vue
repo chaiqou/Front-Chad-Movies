@@ -107,6 +107,7 @@ import MovieInput from "./MovieInput.vue";
 import axios from "@/config/axios/index";
 import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
+import DragAndDropMixin from "@/mixins/DragAndDropMixin";
 
 import Multiselect from "@vueform/multiselect";
 import { useAddMovieStore } from "@/stores/useAddMovieStore";
@@ -122,7 +123,7 @@ export default {
     BaseDragAndDrop,
     ErrorMessage,
   },
-  mixins: [SelectImageMixin],
+  mixins: [SelectImageMixin, DragAndDropMixin],
 
   data() {
     return {
@@ -182,18 +183,6 @@ export default {
           this.form_submmiting = false;
         });
     },
-
-    dragAndDropFile(event) {
-      let file = event.dataTransfer.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-
     toggleActive() {
       this.active = !this.active;
     },

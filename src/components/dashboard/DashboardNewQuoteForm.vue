@@ -79,6 +79,7 @@ import axios from "@/config/axios/index";
 import MovieInput from "@/components/form/MovieInput.vue";
 import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
+import DragAndDropMixin from "@/mixins/DragAndDropMixin";
 
 import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
@@ -92,7 +93,7 @@ export default {
     BaseDragAndDrop,
     ErrorMessage,
   },
-  mixins: [SelectImageMixin],
+  mixins: [SelectImageMixin, DragAndDropMixin],
 
   data() {
     return {
@@ -138,17 +139,6 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
-    },
-
-    dragAndDropFile(event) {
-      let file = event.dataTransfer.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
     },
 
     toggleActive() {

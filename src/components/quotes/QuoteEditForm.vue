@@ -59,6 +59,7 @@ import { mapWritableState } from "pinia";
 import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
 import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
+import DragAndDropMixin from "@/mixins/DragAndDropMixin";
 
 export default {
   components: {
@@ -68,7 +69,7 @@ export default {
     BaseDragAndDrop,
     ErrorMessage,
   },
-  mixins: [SelectImageMixin],
+  mixins: [SelectImageMixin, DragAndDropMixin],
 
   data() {
     return {
@@ -106,17 +107,6 @@ export default {
           : this.backurl + this.thumbnail;
 
       return quotePhoto;
-    },
-
-    dragAndDropFile(event) {
-      let file = event.dataTransfer.files[0];
-      this.thumbnail = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.thumbnail = e.target.result;
-      };
-      reader.readAsDataURL(file);
     },
 
     onSubmitForm() {
