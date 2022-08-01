@@ -63,6 +63,7 @@ import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
 import ShowHidePassword from "@/components/ui/ShowHidePassword.vue";
+import CheckTokenAndRedirectToDashboardMixin from "@/mixins/CheckTokenAndRedirectToDashboardMixin.js";
 
 export default {
   components: {
@@ -73,6 +74,7 @@ export default {
     FormVee,
     ShowHidePassword,
   },
+  mixins: [CheckTokenAndRedirectToDashboardMixin],
   computed: {
     ...mapWritableState(useLoginStore, [
       "email",
@@ -83,20 +85,6 @@ export default {
       "showPasswordType",
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
-  },
-
-  mounted() {
-    if (localStorage.getItem("auth") !== null) {
-      axios
-        .post("checkToken", {
-          token: this.token,
-        })
-        .then((response) => {
-          if (response) {
-            this.$router.push({ name: "dashboard-page" });
-          }
-        });
-    }
   },
 
   methods: {

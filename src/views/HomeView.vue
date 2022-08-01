@@ -16,7 +16,7 @@
 import LandingScrollableImages from "@/components/landing/LandingScrollableImages.vue";
 import LandingNavBar from "@/components/landing/LandingNavBar.vue";
 import LandingCenter from "@/components/landing/LandingCenter.vue";
-import axios from "@/config/axios/index";
+import CheckTokenAndRedirectToDashboardMixin from "@/mixins/CheckTokenAndRedirectToDashboardMixin.js";
 
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { mapWritableState } from "pinia";
@@ -27,24 +27,12 @@ export default {
     LandingNavBar,
     LandingCenter,
   },
+  mixins: [CheckTokenAndRedirectToDashboardMixin],
 
   computed: {
     ...mapWritableState(useAuthTokenStore, ["token"]),
   },
 
-  mounted() {
-    if (localStorage.getItem("auth") !== null) {
-      axios
-        .post("checkToken", {
-          token: this.token,
-        })
-        .then((response) => {
-          if (response) {
-            this.$router.push({ name: "dashboard-page" });
-          }
-        });
-    }
-  },
   methods: {
     handleScroll() {
       let parallax = document.getElementById("parallax");

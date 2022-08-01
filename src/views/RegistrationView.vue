@@ -62,6 +62,7 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import FormModal from "@/components/modals/FormModal.vue";
 import GoogleButton from "@/components/buttons/GoogleButton.vue";
 import axios from "@/config/axios/index.js";
+import CheckTokenAndRedirectToDashboardMixin from "@/mixins/CheckTokenAndRedirectToDashboardMixin.js";
 
 import { useRegisterStore } from "@/stores/useRegisterStore";
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
@@ -76,6 +77,7 @@ export default {
     FormModal,
     GoogleButton,
   },
+  mixins: [CheckTokenAndRedirectToDashboardMixin],
 
   computed: {
     ...mapWritableState(useRegisterStore, [
@@ -87,19 +89,6 @@ export default {
       "getRegistrationData",
     ]),
     ...mapWritableState(useAuthTokenStore, ["token"]),
-  },
-  mounted() {
-    if (localStorage.getItem("auth") !== null) {
-      axios
-        .post("checkToken", {
-          token: this.token,
-        })
-        .then((response) => {
-          if (response) {
-            this.$router.push({ name: "dashboard-page" });
-          }
-        });
-    }
   },
   methods: {
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
