@@ -146,12 +146,12 @@ export default {
 
   methods: {
     getMoviePhoto() {
-      let profileImage =
+      let moviePhoto =
         this.thumbnail.length > 50
           ? this.thumbnail
           : this.backurl + this.thumbnail;
 
-      return profileImage;
+      return moviePhoto;
     },
     selectFile(event) {
       let file = event.target.files[0];

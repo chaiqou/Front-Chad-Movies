@@ -9,14 +9,14 @@
       name="quote_en"
       placeholder="Quote"
       rules="required"
-      error-name="English Quote"
+      error-name="quote_en"
     />
     <MovieInput
       v-model="quote_ka"
       name="quote_ka"
       placeholder="ციტატა"
       rules="required"
-      error-name="ქართული ციტატა"
+      error-name="quote_ka"
     />
     <BaseDragAndDrop
       :select-file="selectFile"
@@ -32,15 +32,13 @@
         class="hidden"
         rules="required"
       />
+      <p class="mt-2 text-sm text-red-500">
+        <ErrorMessage name="thumbnail" />
+      </p>
     </BaseDragAndDrop>
 
     <div v-if="thumbnail">
-      <img
-        :src="getUserProfilePhoto()"
-        alt="movieimages"
-        height="240"
-        width="600"
-      />
+      <img :src="getQuotePhoto()" alt="movieimages" height="240" width="600" />
     </div>
 
     <button
@@ -53,7 +51,7 @@
 </template>
 
 <script>
-import { Form as FormVee, Field } from "vee-validate";
+import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 import MovieInput from "@/components/form/MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
@@ -67,6 +65,7 @@ export default {
     Field,
     MovieInput,
     BaseDragAndDrop,
+    ErrorMessage,
   },
 
   data() {
@@ -87,17 +86,24 @@ export default {
   },
 
   mounted() {
-    this.fetchAppropiateQuote();
+    if (this.$route.params.id) {
+      axios.get(`/quotes/${this.$route.params.id}`).then((res) => {
+        this.quote_en = res.data.data.quote.quote.en;
+        this.quote_ka = res.data.data.quote.quote.ka;
+        this.movie_id = res.data.data.movie.id;
+        this.thumbnail = res.data.data.thumbnail;
+      });
+    }
   },
 
   methods: {
-    getUserProfilePhoto() {
-      let profileImage =
+    getQuotePhoto() {
+      let quotePhoto =
         this.thumbnail.length > 50
           ? this.thumbnail
           : this.backurl + this.thumbnail;
 
-      return profileImage;
+      return quotePhoto;
     },
 
     selectFile(event) {
@@ -140,16 +146,6 @@ export default {
         .catch(() => {
           this.form_submmiting = false;
         });
-    },
-    fetchAppropiateQuote() {
-      if (this.$route.params.id) {
-        axios.get(`/quotes/${this.$route.params.id}`).then((res) => {
-          this.quote_en = res.data.data.quote.quote.en;
-          this.quote_ka = res.data.data.quote.quote.ka;
-          this.movie_id = res.data.data.movie.id;
-          this.thumbnail = res.data.data.thumbnail;
-        });
-      }
     },
 
     toggleActive() {

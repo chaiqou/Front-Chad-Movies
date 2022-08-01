@@ -73,6 +73,21 @@ configure({
       thumbnail: {
         required: "Thumbnail cannot be empty",
       },
+      quote_en: {
+        required: "English quote cannot be empty",
+        min: "English quote must be at least 3 characters",
+        max: "English quote must be at most 15 characters",
+        englishKeyboard: "English quote must contain all English letters",
+      },
+      quote_ka: {
+        required: "Georgian quote cannot be empty",
+        min: "Georgian quote must be at least 3 characters",
+        max: "Georgian quote must be at most 15 characters",
+        georgianKeyboard: "Georgian quote must contain all Georgian letters",
+      },
+      movie_name: {
+        required: "Movie name cannot be empty",
+      },
     },
   }),
 });
@@ -151,6 +166,24 @@ configure({
       },
       thumbnail: {
         required: "სურათი არ შეიძლება იყოს ცარიელი",
+      },
+
+      quote_en: {
+        required: "ინგლისური ციტატის ტექსტი არ შეიძლება იყოს ცარიელი",
+        min: "ინგლისური ციტატის ტექსტი უნდა იყოს მინიმუმ 3 სიმბოლო",
+        max: "ინგლისური ციტატის ტექსტი უნდა იყოს მაქსიმუმ 15 სიმბოლო",
+        englishKeyboard:
+          "ინგლისური ციტატის ტექსტი უნდა შეიცავდეს მხოლოდ ლათინურ ასოებს",
+      },
+      quote_ka: {
+        required: "ქართული ციტატის ტექსტი არ შეიძლება იყოს ცარიელი",
+        min: "ქართული ციტატის ტექსტი უნდა იყოს მინიმუმ 3 სიმბოლო",
+        max: "ქართული ციტატის ტექსტი უნდა იყოს მაქსიმუმ 15 სიმბოლო",
+        englishKeyboard:
+          "ქართული ციტატის ტექსტი უნდა შეიცავდეს მხოლოდ ქართულ ასოებს",
+      },
+      movie_name: {
+        required: "ფილმის სახელი არ შეიძლება იყოს ცარიელი",
       },
     },
   }),

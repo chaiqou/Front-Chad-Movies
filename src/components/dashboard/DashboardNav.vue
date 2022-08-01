@@ -133,6 +133,7 @@ export default {
   data() {
     return {
       isOpen: false,
+      search: "",
     };
   },
   computed: {

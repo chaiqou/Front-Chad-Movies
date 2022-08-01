@@ -9,14 +9,14 @@
       name="quote_en"
       placeholder="Quote"
       rules="required|english-keyboard"
-      error-name="English Quote"
+      error-name="quote_en"
     />
     <MovieInput
       v-model="quote_ka"
       name="quote_ka"
       placeholder="ციტატა"
       rules="required|georgian-keyboard"
-      error-name="ქართული ციტატა"
+      error-name="quote_ka"
     />
     <Field
       type="file"

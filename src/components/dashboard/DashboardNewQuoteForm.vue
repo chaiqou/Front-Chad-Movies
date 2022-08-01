@@ -9,7 +9,7 @@
       name="quote_en"
       placeholder="Start create new quote"
       rules="required|english-keyboard"
-      error-name="English quote"
+      error-name="quote_en"
       class="placeholder-[#6C757D]"
     />
     <MovieInput
@@ -17,7 +17,7 @@
       name="quote_ka"
       placeholder="ახალი ციტატა"
       rules="required|georgian-keyboard"
-      error-name="ქართული ციტატა"
+      error-name="quote_ka"
       class="placeholder-[#6C757D]"
     />
     <BaseDragAndDrop
@@ -34,13 +34,16 @@
         class="hidden"
         rules="required"
       />
+      <p class="mt-2 text-sm text-red-500">
+        <ErrorMessage name="thumbnail" />
+      </p>
     </BaseDragAndDrop>
     <div class="appearance-none outline-0 shadow-0 border-none">
       <Field
         v-model="movie_id"
         as="select"
         rules="required"
-        name="moviename"
+        name="movie_name"
         class="w-full bg-inherit text-white bg-[#000000] appearance-none outline-0 rounded-lg shadow-0"
       >
         <option value="" disabled selected>
@@ -53,6 +56,9 @@
           {{ data.title.en }}
         </option>
       </Field>
+      <p class="mt-2 text-sm text-red-500">
+        <ErrorMessage name="movie_name" />
+      </p>
     </div>
 
     <div v-if="thumbnail">
@@ -69,7 +75,7 @@
 </template>
 
 <script>
-import { Form as FormVee, Field } from "vee-validate";
+import { Form as FormVee, Field, ErrorMessage } from "vee-validate";
 import MovieInput from "../form/MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
@@ -82,6 +88,7 @@ export default {
     Field,
     MovieInput,
     BaseDragAndDrop,
+    ErrorMessage,
   },
 
   data() {

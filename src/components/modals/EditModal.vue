@@ -61,6 +61,8 @@
 import IconExit from "@/components/icons/IconExit.vue";
 import IconDelete from "@/components/icons/IconDelete.vue";
 import axios from "@/config/axios/index";
+import { mapWritableState } from "pinia";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 export default {
   components: { IconExit, IconDelete },
   props: {
@@ -72,6 +74,13 @@ export default {
       type: Function,
       default: () => {},
     },
+  },
+  computed: {
+    ...mapWritableState(useUserProfileStore, [
+      "profile_image",
+      "name",
+      "backurl",
+    ]),
   },
   methods: {
     async delete_quote(quote_id) {
