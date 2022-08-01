@@ -2,7 +2,7 @@
   <select
     v-model="language"
     class="invisible md:visible flex items-center border-none rounded-xl text-white mr-6 bg-inherit"
-    @change="handleChange($event)"
+    @change="handleLanguageChange($event)"
   >
     <option class="text-white bg-gray-900" value="english">
       <span class="mr-4">{{ $t("eng") }}</span>
@@ -28,7 +28,7 @@ export default {
   },
 
   methods: {
-    handleChange(event) {
+    handleLanguageChange(event) {
       localStorage.setItem("language", event.target.value);
       window.location.reload();
     },

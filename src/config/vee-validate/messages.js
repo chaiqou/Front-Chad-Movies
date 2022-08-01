@@ -8,5 +8,4 @@ configure({
     en,
     ka,
   }),
-  validateOnModelUpdate: false,
 });

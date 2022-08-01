@@ -5,7 +5,7 @@ import Pusher from "pusher-js";
 import i18n from "@/config/i18n/index";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-
+import { setLocale } from "@vee-validate/i18n";
 import "@/config/vee-validate/rules";
 import "@/config/vee-validate/messages";
 import "@/main.css";
@@ -25,6 +25,8 @@ window.Echo = new Echo({
     },
   },
 });
+
+setLocale(localStorage.getItem("language") === "georgian" ? "ka" : "en");
 
 const app = createApp(App);
 

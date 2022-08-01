@@ -50,5 +50,6 @@
   "backtologin": "დაბრუნდი უკან",
   "uploadphoto": "ატვირთე ახალი ფოტო",
   "myprofile": "ჩემი პროფილი",
-  "savechanges": "ცვლილებების შენახვა"
+  "savechanges": "ცვლილებების შენახვა",
+  "basicpasswordplaceholder": "შეიყვანეთ პაროლი"
 }
