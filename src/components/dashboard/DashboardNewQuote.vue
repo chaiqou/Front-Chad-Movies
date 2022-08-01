@@ -19,11 +19,11 @@
         <div class="invisible md:visible">
           <div class="relative rounded-md">
             <input
-              v-model="search"
+              v-model="search.search"
               :class="[toggleDropdown ? 'w-[600px]' : 'w-full']"
               type="text"
               class="block pr-10 text-white border-none bg-inherit p-3 rounded-md"
-              :placeholder="$t('enter@')"
+              :placeholder="$t('enter')"
               @keypress.enter="sendSearchRequest"
             />
             <div class="border border-gray-800 border-b-1"></div>
@@ -47,9 +47,8 @@ import IconAddNewQuote from "@/components/icons/IconAddNewQuote.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import DashboardNewQuoteForm from "@/components/dashboard/DashboardNewQuoteForm.vue";
 import CrudModal from "@/components/modals/CrudModal.vue";
-
+import { ref } from "vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
-import { mapWritableState } from "pinia";
 
 export default {
   components: {
@@ -58,30 +57,32 @@ export default {
     DashboardNewQuoteForm,
     CrudModal,
   },
-
   props: {
     sendSearchRequest: {
       type: Function,
       required: true,
     },
   },
+  setup(props) {
+    const toggleModal = ref(false);
+    const toggleDropdown = ref(false);
 
-  data() {
+    function setToggleModal() {
+      toggleModal.value = !toggleModal.value;
+    }
+    function setToggleDropdown() {
+      toggleDropdown.value = !toggleDropdown.value;
+    }
+
+    const search = useSearchDataStore();
+
     return {
-      toggleDropdown: false,
-      toggleModal: false,
+      toggleModal,
+      toggleDropdown,
+      setToggleModal,
+      setToggleDropdown,
+      search,
     };
-  },
-  computed: {
-    ...mapWritableState(useSearchDataStore, ["search"]),
-  },
-  methods: {
-    setToggleDropdown() {
-      this.toggleDropdown = !this.toggleDropdown;
-    },
-    setToggleModal() {
-      this.toggleModal = !this.toggleModal;
-    },
   },
 };
 </script>
