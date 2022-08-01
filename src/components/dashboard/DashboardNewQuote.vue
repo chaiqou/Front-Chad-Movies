@@ -63,7 +63,7 @@ export default {
       required: true,
     },
   },
-  setup(props) {
+  setup() {
     const toggleModal = ref(false);
     const toggleDropdown = ref(false);
 

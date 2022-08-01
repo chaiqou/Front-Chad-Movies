@@ -93,9 +93,11 @@ import { Form as FormVee, Field } from "vee-validate";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 import { mapWritableState } from "pinia";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
+import SelectFileForProfilePageMixin from "@/mixins/SelectFileForProfilePageMixin";
 
 export default {
   components: { DashboardLayout, DashboardTimeline, FormVee, BaseInput, Field },
+  mixins: [SelectFileForProfilePageMixin],
   computed: {
     ...mapWritableState(useUserProfileStore, [
       "email",
@@ -107,27 +109,6 @@ export default {
     ...mapWritableState(useMovieListStore, ["backurl"]),
   },
   methods: {
-    getUserProfilePhoto() {
-      let profileImage =
-        this.profile_image.length > 50
-          ? this.profile_image
-          : this.backurl + this.profile_image;
-
-      return profileImage;
-    },
-    selectFile(event) {
-      let file = event.target.files[0];
-      this.profile_image = file;
-
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.profile_image = e.target.result;
-      };
-
-      if (event.target.files[0]) {
-        reader.readAsDataURL(event.target.files[0]);
-      }
-    },
     onSubmitEditGoogleProfile() {
       this.form_submmiting = true;
 

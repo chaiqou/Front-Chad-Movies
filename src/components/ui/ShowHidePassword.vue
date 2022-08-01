@@ -1,8 +1,8 @@
 <template>
-  <div class="relative">
-    <slot></slot>
+  <div class="relative items-center">
+    <slot> </slot>
     <button
-      class="absolute flex top-1/2 w-6 cursor-pointer items-center right-4 translate-y-1"
+      class="absolute flex top-1/2 w-6 cursor-pointer items-center right-4"
       @click.prevent="toggleInputType"
     >
       <IconShowHidePassword />
