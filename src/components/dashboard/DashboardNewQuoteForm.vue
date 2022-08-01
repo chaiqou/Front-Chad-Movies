@@ -75,7 +75,6 @@
 
 <script>
 import axios from "@/config/axios/index";
-
 import MovieInput from "@/components/form/MovieInput.vue";
 import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
@@ -122,9 +121,7 @@ export default {
   methods: {
     onSubmitForm() {
       this.form_submmiting = true;
-
       let fields = new FormData();
-
       fields.append("quote_en", this.quote_en);
       fields.append("quote_ka", this.quote_ka);
       fields.append("thumbnail", this.thumbnail);

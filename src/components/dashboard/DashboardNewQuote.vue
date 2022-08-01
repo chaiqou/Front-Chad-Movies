@@ -45,7 +45,6 @@
 <script>
 import IconAddNewQuote from "@/components/icons/IconAddNewQuote.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
-
 import DashboardNewQuoteForm from "@/components/dashboard/DashboardNewQuoteForm.vue";
 import CrudModal from "@/components/modals/CrudModal.vue";
 

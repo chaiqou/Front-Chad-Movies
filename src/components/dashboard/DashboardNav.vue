@@ -110,8 +110,6 @@
 </template>
 
 <script>
-import axios from "@/config/axios/index";
-
 import IconResponsiveNav from "@/components/icons/IconResponsiveNav.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconMovie from "@/components/icons/IconMovie.vue";
@@ -119,6 +117,7 @@ import IconHome from "@/components/icons/IconHome.vue";
 
 import DashboardNotification from "@/components/dashboard/DashboardNotification.vue";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher.vue";
+import axios from "@/config/axios/index";
 
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";

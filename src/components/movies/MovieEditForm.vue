@@ -75,7 +75,12 @@
       @change="selectImage"
     />
     <div v-if="thumbnail">
-      <img :src="getMoviePhoto()" alt="movieimages" height="240" width="600" />
+      <img
+        :src="checkThumbnailLength()"
+        alt="movieimages"
+        height="240"
+        width="600"
+      />
     </div>
 
     <button
@@ -97,6 +102,7 @@ import { useAddMovieStore } from "@/stores/useAddMovieStore";
 import { mapWritableState } from "pinia";
 import { Form as FormVee, Field } from "vee-validate";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
+import CheckFetchedThumbnailLengthMixin from "@/mixins/CheckFetchedThumbnailLengthMixin";
 
 export default {
   components: {
@@ -105,7 +111,7 @@ export default {
     MovieInput,
     BaseSelect,
   },
-  mixins: [SelectImageMixin],
+  mixins: [SelectImageMixin, CheckFetchedThumbnailLengthMixin],
   computed: {
     ...mapWritableState(useAddMovieStore, [
       "selectedGenre",
@@ -148,15 +154,6 @@ export default {
   },
 
   methods: {
-    getMoviePhoto() {
-      let moviePhoto =
-        this.thumbnail.length > 50
-          ? this.thumbnail
-          : this.backurl + this.thumbnail;
-
-      return moviePhoto;
-    },
-
     onSubmitForm() {
       this.form_submmiting = true;
 

@@ -38,7 +38,12 @@
     </BaseDragAndDrop>
 
     <div v-if="thumbnail">
-      <img :src="getQuotePhoto()" alt="movieimages" height="240" width="600" />
+      <img
+        :src="checkThumbnailLength()"
+        alt="movieimages"
+        height="240"
+        width="600"
+      />
     </div>
 
     <button
@@ -60,6 +65,7 @@ import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
 import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
 import DragAndDropMixin from "@/mixins/DragAndDropMixin";
+import CheckFetchedThumbnailLengthMixin from "@/mixins/CheckFetchedThumbnailLengthMixin";
 
 export default {
   components: {
@@ -69,7 +75,11 @@ export default {
     BaseDragAndDrop,
     ErrorMessage,
   },
-  mixins: [SelectImageMixin, DragAndDropMixin],
+  mixins: [
+    SelectImageMixin,
+    DragAndDropMixin,
+    CheckFetchedThumbnailLengthMixin,
+  ],
 
   data() {
     return {
@@ -100,15 +110,6 @@ export default {
   },
 
   methods: {
-    getQuotePhoto() {
-      let quotePhoto =
-        this.thumbnail.length > 50
-          ? this.thumbnail
-          : this.backurl + this.thumbnail;
-
-      return quotePhoto;
-    },
-
     onSubmitForm() {
       this.form_submmiting = true;
 
