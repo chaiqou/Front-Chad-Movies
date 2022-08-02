@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000/api/",
+  baseURL: "https://api-chad-movies.nikoloz.redberryinternship.ge/api/",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

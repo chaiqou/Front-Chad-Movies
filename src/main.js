@@ -15,7 +15,8 @@ import "@/main.css";
 
 window.Pusher = Pusher;
 window.Echo = new Echo({
-  authEndpoint: "http://localhost:8000/broadcasting/auth",
+  authEndpoint:
+    "https://api-chad-movies.nikoloz.redberryinternship.ge/broadcasting/auth",
   broadcaster: "pusher",
   key: "a5f71dba33215ec7e280",
   cluster: "ap2",
