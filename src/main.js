@@ -15,8 +15,7 @@ import "@/main.css";
 
 window.Pusher = Pusher;
 window.Echo = new Echo({
-  authEndpoint:
-    "https://api-chad-movies.nikoloz.redberryinternship.ge/broadcasting/auth",
+  authEndpoint: import.meta.env.VITE_BACKEND_BROADCASTING_URL,
   broadcaster: "pusher",
   key: "a5f71dba33215ec7e280",
   cluster: "ap2",
