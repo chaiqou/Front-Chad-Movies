@@ -17,7 +17,7 @@
             </p>
             <router-link
               class="text-[#CED4DA] text-sm whitespace-nowrap"
-              :to="`/profile/`"
+              :to="{ name: 'profile-page' }"
               >{{ $t("edityourprofile") }}</router-link
             >
           </div>
@@ -27,7 +27,7 @@
             </p>
             <router-link
               class="text-[#CED4DA] text-sm whitespace-nowrap"
-              :to="`/google-profile`"
+              :to="{ name: 'google-profile-page' }"
               >{{ $t("edityourprofile") }}
             </router-link>
           </div>

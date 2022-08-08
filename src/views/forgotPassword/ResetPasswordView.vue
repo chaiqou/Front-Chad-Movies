@@ -79,7 +79,7 @@ export default {
         )
         .then(() => {
           this.form_submmiting = false;
-          this.$router.push("/reset-password-success");
+          this.$router.push({ name: "reset-password-success-page" });
         });
     },
   },

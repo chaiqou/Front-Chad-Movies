@@ -128,7 +128,7 @@ export default {
 
       axios.post("/quotes", fields).then(() => {
         this.form_submmiting = false;
-        this.$router.push("/movies");
+        this.$router.push({ name: "movies-page" });
       });
     },
   },

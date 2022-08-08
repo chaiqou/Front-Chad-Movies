@@ -119,7 +119,9 @@ export default {
         })
         .then(() => {
           this.form_submmiting = false;
-          this.$router.push("/dashboard");
+          this.$router.push({
+            name: "dashboard-page",
+          });
         })
         .catch(() => {
           this.form_submmiting = false;

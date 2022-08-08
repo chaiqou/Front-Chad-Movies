@@ -71,7 +71,7 @@
                     <div v-if="provider === null">
                       <router-link
                         class="text-[#CED4DA] text-sm"
-                        :to="`/profile/`"
+                        :to="{ name: 'profile-page' }"
                         >{{ $t("edityourprofile") }}</router-link
                       >
                     </div>
@@ -79,7 +79,7 @@
                       <router-link
                         :class="[profile_image ? 'ml-12' : 'ml-0']"
                         class="text-[#CED4DA] text-sm whitespace-nowrap"
-                        :to="`/google-profile`"
+                        :to="{ name: 'google-profile-page' }"
                         >{{ $t("edityourprofile") }}
                       </router-link>
                     </div>

@@ -15,7 +15,7 @@
           <IconDropdownEye />
           <router-link
             class="text-white block px-3 py-2 text-sm"
-            :to="`/quote/${quote.id}`"
+            :to="{ name: 'single-quote-page', params: { id: quote.id } }"
             >View Post</router-link
           >
         </div>
