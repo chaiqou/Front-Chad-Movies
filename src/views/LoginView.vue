@@ -5,6 +5,7 @@
     <FormVee class="space-y-2" @submit="onSubmitLogin">
       <div>
         <base-input
+          id="login-email"
           v-model="email"
           :label="$t('email')"
           error-name="email"
@@ -15,6 +16,7 @@
       </div>
       <ShowHidePassword>
         <base-input
+          id="login-password"
           v-model="password"
           :label="$t('password')"
           error-name="password"
@@ -32,6 +34,7 @@
 
       <div class="mt-5 sm:mt-6 items-center text-center">
         <button
+          id="login-button"
           :disabled="form_submmiting"
           class="inline-flex justify-center w-full mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
         >
