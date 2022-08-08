@@ -28,7 +28,7 @@ export const useLoginStore = defineStore("useLoginStore", {
         axios
           .get("authorize/google/callback", { params: ctx })
           .then((response) => {
-            localStorage.setItem("auth", response.data.access_token);
+            localStorage.setItem("jwt_token", response.data.access_token);
             resolve(response);
           })
           .catch((error) => {

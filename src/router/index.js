@@ -138,7 +138,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const protectedRoutes = ["/dashboard", "/movies"];
   if (
-    localStorage.getItem("auth") === null &&
+    localStorage.getItem("jwt_token") === null &&
     protectedRoutes.includes(to.path)
   ) {
     return next("/unauthorized");

@@ -8,11 +8,11 @@ export const useAuthTokenStore = defineStore("useAuthTokenStore", {
   }),
   actions: {
     setToken(ctx) {
-      localStorage.setItem("auth", ctx);
+      localStorage.setItem("jwt_token", ctx);
       this.token = ctx;
     },
     clearToken() {
-      localStorage.removeItem("auth");
+      localStorage.removeItem("jwt_token");
       this.token = "";
     },
     setUserId(ctx) {

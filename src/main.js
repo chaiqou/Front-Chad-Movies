@@ -23,7 +23,7 @@ window.Echo = new Echo({
   forceTLS: true,
   auth: {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("auth")}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
     },
   },
 });

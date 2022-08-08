@@ -2,7 +2,7 @@ import axios from "@/config/axios/index";
 
 export default {
   mounted() {
-    if (localStorage.getItem("auth") !== null) {
+    if (localStorage.getItem("jwt_token") !== null) {
       axios
         .post("checkToken", {
           token: this.token,
