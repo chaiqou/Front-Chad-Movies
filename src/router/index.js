@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { userIsAuthenticated } from "@/router/guards";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,46 +81,55 @@ const router = createRouter({
     {
       path: "/profile",
       name: "profile-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/dashboard/UserProfileView.vue"),
     },
     {
       path: "/google-profile",
       name: "google-profile-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/dashboard/GoogleProfileView.vue"),
     },
     {
       path: "/dashboard",
       name: "dashboard-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/dashboard/DashboardView.vue"),
     },
     {
       path: "/movie/add-quote/:id",
       name: "add-quote-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/AddQuote.vue"),
     },
     {
       path: "/movies",
       name: "movies-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/dashboard/MovieListView.vue"),
     },
     {
       path: "/movie/:id",
       name: "single-movie-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/components/movies/MovieIndividual.vue"),
     },
     {
       path: "/quote/edit/:id",
       name: "edit-quote-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/quotes/QuoteEditView.vue"),
     },
     {
       path: "/movie/edit/:id",
       name: "edit-movie-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/movies/MovieEditView.vue"),
     },
     {
       path: "/quote/:id",
       name: "single-quote-page",
+      beforeEnter: [userIsAuthenticated],
       component: () => import("@/views/quotes/QuoteSingle.vue"),
     },
     {
@@ -133,18 +143,6 @@ const router = createRouter({
       component: () => import("@/views/NotFoundView.vue"),
     },
   ],
-});
-
-router.beforeEach((to, from, next) => {
-  const protectedRoutes = ["/dashboard", "/movies"];
-  if (
-    localStorage.getItem("jwt_token") === null &&
-    protectedRoutes.includes(to.path)
-  ) {
-    return next("/unauthorized");
-  } else {
-    return next();
-  }
 });
 
 export default router;
