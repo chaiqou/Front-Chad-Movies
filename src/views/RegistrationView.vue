@@ -4,6 +4,7 @@
     <template #minor-text>{{ $t("startjurney") }}</template>
     <FormVee class="space-y-2" @submit="onSubmitRegister">
       <base-input
+        id="name"
         v-model="name"
         :label="$t('firstname')"
         error-name="name"
@@ -12,6 +13,7 @@
         :placeholder="$t('nameplaceholder')"
       />
       <base-input
+        id="email"
         v-model="email"
         :label="$t('email')"
         error-name="email"
@@ -20,6 +22,7 @@
         :placeholder="$t('emailplaceholder')"
       />
       <base-input
+        id="password"
         v-model="password"
         :label="$t('password')"
         error-name="password"
@@ -29,6 +32,7 @@
         :placeholder="$t('passwordplaceholder')"
       />
       <base-input
+        id="confirm-password"
         v-model="password_confirmation"
         :label="$t('confirmpassword')"
         error-name="confirm"
@@ -38,6 +42,7 @@
       />
       <div class="mt-5 sm:mt-6 items-center text-center">
         <button
+          id="registration-button"
           :disabled="form_submmiting"
           class="inline-flex justify-center w-full mt-4 rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
         >

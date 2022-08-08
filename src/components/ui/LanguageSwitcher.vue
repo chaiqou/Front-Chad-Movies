@@ -27,10 +27,6 @@ export default {
     ...mapWritableState(useLanguageSwitchStore, ["language"]),
   },
 
-  mounted() {
-    this.i18n.locale = "english";
-  },
-
   methods: {
     handleLanguageChange(event) {
       localStorage.setItem("language", event.target.value);
