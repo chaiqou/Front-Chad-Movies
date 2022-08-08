@@ -50,7 +50,7 @@
       <div class="flex items-center ml-12">
         <div class="flex-col items-center justify-between space-between">
           <p class="text-base font-medium text-white">
-            {{ convertNotificationDateForHumans }}
+            {{ convertTimestamp() }}
           </p>
           <p class="text-base font-medium mt-6 text-[#198754]">New</p>
         </div>
@@ -67,7 +67,7 @@ import IconComment from "@/components/icons/IconComment.vue";
 import { mapWritableState } from "pinia";
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
-import moment from "moment";
+import { convertTimestamp } from "@/helpers/convertTimestamp";
 
 export default {
   components: {
@@ -87,13 +87,7 @@ export default {
       "unreadCount",
     ]),
     ...mapWritableState(useUserProfileStore, ["backurl"]),
-
-    convertNotificationDateForHumans() {
-      let timestamp = Number(new Date());
-      let date = new Date(timestamp);
-      let formatedDate = moment(date).fromNow();
-      return formatedDate;
-    },
+    convertTimestamp,
   },
 
   methods: {

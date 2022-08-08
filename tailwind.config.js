@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "interstellar-movie": "url('@/assets/landing/interstellar.png')",
+        "interstellar-movie": "url('@/assets/images/landing/interstellar.png')",
         "the-royal-tenenbaums":
-          "url('@/assets/landing/the-royal-tenenbaums.png')",
-        "shutter-island": "url('@/assets/landing/island.png')",
+          "url('@/assets/images/landing/the-royal-tenenbaums.png')",
+        "shutter-island": "url('@/assets/images/landing/island.png')",
       },
     },
   },

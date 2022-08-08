@@ -26,7 +26,7 @@ import axios from "@/config/axios/index";
 import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
 import DashboardNewQuote from "@/components/dashboard/DashboardNewQuote.vue";
 import DashboardPost from "@/components/dashboard/DashboardPost.vue";
-import observer from "@/components/helpers/observer.vue";
+import observer from "@/helpers/observer.vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
 import { mapWritableState } from "pinia";
 import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";

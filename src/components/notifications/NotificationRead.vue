@@ -52,7 +52,7 @@
       </div>
       <div class="flex items-center md:ml-12">
         <p class="text-base font-medium text-white">
-          {{ convertNotificationDateForHumans }}
+          {{ convertTimestamp }}
         </p>
       </div>
     </button>
@@ -66,7 +66,8 @@ import { useUserProfileStore } from "@/stores/useUserProfileStore";
 import axios from "@/config/axios/index";
 import IconSmallHearth from "@/components/icons/IconSmallHearth.vue";
 import IconComment from "@/components/icons/IconComment.vue";
-import moment from "moment";
+import { convertTimestamp } from "@/helpers/convertTimestamp.js";
+
 export default {
   components: {
     IconComment,
@@ -85,13 +86,7 @@ export default {
       "unreadCount",
     ]),
     ...mapWritableState(useUserProfileStore, ["backurl"]),
-
-    convertNotificationDateForHumans() {
-      let timestamp = Number(new Date());
-      let date = new Date(timestamp);
-      let formatedDate = moment(date).fromNow();
-      return formatedDate;
-    },
+    convertTimestamp,
   },
 
   methods: {

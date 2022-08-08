@@ -1,9 +1,11 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="observer"></div>
 </template>
 
 <script>
 export default {
+  emits: ["intersect"],
   data() {
     return {
       observer: null,

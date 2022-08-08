@@ -58,7 +58,7 @@
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseCheckbox from "@/components/form/BaseCheckbox.vue";
 import FormModal from "@/components/modals/FormModal.vue";
-import GoogleButton from "@/components/buttons/GoogleButton.vue";
+import GoogleButton from "@/components/ui/buttons/GoogleButton.vue";
 import axios from "@/config/axios/index.js";
 
 import { useLoginStore } from "@/stores/useLoginStore";
