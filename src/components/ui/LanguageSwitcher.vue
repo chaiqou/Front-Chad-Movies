@@ -8,7 +8,7 @@
       <span class="mr-4">{{ $t("eng") }}</span>
       <IconArrowDown />
     </option>
-    <option class="text-white bg-gray-900" value="georgian">
+    <option selected class="text-white bg-gray-900" value="georgian">
       <span class="mr-4">{{ $t("ka") }}</span>
       <IconArrowDown />
     </option>
@@ -25,6 +25,10 @@ export default {
 
   computed: {
     ...mapWritableState(useLanguageSwitchStore, ["language"]),
+  },
+
+  mounted() {
+    this.i18n.locale = "english";
   },
 
   methods: {
