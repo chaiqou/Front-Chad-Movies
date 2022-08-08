@@ -18,9 +18,6 @@ import LandingNavBar from "@/components/landing/LandingNavBar.vue";
 import LandingCenter from "@/components/landing/LandingCenter.vue";
 import CheckTokenAndRedirectToDashboardMixin from "@/mixins/CheckTokenAndRedirectToDashboardMixin.js";
 
-import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
-import { mapWritableState } from "pinia";
-
 export default {
   components: {
     LandingScrollableImages,
@@ -28,10 +25,6 @@ export default {
     LandingCenter,
   },
   mixins: [CheckTokenAndRedirectToDashboardMixin],
-
-  computed: {
-    ...mapWritableState(useAuthTokenStore, ["token"]),
-  },
 
   methods: {
     handleScroll() {

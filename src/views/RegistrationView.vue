@@ -70,7 +70,6 @@ import axios from "@/config/axios/index.js";
 import CheckTokenAndRedirectToDashboardMixin from "@/mixins/CheckTokenAndRedirectToDashboardMixin.js";
 
 import { useRegisterStore } from "@/stores/useRegisterStore";
-import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { useLoginStore } from "@/stores/useLoginStore";
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
@@ -93,7 +92,6 @@ export default {
       "form_submmiting",
       "getRegistrationData",
     ]),
-    ...mapWritableState(useAuthTokenStore, ["token"]),
   },
   methods: {
     ...mapActions(useLoginStore, ["loginGoogleAction"]),

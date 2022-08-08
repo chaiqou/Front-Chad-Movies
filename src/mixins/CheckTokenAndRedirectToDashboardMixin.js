@@ -5,7 +5,7 @@ export default {
     if (localStorage.getItem("jwt_token") !== null) {
       axios
         .post("checkToken", {
-          token: this.token,
+          token: localStorage.getItem("jwt_token"),
         })
         .then((response) => {
           if (response) {

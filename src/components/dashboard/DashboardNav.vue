@@ -138,7 +138,6 @@ export default {
     };
   },
   computed: {
-    ...mapWritableState(useAuthTokenStore, ["token"]),
     ...mapWritableState(useUserProfileStore, [
       "loading",
       "email",
@@ -154,7 +153,7 @@ export default {
     logout() {
       axios
         .post("logout", {
-          token: this.token,
+          token: localStorage.getItem("jwt_token"),
         })
         .then(() => {
           this.clearToken();

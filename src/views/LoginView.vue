@@ -87,7 +87,6 @@ export default {
       "getUserData",
       "showPasswordType",
     ]),
-    ...mapWritableState(useAuthTokenStore, ["token"]),
   },
 
   methods: {
