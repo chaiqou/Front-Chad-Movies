@@ -54,7 +54,6 @@
           />
         </div>
         <div class="flex border-1 border-green-500 m-4 space-x-4">
-          <!-- komentarebi aq -->
           <button
             class="flex justify-center py-2"
             @click="commentToggle = !commentToggle"
