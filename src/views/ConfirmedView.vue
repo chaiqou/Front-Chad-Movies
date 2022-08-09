@@ -6,7 +6,7 @@
     <IconEmailVerified />
     <template #modal-button>
       <router-link
-        to="/login"
+        :to="{ name: 'login-page' }"
         class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#E31221] text-base font-medium text-white"
       >
         {{ $t("close") }}

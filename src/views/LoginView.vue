@@ -27,9 +27,11 @@
       </ShowHidePassword>
       <div class="flex items-center justify-between">
         <base-checkbox v-model="remember" :label="$t('remember')" />
-        <router-link class="text-[#0D6EFD] underline" to="/forgot-password">{{
-          $t("forgotpassword")
-        }}</router-link>
+        <router-link
+          class="text-[#0D6EFD] underline"
+          :to="{ name: 'forgot-password-page' }"
+          >{{ $t("forgotpassword") }}</router-link
+        >
       </div>
 
       <div class="mt-5 sm:mt-6 items-center text-center">
@@ -47,9 +49,11 @@
     </FormVee>
     <template #have-account>
       {{ $t("donthaveaccount") }}
-      <router-link class="text-[#0D6EFD] underline" to="/register">{{
-        $t("signup")
-      }}</router-link>
+      <router-link
+        class="text-[#0D6EFD] underline"
+        :to="{ name: 'registration-page' }"
+        >{{ $t("signup") }}</router-link
+      >
     </template>
   </form-modal>
 </template>

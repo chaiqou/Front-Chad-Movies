@@ -8,14 +8,14 @@
       <LanguageSwitcher />
       <li>
         <router-link
-          to="/register"
+          :to="{ name: 'registration-page' }"
           class="invisible md:visible focus:outline-none text-white bg-[#E31221] hover:bg-red-800 focus:ring-4 font-medium rounded-lg text-sm md:px-8 py-2.5 mr-2 mb-2"
           >{{ $t("signup") }}</router-link
         >
       </li>
       <li>
         <router-link
-          to="/login"
+          :to="{ name: 'login-page' }"
           class="text-white border border-gray-300 focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-8 py-2.5 mr-2 mb-2"
           >{{ $t("login") }}</router-link
         >

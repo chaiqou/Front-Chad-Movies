@@ -127,7 +127,7 @@ export default {
     },
     delete_movie(currentMovie_id) {
       axios.delete(`movies/` + currentMovie_id).then(() => {
-        this.$router.push("/movies");
+        this.$router.push({ name: "movies-page" });
       });
     },
     goToAddQuote() {

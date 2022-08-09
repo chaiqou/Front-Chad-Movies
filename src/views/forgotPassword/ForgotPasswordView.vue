@@ -22,7 +22,7 @@
       </div>
     </FormVee>
     <template #have-account>
-      <router-link to="/login">
+      <router-link :to="{ name: 'login-page' }">
         <span class="text-white text-2xl">&larr; </span> {{ $t("backtologin") }}
       </router-link>
     </template>

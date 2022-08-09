@@ -41,7 +41,10 @@
                     </router-link>
                   </div>
                 </ul>
-                <router-link class="flex items-center" to="/dashboard">
+                <router-link
+                  class="flex items-center"
+                  :to="{ name: 'dashboard-page' }"
+                >
                   <IconHome
                     class="mr-4"
                     :fill="$route.path === '/dashboard' ? 'red' : 'white'"
@@ -49,7 +52,10 @@
                   {{ $t("dashboard") }}</router-link
                 >
 
-                <router-link to="/movies" class="flex items-center">
+                <router-link
+                  :to="{ name: 'movies-page' }"
+                  class="flex items-center"
+                >
                   <IconMovie
                     class="mr-4"
                     :fill="$route.path === '/movies' ? 'red' : 'white'"

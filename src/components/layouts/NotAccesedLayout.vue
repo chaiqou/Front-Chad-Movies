@@ -10,7 +10,7 @@
       <slot name="minor-text"></slot>
     </h5>
     <RouterLink
-      to="/"
+      :to="{ name: 'home-page' }"
       class="inline-flex items-center px-4 py-2 mt-4 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#E31221] focus:outline-none focus:ring-2 focus:ring-offset-2"
     >
       Return home

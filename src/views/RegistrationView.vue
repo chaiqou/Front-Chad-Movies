@@ -55,9 +55,11 @@
     </FormVee>
     <template #have-account>
       {{ $t("alreadyhaveanaccount") }}
-      <router-link class="text-[#0D6EFD] underline" to="/login">{{
-        $t("login")
-      }}</router-link>
+      <router-link
+        class="text-[#0D6EFD] underline"
+        :to="{ name: 'login-page' }"
+        >{{ $t("login") }}</router-link
+      >
     </template>
   </form-modal>
 </template>
