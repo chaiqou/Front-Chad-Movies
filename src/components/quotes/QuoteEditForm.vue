@@ -61,11 +61,11 @@ import MovieInput from "@/components/form/MovieInput.vue";
 import axios from "@/config/axios/index";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { mapWritableState } from "pinia";
-import { useEditQuoteStore } from "@/stores/useEditQuoteStore";
 import BaseDragAndDrop from "@/components/form/BaseDragAndDrop.vue";
 import SelectImageMixin from "@/mixins/SelectImageMixin";
 import DragAndDropMixin from "@/mixins/DragAndDropMixin";
 import CheckFetchedThumbnailLengthMixin from "@/mixins/CheckFetchedThumbnailLengthMixin";
+import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
   components: {
@@ -90,7 +90,7 @@ export default {
       "form_submmiting",
       "getQuoteData",
     ]),
-    ...mapWritableState(useEditQuoteStore, ["backurl"]),
+    ...mapWritableState(useUserProfileStore, ["backurl"]),
   },
 
   mounted() {

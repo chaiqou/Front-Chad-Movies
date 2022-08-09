@@ -17,9 +17,7 @@
 
 <script>
 import ThanksModal from "@/components/modals/ThanksModal.vue";
-
-import { useUserVerifyEmailStore } from "@/stores/useUserVerifyEmailStore";
-import { mapActions } from "pinia";
+import axios from "@/config/axios/index";
 import IconEmailVerified from "@/components/icons/IconEmailVerified.vue";
 
 export default {
@@ -27,11 +25,30 @@ export default {
     ThanksModal,
     IconEmailVerified,
   },
+  data() {
+    return {
+      verify: "",
+    };
+  },
+
   created() {
     this.verifyEmail(this.$route.query);
   },
+
   methods: {
-    ...mapActions(useUserVerifyEmailStore, ["verifyEmail"]),
+    verifyEmail(ctx) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get("email-verification", { params: ctx })
+          .then((response) => {
+            resolve(response);
+            this.verify = response;
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
   },
 };
 </script>

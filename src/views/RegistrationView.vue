@@ -69,10 +69,9 @@ import GoogleButton from "@/components/ui/buttons/GoogleButton.vue";
 import axios from "@/config/axios/index.js";
 import CheckTokenAndRedirectToDashboardMixin from "@/mixins/CheckTokenAndRedirectToDashboardMixin.js";
 
-import { useRegisterStore } from "@/stores/useRegisterStore";
 import { useLoginStore } from "@/stores/useLoginStore";
 import { Form as FormVee } from "vee-validate";
-import { mapWritableState, mapActions } from "pinia";
+import { mapActions } from "pinia";
 
 export default {
   components: {
@@ -83,22 +82,27 @@ export default {
   },
   mixins: [CheckTokenAndRedirectToDashboardMixin],
 
-  computed: {
-    ...mapWritableState(useRegisterStore, [
-      "name",
-      "email",
-      "password",
-      "password_confirmation",
-      "form_submmiting",
-      "getRegistrationData",
-    ]),
+  data() {
+    return {
+      form_submmiting: false,
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+    };
   },
+
   methods: {
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
     onSubmitRegister() {
       this.form_submmiting = true;
       axios
-        .post("register", this.getRegistrationData)
+        .post("register", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+        })
         .then(() => {
           this.form_submmiting = false;
           this.$router.push({ name: "user-registered-page" });
