@@ -133,12 +133,11 @@ export default {
           profile_image: this.profile_image,
         })
         .then(() => {
-          this.form_submmiting = false;
           this.$router.push({
             name: "dashboard-page",
           });
         })
-        .catch(() => {
+        .finally(() => {
           this.form_submmiting = false;
         });
     },

@@ -116,11 +116,10 @@ export default {
       axios
         .put(`/quotes/${this.$route.params.id}`, this.getQuoteData)
         .then(() => {
-          this.form_submmiting = false;
           this.toggle = false;
           this.$router.back();
         })
-        .catch(() => {
+        .finally(() => {
           this.form_submmiting = false;
         });
     },

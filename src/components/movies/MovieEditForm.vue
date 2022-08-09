@@ -165,11 +165,10 @@ export default {
       axios
         .put(`/movies/${this.$route.params.id}`, this.getMovieData)
         .then(() => {
-          this.form_submmiting = false;
           this.toggle = false;
           this.$router.back();
         })
-        .catch(() => {
+        .finally(() => {
           this.form_submmiting = false;
         });
     },

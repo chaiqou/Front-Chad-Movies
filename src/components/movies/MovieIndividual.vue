@@ -119,9 +119,8 @@ export default {
         .get(`movie-slug/${this.$route.params.id}`)
         .then((response) => {
           this.currentMovie = response.data.data;
-          this.loading = false;
         })
-        .catch(() => {
+        .finally(() => {
           this.loading = false;
         });
     },

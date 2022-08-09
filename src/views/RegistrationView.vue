@@ -106,10 +106,9 @@ export default {
           password_confirmation: this.password_confirmation,
         })
         .then(() => {
-          this.form_submmiting = false;
           this.$router.push({ name: "user-registered-page" });
         })
-        .catch(() => {
+        .finally(() => {
           this.form_submmiting = false;
         });
     },

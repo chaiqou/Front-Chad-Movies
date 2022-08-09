@@ -105,7 +105,6 @@ export default {
         })
 
         .then((response) => {
-          this.form_submmiting = false;
           localStorage.setItem("userId", response.data.user);
           localStorage.setItem("jwt_token", response.data.access_token);
           axios.defaults.headers[
@@ -113,7 +112,7 @@ export default {
           ] = `Bearer ${response.data.access_token}`;
           this.$router.push({ name: "dashboard-page" });
         })
-        .catch(() => {
+        .finally(() => {
           this.form_submmiting = false;
         });
     },
