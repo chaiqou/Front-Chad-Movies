@@ -66,7 +66,6 @@ import GoogleButton from "@/components/ui/buttons/GoogleButton.vue";
 import axios from "@/config/axios/index.js";
 
 import { useLoginStore } from "@/stores/useLoginStore";
-import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
 import { Form as FormVee } from "vee-validate";
 import { mapWritableState, mapActions } from "pinia";
 import ShowHidePassword from "@/components/ui/ShowHidePassword.vue";
@@ -94,12 +93,6 @@ export default {
   },
 
   methods: {
-    ...mapActions(useAuthTokenStore, [
-      "setToken",
-      "clearToken",
-      "setUserId",
-      "setUserName",
-    ]),
     ...mapActions(useLoginStore, ["loginGoogleAction"]),
 
     onSubmitLogin() {
@@ -113,9 +106,8 @@ export default {
 
         .then((response) => {
           this.form_submmiting = false;
-          this.setUserId(response.data.user);
-          this.setToken(response.data.access_token);
-          this.setUserName(response.data.user.name);
+          localStorage.setItem("userId", response.data.user);
+          localStorage.setItem("jwt_token", response.data.access_token);
           axios.defaults.headers[
             "Authorization"
           ] = `Bearer ${response.data.access_token}`;

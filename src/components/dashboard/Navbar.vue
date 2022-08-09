@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <nav class="bg-[#222030] fixed md:w-screen w-[500px]">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -50,8 +51,6 @@ import IconSearch from "@/components/icons/IconSearch.vue";
 import Notifications from "@/components/dashboard/Notifications.vue";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher.vue";
 import axios from "@/config/axios/index";
-import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
-import { mapActions } from "pinia";
 import MobileNav from "@/components/dashboard/MobileNav.vue";
 
 export default {
@@ -69,15 +68,12 @@ export default {
     };
   },
   methods: {
-    ...mapActions(useAuthTokenStore, ["setToken", "clearToken"]),
-
     logout() {
       axios
         .post("logout", {
           token: localStorage.getItem("jwt_token"),
         })
         .then(() => {
-          this.clearToken();
           localStorage.removeItem("userId");
           localStorage.removeItem("jwt_token");
           this.$router.push({ name: "home-page" });
