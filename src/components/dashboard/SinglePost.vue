@@ -1,13 +1,13 @@
 <template>
   <div class="invisible md:visible">
-    <DashboardLayout />
+    <Layout />
   </div>
   <main class="flex-1 md:mt-16 overflow-y-auto">
     <div class="max-w-5xl mx-auto px-22 sm:px-6 md:px-8">
       <div
         class="bg-[#11101A] rounded-lg md:w-3/4 items-center ml-70 overflow-hidden"
       >
-        <DashboardSinglePostHeader :quotedata="quotedata" />
+        <SinglePostHeader :quotedata="quotedata" />
         <div class="border-b border-gray-800"></div>
         <div class="flex flex-col p-4">
           <div class="flex items-center">
@@ -116,8 +116,8 @@ import IconDashboardHearth from "@/components/icons/IconDashboardHearth.vue";
 import LikeAndUnlikeMixin from "@/mixins/LikeAndUnlikeMixin";
 import ListenToCommentAndLikeMixin from "@/mixins/ListenToCommentAndLikeMixin";
 import AddCommentToPostMixin from "@/mixins/AddCommentToPostMixin";
-import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
-import DashboardSinglePostHeader from "@/components/dashboard/DashboardSinglePostHeader.vue";
+import Layout from "@/components/dashboard/Layout.vue";
+import SinglePostHeader from "@/components/dashboard/SinglePostHeader.vue";
 
 import { mapWritableState } from "pinia";
 import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
@@ -127,8 +127,8 @@ export default {
   components: {
     IconDashboardComment,
     IconDashboardHearth,
-    DashboardLayout,
-    DashboardSinglePostHeader,
+    Layout,
+    SinglePostHeader,
   },
 
   mixins: [

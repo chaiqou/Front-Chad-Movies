@@ -1,21 +1,21 @@
 <template>
-  <DashboardSinglePost
+  <SinglePost
     v-for="single in single_quote"
     :key="single.id"
     :quotedata="single || []"
     :backend="backurl"
-  ></DashboardSinglePost>
+  ></SinglePost>
 </template>
 
 <script>
-import DashboardSinglePost from "@/components/dashboard/DashboardSinglePost.vue";
+import SinglePost from "@/components/dashboard/SinglePost.vue";
 import axios from "@/config/axios/index";
 import { mapWritableState } from "pinia";
 import { useAddQuoteStore } from "@/stores/useAddQuoteStore";
 import { useMovieListStore } from "@/stores/useMovieListStore";
 
 export default {
-  components: { DashboardSinglePost },
+  components: { SinglePost },
 
   computed: {
     ...mapWritableState(useAddQuoteStore, ["single_quote"]),

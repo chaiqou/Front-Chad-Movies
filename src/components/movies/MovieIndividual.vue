@@ -1,6 +1,6 @@
 <template>
-  <DashboardLayout />
-  <DashboardTimeline
+  <Layout />
+  <Timeline
     v-if="!loading"
     header="Movie description"
     class="overflow-y-scroll overflow-x-hidden p-4"
@@ -74,12 +74,12 @@
       :key="quote.id"
       :quote="quote"
     />
-  </DashboardTimeline>
+  </Timeline>
 </template>
 
 <script>
-import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
-import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
+import Layout from "@/components/dashboard/Layout.vue";
+import Timeline from "@/components/dashboard/Timeline.vue";
 import axios from "@/config/axios/index";
 import IconDelete from "@/components/icons/IconDelete.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
@@ -92,8 +92,8 @@ import { mapWritableState } from "pinia";
 
 export default {
   components: {
-    DashboardLayout,
-    DashboardTimeline,
+    Layout,
+    Timeline,
     IconDelete,
     IconEdit,
     IconAddButton,

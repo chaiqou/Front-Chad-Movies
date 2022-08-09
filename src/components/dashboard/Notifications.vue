@@ -9,12 +9,12 @@
       >{{ unreadCount }}</span
     >
   </div>
-  <DashboardNotificationModal v-if="toggleNotification" />
+  <NotificationsModal v-if="toggleNotification" />
 </template>
 
 <script>
 import IconBell from "@/components/icons/IconBell.vue";
-import DashboardNotificationModal from "@/components/dashboard/DashboardNotificationModal.vue";
+import NotificationsModal from "@/components/dashboard/NotificationsModal.vue";
 import axios from "@/config/axios/index";
 
 import { mapWritableState } from "pinia";
@@ -22,7 +22,7 @@ import { useNotificationsStore } from "@/stores/useNotificationsStore";
 import { useUserProfileStore } from "@/stores/useUserProfileStore";
 
 export default {
-  components: { IconBell, DashboardNotificationModal },
+  components: { IconBell, NotificationsModal },
 
   data() {
     return {

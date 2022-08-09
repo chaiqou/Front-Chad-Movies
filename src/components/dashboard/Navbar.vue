@@ -28,7 +28,7 @@
                 </p>
               </div>
             </div>
-            <DashboardNotification />
+            <Notifications />
             <LanguageSwitcher />
             <button
               class="text-white border border-gray-300 font-medium rounded-md text-sm px-4 py-2 hidden md:flex"
@@ -47,7 +47,7 @@
 <script>
 import IconResponsiveNav from "@/components/icons/IconResponsiveNav.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
-import DashboardNotification from "@/components/dashboard/DashboardNotification.vue";
+import Notifications from "@/components/dashboard/Notifications.vue";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher.vue";
 import axios from "@/config/axios/index";
 import { useAuthTokenStore } from "@/stores/useAuthTokenStore";
@@ -58,7 +58,7 @@ export default {
   components: {
     IconResponsiveNav,
     IconSearch,
-    DashboardNotification,
+    Notifications,
     LanguageSwitcher,
     MobileNav,
   },

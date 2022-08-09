@@ -1,6 +1,6 @@
 <template>
-  <DashboardLayout />
-  <DashboardTimeline>
+  <Layout />
+  <Timeline>
     <div class="flex justify-between items-center">
       <span
         class="text-white font-medium text-24 ml-8 md:ml-0 whitespace-nowrap"
@@ -45,12 +45,12 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-y-20 md:mt-14 mt-4">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </div>
-  </DashboardTimeline>
+  </Timeline>
 </template>
 
 <script>
-import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
-import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
+import Layout from "@/components/dashboard/Layout.vue";
+import Timeline from "@/components/dashboard/Timeline.vue";
 import CrudModal from "@/components/modals/CrudModal.vue";
 import MovieCard from "@/components/movies/MovieCard.vue";
 import axios from "@/config/axios/index";
@@ -64,8 +64,8 @@ import { useMovieListStore } from "@/stores/useMovieListStore";
 
 export default {
   components: {
-    DashboardLayout,
-    DashboardTimeline,
+    Layout,
+    Timeline,
     CrudModal,
     MovieCard,
     IconSearch,

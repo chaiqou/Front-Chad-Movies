@@ -22,21 +22,12 @@ is a social network of quotes and movies where you can add movies and quotes, wr
 
 ## Tech Stack
 
-| Tool                | Version |
-| ------------------- | ------- |
-| Vee-validate        | 4+      |
-| Vee-validate/i18n   | 4.5+    |
-| Vee-validate/rules  | 4.5+    |
-| Vueform/multiselect | 2.5+    |
-| Laravel-echo        | 1+      |
-| Pusher-js           | 7+      |
-| Moment              | 2+      |
-| Pinia               | 2+      |
-| Tailwind CSS        | 3+      |
-| Tailwind CSS/forms  | LTS     |
-| Vue-router          | 4+      |
-| Vue i18n            | 9+      |
-| Axios               | LTS     |
+| Tool         | Version |
+| ------------ | ------- |
+| Vue          | 3       |
+| Vite         | 2       |
+| Tailwind CSS | 3       |
+| Cypress      | 10      |
 
 ## Getting Started
 

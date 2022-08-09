@@ -38,14 +38,14 @@
     title="write new quote"
     :toggle="setToggleModal"
   >
-    <DashboardNewQuoteForm />
+    <NewQuoteForm />
   </CrudModal>
 </template>
 
 <script>
 import IconAddNewQuote from "@/components/icons/IconAddNewQuote.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
-import DashboardNewQuoteForm from "@/components/dashboard/DashboardNewQuoteForm.vue";
+import NewQuoteForm from "@/components/dashboard/NewQuoteForm.vue";
 import CrudModal from "@/components/modals/CrudModal.vue";
 import { ref } from "vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
@@ -54,7 +54,7 @@ export default {
   components: {
     IconAddNewQuote,
     IconSearch,
-    DashboardNewQuoteForm,
+    NewQuoteForm,
     CrudModal,
   },
   props: {

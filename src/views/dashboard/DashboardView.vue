@@ -1,31 +1,31 @@
 <template>
-  <DashboardLayout />
-  <DashboardTimeline>
-    <DashboardNewQuote :send-search-request="sendSearchParameters" />
+  <Layout />
+  <Timeline>
+    <NewQuote :send-search-request="sendSearchParameters" />
     <div v-if="!searchedData.length">
-      <DashboardPost
+      <Post
         v-for="quotedata in quotes || []"
         :key="quotedata.id"
         :quotedata="quotedata"
       />
     </div>
     <div v-else>
-      <DashboardPost
+      <Post
         v-for="quotedata in searchedData || []"
         :key="quotedata.id"
         :quotedata="quotedata"
       />
     </div>
     <observer @intersect="intersected" />
-  </DashboardTimeline>
+  </Timeline>
 </template>
 
 <script>
-import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
+import Layout from "@/components/dashboard/Layout.vue";
 import axios from "@/config/axios/index";
-import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
-import DashboardNewQuote from "@/components/dashboard/DashboardNewQuote.vue";
-import DashboardPost from "@/components/dashboard/DashboardPost.vue";
+import Timeline from "@/components/dashboard/Timeline.vue";
+import NewQuote from "@/components/dashboard/NewQuote.vue";
+import Post from "@/components/dashboard/Post.vue";
 import observer from "@/helpers/observer.vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
 import { mapWritableState } from "pinia";
@@ -33,10 +33,10 @@ import { useDashboardQuotesStore } from "@/stores/useDashboardQuotesStore";
 
 export default {
   components: {
-    DashboardLayout,
-    DashboardTimeline,
-    DashboardNewQuote,
-    DashboardPost,
+    Layout,
+    Timeline,
+    NewQuote,
+    Post,
     observer,
   },
   data() {

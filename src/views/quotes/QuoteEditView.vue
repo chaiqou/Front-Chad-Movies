@@ -1,6 +1,6 @@
 <template>
   <div class="hidden md:visible mt-12">
-    <DashboardSidebar />
+    <Sidebar />
   </div>
   <EditModal>
     <QuoteEditForm />
@@ -9,7 +9,7 @@
 
 <script>
 import QuoteEditForm from "@/components/quotes/QuoteEditForm.vue";
-import DashboardSidebar from "@/components/dashboard/DashboardSidebar.vue";
+import Sidebar from "@/components/dashboard/Sidebar.vue";
 import EditModal from "@/components/modals/EditModal.vue";
 import { mapWritableState } from "pinia";
 import { useMovieListStore } from "@/stores/useMovieListStore";
@@ -17,7 +17,7 @@ import { useMovieListStore } from "@/stores/useMovieListStore";
 export default {
   components: {
     QuoteEditForm,
-    DashboardSidebar,
+    Sidebar,
     EditModal,
   },
 

@@ -1,6 +1,6 @@
 <template>
-  <DashboardLayout />
-  <DashboardTimeline :header="$t('myprofile')">
+  <Layout />
+  <Timeline :header="$t('myprofile')">
     <div
       class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-[#11101A] w-full shadow-lg rounded-xl mt-16"
     >
@@ -90,12 +90,12 @@
         </FormVee>
       </div>
     </div>
-  </DashboardTimeline>
+  </Timeline>
 </template>
 
 <script>
-import DashboardLayout from "@/components/dashboard/DashboardLayout.vue";
-import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
+import Layout from "@/components/dashboard/Layout.vue";
+import Timeline from "@/components/dashboard/Timeline.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
 import axios from "@/config/axios/index";
 
@@ -106,7 +106,7 @@ import SelectFileForProfilePageMixin from "@/mixins/SelectFileForProfilePageMixi
 import { useMovieListStore } from "@/stores/useMovieListStore";
 
 export default {
-  components: { DashboardLayout, DashboardTimeline, FormVee, BaseInput, Field },
+  components: { Layout, Timeline, FormVee, BaseInput, Field },
   mixins: [SelectFileForProfilePageMixin],
 
   computed: {

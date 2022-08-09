@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-12"><DashboardSidebar /></div>
+  <div class="mt-12"><Sidebar /></div>
   <div class="overflow-y-auto">
-    <DashboardTimeline>
+    <Timeline>
       <CrudModal
         v-if="!toggleModal"
         title="Edit movie"
@@ -9,21 +9,21 @@
       >
         <MovieEditForm />
       </CrudModal>
-    </DashboardTimeline>
+    </Timeline>
   </div>
 </template>
 
 <script>
-import DashboardSidebar from "@/components/dashboard/DashboardSidebar.vue";
+import Sidebar from "@/components/dashboard/Sidebar.vue";
 import MovieEditForm from "@/components/movies/MovieEditForm.vue";
-import DashboardTimeline from "@/components/dashboard/DashboardTimeline.vue";
+import Timeline from "@/components/dashboard/Timeline.vue";
 import CrudModal from "@/components/modals/CrudModal.vue";
 
 export default {
   components: {
-    DashboardSidebar,
+    Sidebar,
     MovieEditForm,
-    DashboardTimeline,
+    Timeline,
     CrudModal,
   },
   data() {

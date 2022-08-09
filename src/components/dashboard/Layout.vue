@@ -8,19 +8,19 @@
             >MOVIE QUOTES</span
           >
         </div>
-        <DashboardSidebar />
+        <Sidebar />
       </div>
     </div>
     <div class="md:pl-64 flex flex-col">
-      <DashboardNav />
+      <Navbar />
     </div>
   </div>
 </template>
 
 <script>
-import DashboardNav from "@/components/dashboard/DashboardNav.vue";
-import DashboardSidebar from "@/components/dashboard/DashboardSidebar.vue";
+import Navbar from "@/components/dashboard/Navbar.vue";
+import Sidebar from "@/components/dashboard/Sidebar.vue";
 export default {
-  components: { DashboardNav, DashboardSidebar },
+  components: { Navbar, Sidebar },
 };
 </script>
