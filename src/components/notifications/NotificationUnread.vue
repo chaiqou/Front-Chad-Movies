@@ -50,7 +50,7 @@
       <div class="flex items-center ml-12">
         <div class="flex-col items-center justify-between space-between">
           <p class="text-base font-medium text-white">
-            {{ convertTimestamp() }}
+            {{ convertTimestamp }}
           </p>
           <p class="text-base font-medium mt-6 text-[#198754]">New</p>
         </div>
