@@ -23,21 +23,21 @@ defineRule("confirmed", confirmed);
 defineRule("numeric", numeric);
 
 defineRule("lower-case", (value) => {
-  if (/^[a-z0-9]+$/.test(value) === true) {
+  if (/^[a-z_ ]+$/.test(value) === true) {
     return true;
   }
   return "Must contain all lowercase letters";
 });
 
 defineRule("georgian-keyboard", (value) => {
-  if (/^[ა-ჰ]+$/.test(value) === true) {
+  if (/^[ა-ჰ0-9_ ]+$/.test(value) === true) {
     return true;
   }
   return "Must contain all Georgian letters";
 });
 
 defineRule("english-keyboard", (value) => {
-  if (/^[a-zA-Z]+$/.test(value) === true) {
+  if (/^[a-zA-Z0-9_ ]+$/.test(value) === true) {
     return true;
   }
   return "Must contain all English letters";
