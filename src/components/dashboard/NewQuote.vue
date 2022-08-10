@@ -33,29 +33,29 @@
     </div>
   </div>
 
-  <CrudModal
+  <AddQuoteModal
     v-if="toggleModal"
     title="write new quote"
     :toggle="setToggleModal"
   >
     <NewQuoteForm />
-  </CrudModal>
+  </AddQuoteModal>
 </template>
 
 <script>
 import IconAddNewQuote from "@/components/icons/IconAddNewQuote.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import NewQuoteForm from "@/components/dashboard/NewQuoteForm.vue";
-import CrudModal from "@/components/modals/CrudModal.vue";
 import { ref } from "vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
+import AddQuoteModal from "../modals/AddQuoteModal.vue";
 
 export default {
   components: {
     IconAddNewQuote,
     IconSearch,
     NewQuoteForm,
-    CrudModal,
+    AddQuoteModal,
   },
   props: {
     sendSearchRequest: {
