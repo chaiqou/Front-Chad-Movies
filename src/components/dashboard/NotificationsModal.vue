@@ -36,11 +36,11 @@
 
 <script setup>
 import { useNotificationsStore } from "@/stores/useNotificationsStore";
-import { onClickOutside } from "@vueuse/core";
 import { ref } from "vue";
 import axios from "@/config/axios/index";
 import NotificationUnread from "@/components/notifications/NotificationUnread.vue";
 import NotificationRead from "@/components/notifications/NotificationRead.vue";
+import { onClickOutside } from "@vueuse/core";
 
 const notification = useNotificationsStore();
 

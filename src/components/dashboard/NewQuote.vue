@@ -48,7 +48,7 @@ import IconSearch from "@/components/icons/IconSearch.vue";
 import NewQuoteForm from "@/components/dashboard/NewQuoteForm.vue";
 import { ref } from "vue";
 import { useSearchDataStore } from "@/stores/useSearchDataStore";
-import AddQuoteModal from "../modals/AddQuoteModal.vue";
+import AddQuoteModal from "@/components/modals/AddQuoteModal.vue";
 
 export default {
   components: {
