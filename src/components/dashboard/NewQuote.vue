@@ -23,7 +23,7 @@
               :class="[toggleDropdown ? 'w-[600px]' : 'w-full']"
               type="text"
               class="block pr-10 text-white border-none bg-inherit p-3 rounded-md"
-              :placeholder="$t('enter@')"
+              :placeholder="$t('entersearchplaceholder')"
               @keypress.enter="sendSearchRequest"
             />
             <div class="border border-gray-800 border-b-1"></div>
