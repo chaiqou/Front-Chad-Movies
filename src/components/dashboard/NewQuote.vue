@@ -19,11 +19,11 @@
         <div class="invisible md:visible">
           <div class="relative rounded-md">
             <input
-              v-model="search.search"
+              v-model="search"
               :class="[toggleDropdown ? 'w-[600px]' : 'w-full']"
               type="text"
               class="block pr-10 text-white border-none bg-inherit p-3 rounded-md"
-              :placeholder="$t('enter')"
+              :placeholder="$t('enter@')"
               @keypress.enter="sendSearchRequest"
             />
             <div class="border border-gray-800 border-b-1"></div>
@@ -46,9 +46,10 @@
 import IconAddNewQuote from "@/components/icons/IconAddNewQuote.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import NewQuoteForm from "@/components/dashboard/NewQuoteForm.vue";
-import { ref } from "vue";
-import { useSearchDataStore } from "@/stores/useSearchDataStore";
 import AddQuoteModal from "@/components/modals/AddQuoteModal.vue";
+
+import { useSearchDataStore } from "@/stores/useSearchDataStore";
+import { mapWritableState } from "pinia";
 
 export default {
   components: {
@@ -57,32 +58,30 @@ export default {
     NewQuoteForm,
     AddQuoteModal,
   },
+
   props: {
     sendSearchRequest: {
       type: Function,
       required: true,
     },
   },
-  setup() {
-    const toggleModal = ref(false);
-    const toggleDropdown = ref(false);
 
-    function setToggleModal() {
-      toggleModal.value = !toggleModal.value;
-    }
-    function setToggleDropdown() {
-      toggleDropdown.value = !toggleDropdown.value;
-    }
-
-    const search = useSearchDataStore();
-
+  data() {
     return {
-      toggleModal,
-      toggleDropdown,
-      setToggleModal,
-      setToggleDropdown,
-      search,
+      toggleDropdown: false,
+      toggleModal: false,
     };
+  },
+  computed: {
+    ...mapWritableState(useSearchDataStore, ["search"]),
+  },
+  methods: {
+    setToggleDropdown() {
+      this.toggleDropdown = !this.toggleDropdown;
+    },
+    setToggleModal() {
+      this.toggleModal = !this.toggleModal;
+    },
   },
 };
 </script>
